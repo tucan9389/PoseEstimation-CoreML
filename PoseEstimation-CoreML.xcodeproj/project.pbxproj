@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551B08F020F10CB20034926F /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551B08EF20F10CB20034926F /* Measure.swift */; };
+		55360FE020F6F2DA002AFB6A /* hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55360FDF20F6F2DA002AFB6A /* hourglass.mlmodel */; };
 		557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531220ED252100CFCCD7 /* AppDelegate.swift */; };
 		557F531520ED252100CFCCD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531420ED252100CFCCD7 /* ViewController.swift */; };
 		557F531820ED252100CFCCD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557F531620ED252100CFCCD7 /* Main.storyboard */; };
@@ -15,9 +17,19 @@
 		557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F532420ED25AF00CFCCD7 /* VideoCapture.swift */; };
 		557F532820ED25B000CFCCD7 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F532520ED25AF00CFCCD7 /* Measure.swift */; };
 		557F532920ED25B000CFCCD7 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 557F532620ED25AF00CFCCD7 /* model_cpm.mlmodel */; };
+		559D717720F59EA200E391B3 /* mv2_cpm_fingertip_1_fourteen.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D716F20F59EA100E391B3 /* mv2_cpm_fingertip_1_fourteen.mlmodel */; };
+		559D717820F59EA200E391B3 /* mv2_cpm_1_three.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717020F59EA100E391B3 /* mv2_cpm_1_three.mlmodel */; };
+		559D717920F59EA200E391B3 /* mv2_cpm_0_fourteen.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717120F59EA100E391B3 /* mv2_cpm_0_fourteen.mlmodel */; };
+		559D717A20F59EA200E391B3 /* mv2_cpm_fingertip_1_three.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717220F59EA100E391B3 /* mv2_cpm_fingertip_1_three.mlmodel */; };
+		559D717B20F59EA200E391B3 /* mv2_cpm_fingertip_0_three.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717320F59EA100E391B3 /* mv2_cpm_fingertip_0_three.mlmodel */; };
+		559D717C20F59EA200E391B3 /* mv2_cpm_fingertip_0_fourteen.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717420F59EA100E391B3 /* mv2_cpm_fingertip_0_fourteen.mlmodel */; };
+		559D717D20F59EA200E391B3 /* mv2_cpm_0_three.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717520F59EA100E391B3 /* mv2_cpm_0_three.mlmodel */; };
+		559D717E20F59EA200E391B3 /* mv2_cpm_1_fourteen.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717620F59EA200E391B3 /* mv2_cpm_1_fourteen.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		551B08EF20F10CB20034926F /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
+		55360FDF20F6F2DA002AFB6A /* hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = hourglass.mlmodel; sourceTree = "<group>"; };
 		557F530F20ED252100CFCCD7 /* PoseEstimation-CoreML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PoseEstimation-CoreML.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		557F531220ED252100CFCCD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		557F531420ED252100CFCCD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +40,14 @@
 		557F532420ED25AF00CFCCD7 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		557F532520ED25AF00CFCCD7 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		557F532620ED25AF00CFCCD7 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_cpm.mlmodel; sourceTree = "<group>"; };
+		559D716F20F59EA100E391B3 /* mv2_cpm_fingertip_1_fourteen.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_fingertip_1_fourteen.mlmodel; sourceTree = "<group>"; };
+		559D717020F59EA100E391B3 /* mv2_cpm_1_three.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_1_three.mlmodel; sourceTree = "<group>"; };
+		559D717120F59EA100E391B3 /* mv2_cpm_0_fourteen.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_0_fourteen.mlmodel; sourceTree = "<group>"; };
+		559D717220F59EA100E391B3 /* mv2_cpm_fingertip_1_three.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_fingertip_1_three.mlmodel; sourceTree = "<group>"; };
+		559D717320F59EA100E391B3 /* mv2_cpm_fingertip_0_three.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_fingertip_0_three.mlmodel; sourceTree = "<group>"; };
+		559D717420F59EA100E391B3 /* mv2_cpm_fingertip_0_fourteen.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_fingertip_0_fourteen.mlmodel; sourceTree = "<group>"; };
+		559D717520F59EA100E391B3 /* mv2_cpm_0_three.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_0_three.mlmodel; sourceTree = "<group>"; };
+		559D717620F59EA200E391B3 /* mv2_cpm_1_fourteen.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_1_fourteen.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +81,20 @@
 			isa = PBXGroup;
 			children = (
 				557F532620ED25AF00CFCCD7 /* model_cpm.mlmodel */,
+				55360FDF20F6F2DA002AFB6A /* hourglass.mlmodel */,
+				559D717120F59EA100E391B3 /* mv2_cpm_0_fourteen.mlmodel */,
+				559D717520F59EA100E391B3 /* mv2_cpm_0_three.mlmodel */,
+				559D717620F59EA200E391B3 /* mv2_cpm_1_fourteen.mlmodel */,
+				559D717020F59EA100E391B3 /* mv2_cpm_1_three.mlmodel */,
+				559D717420F59EA100E391B3 /* mv2_cpm_fingertip_0_fourteen.mlmodel */,
+				559D717320F59EA100E391B3 /* mv2_cpm_fingertip_0_three.mlmodel */,
+				559D716F20F59EA100E391B3 /* mv2_cpm_fingertip_1_fourteen.mlmodel */,
+				559D717220F59EA100E391B3 /* mv2_cpm_fingertip_1_three.mlmodel */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
 				557F531420ED252100CFCCD7 /* ViewController.swift */,
 				557F532520ED25AF00CFCCD7 /* Measure.swift */,
 				557F532420ED25AF00CFCCD7 /* VideoCapture.swift */,
+				551B08EF20F10CB20034926F /* Measure.swift */,
 				557F531620ED252100CFCCD7 /* Main.storyboard */,
 				557F531920ED252400CFCCD7 /* Assets.xcassets */,
 				557F531B20ED252400CFCCD7 /* LaunchScreen.storyboard */,
@@ -146,8 +176,18 @@
 			files = (
 				557F532920ED25B000CFCCD7 /* model_cpm.mlmodel in Sources */,
 				557F531520ED252100CFCCD7 /* ViewController.swift in Sources */,
+				559D717820F59EA200E391B3 /* mv2_cpm_1_three.mlmodel in Sources */,
+				559D717D20F59EA200E391B3 /* mv2_cpm_0_three.mlmodel in Sources */,
+				551B08F020F10CB20034926F /* Measure.swift in Sources */,
+				559D717920F59EA200E391B3 /* mv2_cpm_0_fourteen.mlmodel in Sources */,
+				559D717C20F59EA200E391B3 /* mv2_cpm_fingertip_0_fourteen.mlmodel in Sources */,
+				55360FE020F6F2DA002AFB6A /* hourglass.mlmodel in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
 				557F532820ED25B000CFCCD7 /* Measure.swift in Sources */,
+				559D717E20F59EA200E391B3 /* mv2_cpm_1_fourteen.mlmodel in Sources */,
+				559D717A20F59EA200E391B3 /* mv2_cpm_fingertip_1_three.mlmodel in Sources */,
+				559D717720F59EA200E391B3 /* mv2_cpm_fingertip_1_fourteen.mlmodel in Sources */,
+				559D717B20F59EA200E391B3 /* mv2_cpm_fingertip_0_three.mlmodel in Sources */,
 				557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

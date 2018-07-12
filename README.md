@@ -16,10 +16,10 @@
 
 ## 모델 준비
 
-Core ML용 Pose Estimation 모델(`model_cpm.mlmodel`)
-☞ Download Core ML model [here](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model).
+Core ML용 Pose Estimation 모델(`model_cpm.mlmodel`)<br>
+☞ Download Core ML model [model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) or [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/blob/master/release/hourglass_model/hourglass.mlmodel).
 
-> input_name_shape_dict = {"image:0":[1,224,224,3]} image_input_names=["image:0"] output_feature_names = ['Convolutional_Pose_Machine/stage_5_out:0']
+> input_name_shape_dict = {"image:0":[1,224,224,3]} image_input_names=["image:0"] <br>output_feature_names = ['Convolutional_Pose_Machine/stage_5_out:0']
 >
 > －in [https://github.com/edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)
 

@@ -33,35 +33,48 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="fps: xx" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAx-Q4-tNr">
-                                        <rect key="frame" x="192.5" y="13" width="166.5" height="18"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.22386023120000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="251.5" y="13" width="107.5" height="18"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.79658069349315064" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="g1p-qr-xh9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E Time: xxx mm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wus-2Y-2XZ">
-                                        <rect key="frame" x="16" y="13" width="166.5" height="18"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="0.22386023120000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inference: xxx mm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wus-2Y-2XZ">
+                                        <rect key="frame" x="16" y="13" width="107.5" height="18"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.79658069349315064" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="ecX-1Q-fGU"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Execution: xxx mm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwd-DA-CaS">
+                                        <rect key="frame" x="133.5" y="13" width="108" height="18"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.79658069349315064" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="npe-mx-DeE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="0.34051262840000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="gwd-DA-CaS" firstAttribute="leading" secondItem="wus-2Y-2XZ" secondAttribute="trailing" constant="10" id="3a5-zl-WQI"/>
+                                    <constraint firstItem="gwd-DA-CaS" firstAttribute="baseline" secondItem="wus-2Y-2XZ" secondAttribute="baseline" id="EIY-B8-jL4"/>
+                                    <constraint firstItem="pAx-Q4-tNr" firstAttribute="leading" secondItem="gwd-DA-CaS" secondAttribute="trailing" constant="10" id="GO8-QJ-AvI"/>
                                     <constraint firstAttribute="height" constant="44" id="Gr2-IR-G4d"/>
+                                    <constraint firstItem="gwd-DA-CaS" firstAttribute="width" secondItem="wus-2Y-2XZ" secondAttribute="width" id="Hfw-sy-TjD"/>
                                     <constraint firstAttribute="trailing" secondItem="pAx-Q4-tNr" secondAttribute="trailing" constant="16" id="IC2-YN-2NR"/>
                                     <constraint firstItem="wus-2Y-2XZ" firstAttribute="centerY" secondItem="tjo-wQ-8x2" secondAttribute="centerY" id="MAj-Pt-vWD"/>
                                     <constraint firstItem="pAx-Q4-tNr" firstAttribute="centerY" secondItem="tjo-wQ-8x2" secondAttribute="centerY" id="YCi-Kf-nxW"/>
                                     <constraint firstItem="wus-2Y-2XZ" firstAttribute="leading" secondItem="tjo-wQ-8x2" secondAttribute="leading" constant="16" id="cfT-W9-mKQ"/>
                                     <constraint firstItem="pAx-Q4-tNr" firstAttribute="width" secondItem="wus-2Y-2XZ" secondAttribute="width" id="pLT-SI-lVk"/>
-                                    <constraint firstItem="pAx-Q4-tNr" firstAttribute="leading" secondItem="wus-2Y-2XZ" secondAttribute="trailing" constant="10" id="uQf-Rb-h9z"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rje-iz-uY7">
@@ -105,8 +118,9 @@
                         <viewLayoutGuide key="safeArea" id="sDs-Q1-Yp7"/>
                     </view>
                     <connections>
-                        <outlet property="etimeLabel" destination="wus-2Y-2XZ" id="GOI-Du-cSl"/>
+                        <outlet property="etimeLabel" destination="gwd-DA-CaS" id="eUM-MF-evc"/>
                         <outlet property="fpsLabel" destination="pAx-Q4-tNr" id="KJr-nm-Unj"/>
+                        <outlet property="inferenceLabel" destination="wus-2Y-2XZ" id="NGh-0s-DWn"/>
                         <outlet property="mylabel" destination="4Vr-9B-JM4" id="Tm5-Eh-2gq"/>
                         <outlet property="poseView" destination="PLx-8G-3ly" id="GUs-bx-Tof"/>
                         <outlet property="videoPreview" destination="2rN-aG-qiz" id="fqh-TA-pPD"/>
@@ -114,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hg5-2J-KwQ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="402" y="134"/>
+            <point key="canvasLocation" x="400.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

@@ -21,6 +21,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     @IBOutlet weak var poseView: PoseView!
     @IBOutlet weak var mylabel: UILabel!
     
+    @IBOutlet weak var inferenceLabel: UILabel!
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
     
@@ -36,7 +37,8 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     
     // MARK - Core ML model
     
-    var coremlModel: model_cpm? = nil
+    var coremlModel: hourglass? = nil
+    // mv2_cpm_1_three
     
     // MARK: - Vision 프로퍼티
     
@@ -66,7 +68,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         // MobileNet 클래스는 `MobileNet.mlmodel`를 프로젝트에 넣고, 빌드시키면 자동으로 생성된 랩퍼 클래스
         // MobileNet에서 만든 model: MLModel 객체로 (Vision에서 사용할) VNCoreMLModel 객체를 생성
         // Vision은 모델의 입력 크기(이미지 크기)에 따라 자동으로 조정해 줌
-        visionModel = try? VNCoreMLModel(for: model_cpm().model)
+        visionModel = try? VNCoreMLModel(for: hourglass().model)
         
         // 카메라 세팅
         setUpCamera()
@@ -121,7 +123,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     }
     
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
-        
+        self.👨‍🔧.🏷(with: "endInference")
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
             let heatmap = observations.first?.featureValue.multiArrayValue {
             
@@ -292,9 +294,10 @@ class ViewController: UIViewController, VideoCaptureDelegate {
 }
 
 extension ViewController: 📏Delegate {
-    func updateMeasure(executionTime: Double, fps: Int) {
+    func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {
         //print(executionTime, fps)
-        self.etimeLabel.text = "E Time: \(Int(executionTime*1000.0)) mm"
+        self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) mm"
+        self.etimeLabel.text = "execution: \(Int(executionTime*1000.0)) mm"
         self.fpsLabel.text = "fps: \(fps)"
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol 📏Delegate {
-    func updateMeasure(executionTime: Double, fps: Int)
+    func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int)
 }
 // Performance Measurement
 class 📏 {
@@ -42,15 +42,23 @@ class 📏 {
         
         let beforeMeasurement = getBeforeMeasurment(for: index)
         let currentMeasurement = measurements[index]
-        if let startTime = currentMeasurement["start"], let endTime = currentMeasurement["end"], let beforeStartTime = beforeMeasurement["start"] {
-            delegate?.updateMeasure(executionTime: endTime - startTime,
+        if let startTime = currentMeasurement["start"],
+            let endInferenceTime = currentMeasurement["endInference"],
+            let endTime = currentMeasurement["end"],
+            let beforeStartTime = beforeMeasurement["start"] {
+            delegate?.updateMeasure(inferenceTime: endInferenceTime - startTime,
+                                    executionTime: endTime - startTime,
                                     fps: Int(1/(startTime - beforeStartTime)))
         }
         
     }
     
     // labeling with
-    func 🏷(for index: Int, with msg: String? = "") {
+    func 🏷(with msg: String? = "") {
+        🏷(for: index, with: msg)
+    }
+    
+    private func 🏷(for index: Int, with msg: String? = "") {
         if let message = msg {
             measurements[index][message] = CACurrentMediaTime()
         }
