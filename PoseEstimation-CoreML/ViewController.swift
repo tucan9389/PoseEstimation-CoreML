@@ -36,8 +36,8 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     
     
     // MARK - Core ML model
-    
-    var coremlModel: hourglass? = nil
+    typealias EstimationModel = model_cpm
+    var coremlModel: EstimationModel? = nil
     // mv2_cpm_1_three
     
     // MARK: - Vision 프로퍼티
@@ -68,7 +68,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         // MobileNet 클래스는 `MobileNet.mlmodel`를 프로젝트에 넣고, 빌드시키면 자동으로 생성된 랩퍼 클래스
         // MobileNet에서 만든 model: MLModel 객체로 (Vision에서 사용할) VNCoreMLModel 객체를 생성
         // Vision은 모델의 입력 크기(이미지 크기)에 따라 자동으로 조정해 줌
-        visionModel = try? VNCoreMLModel(for: hourglass().model)
+        visionModel = try? VNCoreMLModel(for: EstimationModel().model)
         
         // 카메라 세팅
         setUpCamera()
@@ -303,54 +303,9 @@ extension ViewController: 📏Delegate {
 }
 
 
-class PoseView: UIView {
-    
-    var bodyPoints: [ViewController.BodyPoint?] = [] {
-        didSet {
-            self.setNeedsDisplay()
-        }
-    }
-    
-    override func draw(_ rect: CGRect) {
-        if let ctx = UIGraphicsGetCurrentContext() {
-            
-            ctx.clear(rect);
-            
-            //            drawLine(ctx: ctx, from: CGPoint(x: 10, y: 20), to: CGPoint(x: 100, y: 20), color: UIColor.red.cgColor)
-            //            drawLine(ctx: ctx, from: CGPoint(x: 110, y: 120), to: CGPoint(x: 200, y: 120), color: UIColor.blue.cgColor)
-            let size = self.bounds.size
-            
-            let color = Constant.jointLineColor.cgColor
-            if Constant.pointLabels.count == bodyPoints.count {
-                let _ = Constant.connectingPointIndexs.map { pIndex1, pIndex2 in
-                    if let bp1 = self.bodyPoints[pIndex1], bp1.confidence > 0.5,
-                        let bp2 = self.bodyPoints[pIndex2], bp2.confidence > 0.5 {
-                        let p1 = bp1.point
-                        let p2 = bp2.point
-                        let point1 = CGPoint(x: p1.x * size.width, y: p1.y*size.height)
-                        let point2 = CGPoint(x: p2.x * size.width, y: p2.y*size.height)
-                        drawLine(ctx: ctx, from: point1, to: point2, color: color)
-                    }
-                }
-            }
-        }
-    }
-    
-    func drawLine(ctx: CGContext, from p1: CGPoint, to p2: CGPoint, color: CGColor) {
-        ctx.setStrokeColor(color)
-        ctx.setLineWidth(3.0)
-        
-        ctx.move(to: p1)
-        ctx.addLine(to: p2)
-        
-        ctx.strokePath();
-    }
-}
-
-
+// #MARK: - 상수
 
 struct Constant {
-    
     static let pointLabels = [
         "top\t\t\t", //0
         "neck\t\t", //1
@@ -392,7 +347,6 @@ struct Constant {
                                                  blue: 211.0/255.0,
                                                  alpha: 0.5)
     
-    
     static let colors: [UIColor] = [
         .black,
         .darkGray,
@@ -411,6 +365,4 @@ struct Constant {
         .purple,
         .brown
     ]
-    
-    
 }
