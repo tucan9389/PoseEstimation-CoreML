@@ -26,11 +26,6 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     @IBOutlet weak var fpsLabel: UILabel!
     
     
-    
-    
-    var view_14: [UIView] = []
-    
-    
     // MARK - 성능 측정 프러퍼티
     private let 👨‍🔧 = 📏()
     
@@ -46,9 +41,6 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     var visionModel: VNCoreMLModel! {
         didSet {
             request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
-            // NOTE: If you choose another crop/scale option, then you must also
-            // change how the BoundingBox objects get scaled when they are drawn.
-            // Currently they assume the full input image is used.
             request.imageCropAndScaleOption = .scaleFill
         }
     }
@@ -74,7 +66,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         setUpCamera()
         
         // 레이블 점 세팅
-        setUpOutputComponent()
+        poseView.setUpOutputComponent()
         
         // 성능측정용 델리게이트 설정
         👨‍🔧.delegate = self
@@ -82,7 +74,6 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -130,14 +121,8 @@ class ViewController: UIViewController, VideoCaptureDelegate {
             // convert heatmap to [keypoint]
             let n_kpoints = convert(heatmap: heatmap)
             
-            
-            // draw key points
-            drawKeypoints(with: n_kpoints)
-            
-            
             // draw line
             poseView.bodyPoints = n_kpoints
-            
             
             // show key points description
             showKeypointsDescription(with: n_kpoints)
@@ -147,7 +132,6 @@ class ViewController: UIViewController, VideoCaptureDelegate {
             // 임시
             self.semaphore.signal()
         }
-        
     }
     
     func convert(heatmap: MLMultiArray) -> [BodyPoint?] {
@@ -189,28 +173,6 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         }
         
         return n_kpoints
-    }
-    
-    func drawKeypoints(with n_kpoints: [BodyPoint?]) {
-        let imageFrame = CGRect(origin: .zero, size: self.videoPreview.frame.size)//self.imageView.imageFrame
-        
-        let minAlpha: CGFloat = 0.1
-        let maxAlpha: CGFloat = 1.0
-        let maxC: Double = 0.6
-        let minC: Double = 0.1
-        
-        for (index, kp) in n_kpoints.enumerated() {
-            if let n_kp = kp {
-                let x = imageFrame.origin.x + n_kp.point.x * imageFrame.width
-                let y = imageFrame.origin.y + n_kp.point.y * imageFrame.height
-                view_14[index].center = CGPoint(x: x, y: y)
-                let cRate = (n_kp.confidence - minC)/(maxC - minC)
-                view_14[index].alpha = (maxAlpha - minAlpha) * CGFloat(cRate) + minAlpha
-            } else {
-                view_14[index].center = CGPoint(x: -4000, y: -4000)
-                view_14[index].alpha = minAlpha
-            }
-        }
     }
     
     func showKeypointsDescription(with n_kpoints: [BodyPoint?]) {
@@ -257,40 +219,6 @@ class ViewController: UIViewController, VideoCaptureDelegate {
             }
         }
     }
-    
-    
-    
-    // MARK: -
-    
-    func setUpOutputComponent() {
-        view_14 = Constant.colors.map { color in
-            let v = UIView(frame: CGRect(x: 0, y: 0, width: 4, height: 4))
-            v.backgroundColor = color
-            v.clipsToBounds = false
-            let l = UILabel(frame: CGRect(x: 4 + 3, y: -3, width: 100, height: 8))
-            l.text = Constant.pointLabels[Constant.colors.index(where: {$0 == color})!]
-            l.textColor = color
-            l.font = UIFont.preferredFont(forTextStyle: .caption2)
-            v.addSubview(l)
-            self.videoPreview.addSubview(v)
-            return v
-        }
-        
-        
-        var x: CGFloat = 0.0
-        let y = self.videoPreview.frame.origin.y + self.videoPreview.frame.height
-        let _ = Constant.colors.map { color in
-            let index = Constant.colors.index(where: { color == $0 })
-            if index == 2 || index == 8 { x += 28 }
-            else { x += 14 }
-            let v = UIView(frame: CGRect(x: x, y: y + 10, width: 4, height: 4))
-            v.backgroundColor = color
-            
-            self.view.addSubview(v)
-            return
-        }
-    }
-    
 }
 
 extension ViewController: 📏Delegate {
