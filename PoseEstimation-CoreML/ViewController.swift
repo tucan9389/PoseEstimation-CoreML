@@ -31,7 +31,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     
     
     // MARK - Core ML model
-    typealias EstimationModel = model_cpm
+    typealias EstimationModel = mv2_cpm_model_114000
     var coremlModel: EstimationModel? = nil
     // mv2_cpm_1_three
     
@@ -276,21 +276,19 @@ struct Constant {
                                                  alpha: 0.5)
     
     static let colors: [UIColor] = [
-        .black,
-        .darkGray,
-        
-        .lightGray,
-        .white,
-        .gray,
         .red,
         .green,
         .blue,
-        
         .cyan,
         .yellow,
         .magenta,
         .orange,
         .purple,
-        .brown
+        .brown,
+        .black,
+        .darkGray,
+        .lightGray,
+        .white,
+        .gray,
     ]
 }

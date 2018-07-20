@@ -35,7 +35,7 @@ class PoseView: UIView {
         
         
         var x: CGFloat = 0.0
-        let y: CGFloat = 0.0
+        let y: CGFloat = self.frame.size.height - 24
         let _ = Constant.colors.map { color in
             let index = Constant.colors.index(where: { color == $0 })
             if index == 2 || index == 8 { x += 28 }
@@ -86,7 +86,7 @@ class PoseView: UIView {
     func drawKeypoints(with n_kpoints: [ViewController.BodyPoint?]) {
         let imageFrame = view_14.first?.superview?.frame ?? .zero
         
-        let minAlpha: CGFloat = 0.1
+        let minAlpha: CGFloat = 0.5
         let maxAlpha: CGFloat = 1.0
         let maxC: Double = 0.6
         let minC: Double = 0.1

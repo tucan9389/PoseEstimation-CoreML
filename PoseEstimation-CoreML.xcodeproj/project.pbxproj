@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		551B08F020F10CB20034926F /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551B08EF20F10CB20034926F /* Measure.swift */; };
+		55265E0D2101FC9A00EC90B5 /* mv2_cpm_model_114000.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55265E0C2101FC9A00EC90B5 /* mv2_cpm_model_114000.mlmodel */; };
 		55360FE020F6F2DA002AFB6A /* hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55360FDF20F6F2DA002AFB6A /* hourglass.mlmodel */; };
 		557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531220ED252100CFCCD7 /* AppDelegate.swift */; };
 		557F531520ED252100CFCCD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531420ED252100CFCCD7 /* ViewController.swift */; };
@@ -25,11 +26,14 @@
 		559D717C20F59EA200E391B3 /* mv2_cpm_fingertip_0_fourteen.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717420F59EA100E391B3 /* mv2_cpm_fingertip_0_fourteen.mlmodel */; };
 		559D717D20F59EA200E391B3 /* mv2_cpm_0_three.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717520F59EA100E391B3 /* mv2_cpm_0_three.mlmodel */; };
 		559D717E20F59EA200E391B3 /* mv2_cpm_1_fourteen.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 559D717620F59EA200E391B3 /* mv2_cpm_1_fourteen.mlmodel */; };
+		55CA10812101A7E100FB1263 /* mv2_cpm_model_6000.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55CA10802101A7E100FB1263 /* mv2_cpm_model_6000.mlmodel */; };
+		55D216852101C03300171161 /* mv2_cpm_model_38000.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55D216842101C03200171161 /* mv2_cpm_model_38000.mlmodel */; };
 		55FEC38120FAB34200D3BFED /* PoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FEC38020FAB34200D3BFED /* PoseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		551B08EF20F10CB20034926F /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
+		55265E0C2101FC9A00EC90B5 /* mv2_cpm_model_114000.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_model_114000.mlmodel; sourceTree = "<group>"; };
 		55360FDF20F6F2DA002AFB6A /* hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = hourglass.mlmodel; sourceTree = "<group>"; };
 		557F530F20ED252100CFCCD7 /* PoseEstimation-CoreML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PoseEstimation-CoreML.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		557F531220ED252100CFCCD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 		559D717420F59EA100E391B3 /* mv2_cpm_fingertip_0_fourteen.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_fingertip_0_fourteen.mlmodel; sourceTree = "<group>"; };
 		559D717520F59EA100E391B3 /* mv2_cpm_0_three.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_0_three.mlmodel; sourceTree = "<group>"; };
 		559D717620F59EA200E391B3 /* mv2_cpm_1_fourteen.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_1_fourteen.mlmodel; sourceTree = "<group>"; };
+		55CA10802101A7E100FB1263 /* mv2_cpm_model_6000.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_model_6000.mlmodel; sourceTree = "<group>"; };
+		55D216842101C03200171161 /* mv2_cpm_model_38000.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_model_38000.mlmodel; sourceTree = "<group>"; };
 		55FEC38020FAB34200D3BFED /* PoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +98,9 @@
 				559D717320F59EA100E391B3 /* mv2_cpm_fingertip_0_three.mlmodel */,
 				559D716F20F59EA100E391B3 /* mv2_cpm_fingertip_1_fourteen.mlmodel */,
 				559D717220F59EA100E391B3 /* mv2_cpm_fingertip_1_three.mlmodel */,
+				55CA10802101A7E100FB1263 /* mv2_cpm_model_6000.mlmodel */,
+				55D216842101C03200171161 /* mv2_cpm_model_38000.mlmodel */,
+				55265E0C2101FC9A00EC90B5 /* mv2_cpm_model_114000.mlmodel */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
 				557F531420ED252100CFCCD7 /* ViewController.swift */,
 				55FEC38020FAB34200D3BFED /* PoseView.swift */,
@@ -180,13 +189,16 @@
 				557F532920ED25B000CFCCD7 /* model_cpm.mlmodel in Sources */,
 				557F531520ED252100CFCCD7 /* ViewController.swift in Sources */,
 				559D717820F59EA200E391B3 /* mv2_cpm_1_three.mlmodel in Sources */,
+				55D216852101C03300171161 /* mv2_cpm_model_38000.mlmodel in Sources */,
 				559D717D20F59EA200E391B3 /* mv2_cpm_0_three.mlmodel in Sources */,
 				551B08F020F10CB20034926F /* Measure.swift in Sources */,
+				55265E0D2101FC9A00EC90B5 /* mv2_cpm_model_114000.mlmodel in Sources */,
 				559D717920F59EA200E391B3 /* mv2_cpm_0_fourteen.mlmodel in Sources */,
 				559D717C20F59EA200E391B3 /* mv2_cpm_fingertip_0_fourteen.mlmodel in Sources */,
 				55360FE020F6F2DA002AFB6A /* hourglass.mlmodel in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
 				557F532820ED25B000CFCCD7 /* Measure.swift in Sources */,
+				55CA10812101A7E100FB1263 /* mv2_cpm_model_6000.mlmodel in Sources */,
 				559D717E20F59EA200E391B3 /* mv2_cpm_1_fourteen.mlmodel in Sources */,
 				55FEC38120FAB34200D3BFED /* PoseView.swift in Sources */,
 				559D717A20F59EA200E391B3 /* mv2_cpm_fingertip_1_three.mlmodel in Sources */,
