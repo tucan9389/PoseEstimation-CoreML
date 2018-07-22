@@ -86,7 +86,7 @@ class PoseView: UIView {
     func drawKeypoints(with n_kpoints: [ViewController.BodyPoint?]) {
         let imageFrame = view_14.first?.superview?.frame ?? .zero
         
-        let minAlpha: CGFloat = 0.5
+        let minAlpha: CGFloat = 0.4
         let maxAlpha: CGFloat = 1.0
         let maxC: Double = 0.6
         let minC: Double = 0.1
