@@ -31,7 +31,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     
     
     // MARK - Core ML model
-    typealias EstimationModel = mv2_cpm_model_114000
+    typealias EstimationModel = mv2_cpm_model_36000
     var coremlModel: EstimationModel? = nil
     // mv2_cpm_1_three
     
