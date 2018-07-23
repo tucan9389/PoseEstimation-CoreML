@@ -19,11 +19,14 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var poseView: PoseView!
-    @IBOutlet weak var mylabel: UILabel!
+    @IBOutlet weak var labelsTableView: UITableView!
     
     @IBOutlet weak var inferenceLabel: UILabel!
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
+    
+    
+    private var tableData: [BodyPoint?] = []
     
     
     // MARK - 성능 측정 프러퍼티
@@ -64,6 +67,9 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         
         // 카메라 세팅
         setUpCamera()
+        
+        // 레이블 테이블 세팅
+        labelsTableView.dataSource = self
         
         // 레이블 점 세팅
         poseView.setUpOutputComponent()
@@ -176,25 +182,8 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     }
     
     func showKeypointsDescription(with n_kpoints: [BodyPoint?]) {
-        let resultString = zip(n_kpoints, Constant.pointLabels).reduce("", { (result, obj) -> String in
-            var r = ""
-            
-            if Constant.pointLabels.index(of: obj.1) == 2 || Constant.pointLabels.index(of: obj.1) == 8 {
-                r = "\n"
-            }
-            if let kp = obj.0 {
-                let point = String(format: "(%.2f, %.2f)", kp.point.x, kp.point.y)
-                let confidence = String(format: "%.3f", kp.confidence)
-                r = r + obj.1 + ": " + "\(point)" + " " + "[\(confidence)]" + "\n"
-                
-            } else {
-                r = r + obj.1 + ": " + "nil" + "\n"
-            }
-            
-            return result + r
-        })
-        
-        self.mylabel.text = resultString
+        self.tableData = n_kpoints
+        self.labelsTableView.reloadData()
     }
     
     
@@ -220,6 +209,29 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         }
     }
 }
+
+// #MARK: - UITableView 데이터소스
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count// > 0 ? 1 : 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+        cell.textLabel?.text = Constant.pointLabels[indexPath.row]
+        if let body_point = tableData[indexPath.row] {
+            let pointText: String = "\(String(format: "%.3f", body_point.point.x)), \(String(format: "%.3f", body_point.point.y))"
+            cell.detailTextLabel?.text = "(\(pointText)), [\(String(format: "%.3f", body_point.confidence))]"
+        } else {
+            cell.detailTextLabel?.text = "N/A"
+        }
+        return cell
+    }
+}
+
+
+// #MARK: - 📏 델리게이트
 
 extension ViewController: 📏Delegate {
     func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {

@@ -29,7 +29,7 @@ Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 
 ![모델 불러오기.png](https://github.com/tucan9389/MobileNetApp-CoreML/blob/master/resource/%EB%AA%A8%EB%8D%B8%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.png?raw=true)
 
-Once you import the model, compiler generates model helper class on build path automatically. You can access through model helper class by creating an instance, not through build path.
+Once you import the model, compiler generates model helper class on build path automatically. You can access the model through model helper class by creating an instance, not through build path.
 
 ## Code
 
