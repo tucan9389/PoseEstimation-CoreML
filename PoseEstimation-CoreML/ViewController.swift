@@ -113,7 +113,6 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     // MARK: - 추론하기
     
     func predictUsingVision(pixelBuffer: CVPixelBuffer) {
-        
         // Vision이 입력이미지를 자동으로 크기조정을 해줄 것임.
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
@@ -127,16 +126,16 @@ class ViewController: UIViewController, VideoCaptureDelegate {
             // convert heatmap to [keypoint]
             let n_kpoints = convert(heatmap: heatmap)
             
-            // draw line
-            poseView.bodyPoints = n_kpoints
-            
-            // show key points description
-            showKeypointsDescription(with: n_kpoints)
-            
-            // end of measure
-            self.👨‍🔧.🎬🤚()
-            // 임시
-            self.semaphore.signal()
+            DispatchQueue.main.async {
+                // draw line
+                self.poseView.bodyPoints = n_kpoints
+                
+                // show key points description
+                self.showKeypointsDescription(with: n_kpoints)
+                
+                // end of measure
+                self.👨‍🔧.🎬🤚()
+            }
         }
     }
     
@@ -190,22 +189,14 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     // MARK: - VideoCaptureDelegate
     
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
-        
-        // 비디오 캡쳐 큐에서 실행된 videoCapture(::) 메소드는 멈추기
-        // 추론하는 동안은 메인스레드로 이동하여 처리
-        semaphore.wait()
-        
         // 카메라에서 캡쳐된 화면은 pixelBuffer에 담김.
         // Vision 프레임워크에서는 이미지 대신 pixelBuffer를 바로 사용 가능
         if let pixelBuffer = pixelBuffer {
-            // 추론은 메인스레드에서 실행시키며
-            // 추론 결과값 출력도 메인스레드에서 처리 후,
-            // 멈춘 스레드를 풀어줌(semaphore.signal())
-            DispatchQueue.main.async {
-                // start of measure
-                self.👨‍🔧.🎬👏()
-                self.predictUsingVision(pixelBuffer: pixelBuffer)
-            }
+            // start of measure
+            self.👨‍🔧.🎬👏()
+            
+            // predict!
+            self.predictUsingVision(pixelBuffer: pixelBuffer)
         }
     }
 }
