@@ -126,7 +126,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
             // convert heatmap to [keypoint]
             let n_kpoints = convert(heatmap: heatmap)
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.sync {
                 // draw line
                 self.poseView.bodyPoints = n_kpoints
                 
