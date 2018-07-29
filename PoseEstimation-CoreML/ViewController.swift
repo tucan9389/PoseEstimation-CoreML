@@ -10,12 +10,12 @@ import UIKit
 import Vision
 import CoreMedia
 
-class ViewController: UIViewController, VideoCaptureDelegate {
+class ViewController: UIViewController {
     
     public typealias BodyPoint = (point: CGPoint, confidence: Double)
     public typealias DetectObjectsCompletion = ([BodyPoint?]?, Error?) -> Void
     
-    // MARK: - UI 프로퍼티
+    // MARK: - UI Properties
     
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var poseView: PoseView!
@@ -25,21 +25,17 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
     
-    
+    // MARK - Inference Result Data
     private var tableData: [BodyPoint?] = []
     
-    
-    // MARK - 성능 측정 프러퍼티
+    // MARK - Performance Measurement Property
     private let 👨‍🔧 = 📏()
-    
     
     // MARK - Core ML model
     typealias EstimationModel = mv2_cpm_model_36000
     var coremlModel: EstimationModel? = nil
-    // mv2_cpm_1_three
     
-    // MARK: - Vision 프로퍼티
-    
+    // MARK: - Vision Properties
     var request: VNCoreMLRequest!
     var visionModel: VNCoreMLModel! {
         didSet {
@@ -49,14 +45,10 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     }
     
     
-    // MARK: - AV 프로퍼티
-    
+    // MARK: - AV Property
     var videoCapture: VideoCapture!
-    let semaphore = DispatchSemaphore(value: 2)
     
-    
-    // MARK: - 라이프사이클 메소드
-    
+    // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,9 +74,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    
-    // MARK: - 초기 세팅
-    
+    // MARK: - SetUp
     func setUpCamera() {
         videoCapture = VideoCapture()
         videoCapture.delegate = self
@@ -108,16 +98,14 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         videoCapture.previewLayer?.frame = videoPreview.bounds
     }
     
-    
-    
-    // MARK: - 추론하기
-    
+    // MARK: - Inferencing
     func predictUsingVision(pixelBuffer: CVPixelBuffer) {
         // Vision이 입력이미지를 자동으로 크기조정을 해줄 것임.
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
     }
     
+    // MARK: - Poseprocessing
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         self.👨‍🔧.🏷(with: "endInference")
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
@@ -184,10 +172,10 @@ class ViewController: UIViewController, VideoCaptureDelegate {
         self.tableData = n_kpoints
         self.labelsTableView.reloadData()
     }
-    
-    
-    // MARK: - VideoCaptureDelegate
-    
+}
+
+// MARK: - VideoCaptureDelegate
+extension ViewController: VideoCaptureDelegate {
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
         // 카메라에서 캡쳐된 화면은 pixelBuffer에 담김.
         // Vision 프레임워크에서는 이미지 대신 pixelBuffer를 바로 사용 가능
@@ -201,8 +189,7 @@ class ViewController: UIViewController, VideoCaptureDelegate {
     }
 }
 
-// #MARK: - UITableView 데이터소스
-
+// MARK: - UITableView Data Source
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count// > 0 ? 1 : 0
@@ -222,8 +209,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 
-// #MARK: - 📏 델리게이트
-
+// MARK: - 📏(Performance Measurement) Delegate
 extension ViewController: 📏Delegate {
     func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {
         //print(executionTime, fps)
@@ -234,8 +220,7 @@ extension ViewController: 📏Delegate {
 }
 
 
-// #MARK: - 상수
-
+// MARK: - Constant
 struct Constant {
     static let pointLabels = [
         "top\t\t\t", //0
