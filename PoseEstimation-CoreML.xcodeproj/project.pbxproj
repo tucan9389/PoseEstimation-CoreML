@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		55360FE020F6F2DA002AFB6A /* hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55360FDF20F6F2DA002AFB6A /* hourglass.mlmodel */; };
 		557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531220ED252100CFCCD7 /* AppDelegate.swift */; };
-		557F531520ED252100CFCCD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531420ED252100CFCCD7 /* ViewController.swift */; };
+		557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531420ED252100CFCCD7 /* JointViewController.swift */; };
 		557F531820ED252100CFCCD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557F531620ED252100CFCCD7 /* Main.storyboard */; };
 		557F531A20ED252400CFCCD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 557F531920ED252400CFCCD7 /* Assets.xcassets */; };
 		557F531D20ED252400CFCCD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557F531B20ED252400CFCCD7 /* LaunchScreen.storyboard */; };
@@ -30,7 +30,7 @@
 		55360FDF20F6F2DA002AFB6A /* hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = hourglass.mlmodel; sourceTree = "<group>"; };
 		557F530F20ED252100CFCCD7 /* PoseEstimation-CoreML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PoseEstimation-CoreML.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		557F531220ED252100CFCCD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		557F531420ED252100CFCCD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		557F531420ED252100CFCCD7 /* JointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointViewController.swift; sourceTree = "<group>"; };
 		557F531720ED252100CFCCD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		557F531920ED252400CFCCD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		557F531C20ED252400CFCCD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 				55BF1DB4210469E8008A2F5B /* mv2_cpm_model_14000.mlmodel */,
 				55BF1DB621049DA5008A2F5B /* mv2_cpm_model_36000.mlmodel */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
-				557F531420ED252100CFCCD7 /* ViewController.swift */,
+				557F531420ED252100CFCCD7 /* JointViewController.swift */,
 				55FEC38020FAB34200D3BFED /* PoseView.swift */,
 				557F532420ED25AF00CFCCD7 /* VideoCapture.swift */,
 				557F532520ED25AF00CFCCD7 /* Measure.swift */,
@@ -172,7 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				557F532920ED25B000CFCCD7 /* model_cpm.mlmodel in Sources */,
-				557F531520ED252100CFCCD7 /* ViewController.swift in Sources */,
+				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
 				55BF1DB321043B42008A2F5B /* mv2_cpm_model_24000.mlmodel in Sources */,
 				55BF1DA921041C4E008A2F5B /* mv2_cpm_model_8000.mlmodel in Sources */,
 				55BF1DB721049DA5008A2F5B /* mv2_cpm_model_36000.mlmodel in Sources */,

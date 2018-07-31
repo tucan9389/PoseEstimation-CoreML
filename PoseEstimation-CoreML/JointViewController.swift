@@ -10,7 +10,7 @@ import UIKit
 import Vision
 import CoreMedia
 
-class ViewController: UIViewController {
+class JointViewController: UIViewController {
     
     public typealias BodyPoint = (point: CGPoint, confidence: Double)
     public typealias DetectObjectsCompletion = ([BodyPoint?]?, Error?) -> Void
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: - SetUp
+    // MARK: - SetUp Video
     func setUpCamera() {
         videoCapture = VideoCapture()
         videoCapture.delegate = self
@@ -175,7 +175,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - VideoCaptureDelegate
-extension ViewController: VideoCaptureDelegate {
+extension JointViewController: VideoCaptureDelegate {
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
         // 카메라에서 캡쳐된 화면은 pixelBuffer에 담김.
         // Vision 프레임워크에서는 이미지 대신 pixelBuffer를 바로 사용 가능
@@ -190,7 +190,7 @@ extension ViewController: VideoCaptureDelegate {
 }
 
 // MARK: - UITableView Data Source
-extension ViewController: UITableViewDataSource {
+extension JointViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count// > 0 ? 1 : 0
     }
@@ -210,7 +210,7 @@ extension ViewController: UITableViewDataSource {
 
 
 // MARK: - 📏(Performance Measurement) Delegate
-extension ViewController: 📏Delegate {
+extension JointViewController: 📏Delegate {
     func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {
         //print(executionTime, fps)
         self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) mm"
