@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Joint-->
         <scene sceneID="kfC-DX-erp">
             <objects>
-                <viewController id="9CU-0Y-vts" customClass="JointViewController" sceneMemberID="viewController">
+                <viewController id="9CU-0Y-vts" customClass="JointViewController" customModule="PoseEstimation_CoreML" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mcC-Vq-6yu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ANC-ac-LRL">
-                                <rect key="frame" x="0.0" y="538.66666666666663" width="375" height="190.33333333333337"/>
+                                <rect key="frame" x="0.0" y="544" width="375" height="185"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" textLabel="vuI-qX-Ro3" detailTextLabel="ao9-EW-FOm" rowHeight="30" style="IBUITableViewCellStyleValue1" id="vHG-rq-dWg">
@@ -49,14 +49,14 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rN-aG-qiz">
-                                <rect key="frame" x="2" y="44.000000000000028" width="371" height="494.66666666666674"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
                                 <color key="backgroundColor" red="0.86274509799999999" green="0.63529411759999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2rN-aG-qiz" secondAttribute="height" multiplier="375:500" id="BHb-1Q-Fwx"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLx-8G-3ly" customClass="PoseView" customModule="PoseEstimation_CoreML">
-                                <rect key="frame" x="2" y="44.000000000000028" width="371" height="494.66666666666674"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjo-wQ-8x2">
@@ -114,7 +114,7 @@
                             <constraint firstItem="ANC-ac-LRL" firstAttribute="leading" secondItem="sDs-Q1-Yp7" secondAttribute="leading" id="8bt-mT-HqL"/>
                             <constraint firstItem="sDs-Q1-Yp7" firstAttribute="trailing" secondItem="tjo-wQ-8x2" secondAttribute="trailing" id="Dxq-kQ-zyf"/>
                             <constraint firstItem="PLx-8G-3ly" firstAttribute="width" secondItem="2rN-aG-qiz" secondAttribute="width" id="Qbc-zA-HV8"/>
-                            <constraint firstItem="2rN-aG-qiz" firstAttribute="leading" secondItem="sDs-Q1-Yp7" secondAttribute="leading" constant="2" id="Rvl-po-ScA"/>
+                            <constraint firstItem="2rN-aG-qiz" firstAttribute="leading" secondItem="sDs-Q1-Yp7" secondAttribute="leading" id="Rvl-po-ScA"/>
                             <constraint firstItem="ANC-ac-LRL" firstAttribute="trailing" secondItem="sDs-Q1-Yp7" secondAttribute="trailing" id="SBB-Nk-xV4"/>
                             <constraint firstItem="PLx-8G-3ly" firstAttribute="height" secondItem="2rN-aG-qiz" secondAttribute="height" id="WkI-nt-pLq"/>
                             <constraint firstItem="ANC-ac-LRL" firstAttribute="top" secondItem="2rN-aG-qiz" secondAttribute="bottom" id="lpr-Gt-ULp"/>
@@ -122,12 +122,12 @@
                             <constraint firstItem="PLx-8G-3ly" firstAttribute="top" secondItem="2rN-aG-qiz" secondAttribute="top" id="tea-wL-pgb"/>
                             <constraint firstItem="2rN-aG-qiz" firstAttribute="top" secondItem="sDs-Q1-Yp7" secondAttribute="top" id="wFO-aE-wuF"/>
                             <constraint firstItem="tjo-wQ-8x2" firstAttribute="top" secondItem="sDs-Q1-Yp7" secondAttribute="top" id="y8B-rj-XB1"/>
-                            <constraint firstItem="2rN-aG-qiz" firstAttribute="trailing" secondItem="sDs-Q1-Yp7" secondAttribute="trailing" constant="-2" id="yDi-ZH-NJJ"/>
+                            <constraint firstItem="2rN-aG-qiz" firstAttribute="trailing" secondItem="sDs-Q1-Yp7" secondAttribute="trailing" id="yDi-ZH-NJJ"/>
                             <constraint firstItem="sDs-Q1-Yp7" firstAttribute="bottom" secondItem="ANC-ac-LRL" secondAttribute="bottom" id="yL7-n0-lsW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sDs-Q1-Yp7"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="pX0-SI-onh"/>
+                    <tabBarItem key="tabBarItem" title="Joint" id="pX0-SI-onh"/>
                     <connections>
                         <outlet property="etimeLabel" destination="gwd-DA-CaS" id="eUM-MF-evc"/>
                         <outlet property="fpsLabel" destination="pAx-Q4-tNr" id="KJr-nm-Unj"/>
@@ -139,7 +139,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hg5-2J-KwQ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343.2" y="133.00492610837438"/>
+            <point key="canvasLocation" x="1343" y="-199"/>
+        </scene>
+        <!--Heatmap-->
+        <scene sceneID="T1V-KI-l77">
+            <objects>
+                <viewController id="b0e-Kh-5x3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8si-Zg-OnT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYb-Wj-fTT">
+                                <rect key="frame" x="143.66666666666666" y="395.66666666666669" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KYb-Wj-fTT" firstAttribute="centerY" secondItem="8si-Zg-OnT" secondAttribute="centerY" id="hfX-Nd-TXG"/>
+                            <constraint firstItem="KYb-Wj-fTT" firstAttribute="centerX" secondItem="8si-Zg-OnT" secondAttribute="centerX" id="qU1-wu-xDE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="o9C-jT-hHf"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Heatmap" id="QT0-lO-ho7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KTl-JV-2Mc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1341.5999999999999" y="464.77832512315274"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1S5-jE-9aw">
@@ -147,11 +175,13 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ChF-RA-qh1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CY8-xX-sgY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="9CU-0Y-vts" kind="relationship" relationship="viewControllers" id="8ii-cb-uIc"/>
+                        <segue destination="b0e-Kh-5x3" kind="relationship" relationship="viewControllers" id="AYI-bm-5Zp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmE-od-fjx" userLabel="First Responder" sceneMemberID="firstResponder"/>

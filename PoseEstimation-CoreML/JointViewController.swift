@@ -32,7 +32,7 @@ class JointViewController: UIViewController {
     private let 👨‍🔧 = 📏()
     
     // MARK - Core ML model
-    typealias EstimationModel = mv2_cpm_model_36000
+    typealias EstimationModel = model_cpm
     var coremlModel: EstimationModel? = nil
     
     // MARK: - Vision Properties
