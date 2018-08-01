@@ -21,6 +21,16 @@ Core ML용 Pose Estimation 모델(`model_cpm.mlmodel`)<br>
 >
 > －in [https://github.com/edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)
 
+|                          | cpm                                      | hourglass          |
+| ------------------------ | ---------------------------------------- | ------------------ |
+| Input shape              | `[1, 192, 192, 3]`                       | `[1, 192, 192, 3]` |
+| Output shape             | `[1, 96, 96, 14]`                        | `[1, 48, 48, 14]`  |
+| Input node name          | `image`                                  | `image`            |
+| Output node name         | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
+| Inference time(iPhone X) | 57 mm                                    | 33 mm              |
+
+
+
 ## 빌드 준비
 
 ### 모델 가져오기

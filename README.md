@@ -17,11 +17,21 @@ This project is Pose Estimation on iOS with Core ML.<br>If you are interested in
 ## Download model
 
 Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
-☞ Download Core ML model [model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) or [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/blob/master/release/hourglass_model/hourglass.mlmodel).
+☞ Download Core ML model [model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) or [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/hourglass_model).
 
 > input_name_shape_dict = {"image:0":[1,224,224,3]} image_input_names=["image:0"] <br>output_feature_names = ['Convolutional_Pose_Machine/stage_5_out:0']
 >
 > －in [https://github.com/edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)
+
+|                            | cpm                                      | hourglass          |
+| -------------------------- | ---------------------------------------- | ------------------ |
+| Input shape                | `[1, 192, 192, 3]`                       | `[1, 192, 192, 3]` |
+| Output shape               | `[1, 96, 96, 14]`                        | `[1, 48, 48, 14]`  |
+| Input node name            | `image`                                  | `image`            |
+| Output node name           | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
+| Inference time on iPhone X | 57 mm                                    | 33 mm              |
+
+
 
 ## Preparing build
 
