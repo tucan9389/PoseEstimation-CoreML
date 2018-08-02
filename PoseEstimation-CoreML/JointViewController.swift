@@ -16,7 +16,6 @@ class JointViewController: UIViewController {
     public typealias DetectObjectsCompletion = ([BodyPoint?]?, Error?) -> Void
     
     // MARK: - UI Properties
-    
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var poseView: PoseView!
     @IBOutlet weak var labelsTableView: UITableView!
@@ -43,7 +42,6 @@ class JointViewController: UIViewController {
             request.imageCropAndScaleOption = .scaleFill
         }
     }
-    
     
     // MARK: - AV Property
     var videoCapture: VideoCapture!

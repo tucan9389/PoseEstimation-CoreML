@@ -144,26 +144,44 @@
         <!--Heatmap-->
         <scene sceneID="T1V-KI-l77">
             <objects>
-                <viewController id="b0e-Kh-5x3" sceneMemberID="viewController">
+                <viewController id="b0e-Kh-5x3" customClass="HeatmapViewController" customModule="PoseEstimation_CoreML" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8si-Zg-OnT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYb-Wj-fTT">
-                                <rect key="frame" x="143.66666666666666" y="395.66666666666669" width="88" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfl-UW-9Tf">
+                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.4543942809" blue="0.74818307159999997" alpha="0.77022688360000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hfl-UW-9Tf" secondAttribute="height" multiplier="3:4" id="pDT-Dx-eH6"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKm-U6-N6o" customClass="HeatmapView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hKm-U6-N6o" secondAttribute="height" multiplier="3:4" id="Iot-8P-TQA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="KYb-Wj-fTT" firstAttribute="centerY" secondItem="8si-Zg-OnT" secondAttribute="centerY" id="hfX-Nd-TXG"/>
-                            <constraint firstItem="KYb-Wj-fTT" firstAttribute="centerX" secondItem="8si-Zg-OnT" secondAttribute="centerX" id="qU1-wu-xDE"/>
+                            <constraint firstItem="hfl-UW-9Tf" firstAttribute="leading" secondItem="o9C-jT-hHf" secondAttribute="leading" id="0Bg-0F-U7k"/>
+                            <constraint firstItem="hKm-U6-N6o" firstAttribute="leading" secondItem="hfl-UW-9Tf" secondAttribute="leading" id="5GY-fT-18f"/>
+                            <constraint firstItem="hfl-UW-9Tf" firstAttribute="top" secondItem="o9C-jT-hHf" secondAttribute="top" id="Uhd-VD-UHZ"/>
+                            <constraint firstItem="o9C-jT-hHf" firstAttribute="trailing" secondItem="hfl-UW-9Tf" secondAttribute="trailing" id="aKL-aL-RRs"/>
+                            <constraint firstItem="hKm-U6-N6o" firstAttribute="top" secondItem="hfl-UW-9Tf" secondAttribute="top" id="cBA-at-c5x"/>
+                            <constraint firstItem="hKm-U6-N6o" firstAttribute="width" secondItem="hKm-U6-N6o" secondAttribute="height" multiplier="3:4" id="gAn-B7-k0a"/>
+                            <constraint firstItem="hKm-U6-N6o" firstAttribute="bottom" secondItem="hfl-UW-9Tf" secondAttribute="bottom" id="jZb-L5-ULs"/>
+                            <constraint firstItem="hKm-U6-N6o" firstAttribute="trailing" secondItem="hfl-UW-9Tf" secondAttribute="trailing" id="xuy-5A-gj9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o9C-jT-hHf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Heatmap" id="QT0-lO-ho7"/>
+                    <connections>
+                        <outlet property="heatmapView" destination="hKm-U6-N6o" id="HdJ-sh-Agm"/>
+                        <outlet property="videoPreview" destination="hfl-UW-9Tf" id="BYY-vm-EbA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KTl-JV-2Mc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
