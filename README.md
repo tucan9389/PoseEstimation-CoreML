@@ -8,6 +8,10 @@ This project is Pose Estimation on iOS with Core ML.<br>If you are interested in
 
 [한국어 README](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/README_kr.md)
 
+## How it works
+
+![how_it_works](resource/how_it_works.png)
+
 ## Requirements
 
 - Xcode 9.2+
@@ -31,16 +35,34 @@ Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 | Output node name           | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
 | Inference time on iPhone X | 57 mm                                    | 33 mm              |
 
+## Build & Run
 
+### 1. Prerequisites
 
-## Preparing build
-
-### Import the model
+#### 1.1 Import pose estimation model
 
 ![모델 불러오기.png](https://github.com/tucan9389/MobileNetApp-CoreML/blob/master/resource/%EB%AA%A8%EB%8D%B8%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.png?raw=true)
 
 Once you import the model, compiler generates model helper class on build path automatically. You can access the model through model helper class by creating an instance, not through build path.
 
-## Code
+#### 1.2 Add permission in info.plist for device's camera access
+
+![prerequest_001_plist](resource/prerequest_001_plist.png)
+
+### 2. Dependencies
+
+No external library yet.
+
+### 3. Code
 
 (Ready to publish)
+
+
+
+## See also
+
+- [motlabs/iOS-Proejcts-with-ML-Models](https://github.com/motlabs/iOS-Proejcts-with-ML-Models)<br>
+  : The challenge using machine learning model created from tensorflow on iOS
+- [edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)<br>
+  : TensorFlow project for pose estimation for mobile
+
