@@ -53,8 +53,6 @@ class PoseView: UIView {
             
             ctx.clear(rect);
             
-            //            drawLine(ctx: ctx, from: CGPoint(x: 10, y: 20), to: CGPoint(x: 100, y: 20), color: UIColor.red.cgColor)
-            //            drawLine(ctx: ctx, from: CGPoint(x: 110, y: 120), to: CGPoint(x: 200, y: 120), color: UIColor.blue.cgColor)
             let size = self.bounds.size
             
             let color = Constant.jointLineColor.cgColor

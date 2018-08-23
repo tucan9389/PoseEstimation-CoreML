@@ -152,11 +152,12 @@ class JointViewController: UIViewController {
             }
         }
         
+        
         // transpose to (1.0, 1.0)
         n_kpoints = n_kpoints.map { kpoint -> BodyPoint? in
             if let kp = kpoint {
-                return (CGPoint(x: kp.point.x/CGFloat(heatmap_w),
-                                y: kp.point.y/CGFloat(heatmap_h)),
+                return (CGPoint(x: (kp.point.x+0.5)/CGFloat(heatmap_w),
+                                y: (kp.point.y+0.5)/CGFloat(heatmap_h)),
                         kp.confidence)
             } else {
                 return nil

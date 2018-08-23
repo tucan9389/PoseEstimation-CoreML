@@ -55,13 +55,13 @@ class HeatmapView: UIView {
             }
         }
         
-        if let max = (convertedHeatmap.map({ $0.max() }).compactMap({ $0 })).max(), max < 1.0 {
-            convertedHeatmap = convertedHeatmap.map { row in
-                return row.map { element in
-                    return element/max
-                }
-            }
-        }
+//        if let max = (convertedHeatmap.map({ $0.max() }).compactMap({ $0 })).max(), max < 1.0 {
+//            convertedHeatmap = convertedHeatmap.map { row in
+//                return row.map { element in
+//                    return element/max
+//                }
+//            }
+//        }
 
         
         return convertedHeatmap

@@ -92,7 +92,7 @@ class HeatmapViewController: UIViewController {
             
             
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.sync {
                 // end of measure
                 self.heatmapView.heatmap = heatmap
                 
