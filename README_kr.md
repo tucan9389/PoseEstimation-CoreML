@@ -6,6 +6,8 @@
 이 프로젝트는 Core ML을 사용하여 Pose Estimation을 실행시켜본 예제입니다. <br>
 ![180705-poseestimation-demo.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180801-poseestimation-demo.gif?raw=true)
 
+비디오 출처: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
+
 ## 요구환경
 
 - Xcode 9.2+

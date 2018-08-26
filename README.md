@@ -12,6 +12,8 @@ This project is Pose Estimation on iOS with Core ML.<br>If you are interested in
 
 ![how_it_works](resource/how_it_works.png)
 
+Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
+
 ## Requirements
 
 - Xcode 9.2+
