@@ -92,10 +92,17 @@ class JointViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        resizePreviewLayer()
+    }
+    
     func resizePreviewLayer() {
         videoCapture.previewLayer?.frame = videoPreview.bounds
     }
-    
+}
+
+extension JointViewController {
     // MARK: - Inferencing
     func predictUsingVision(pixelBuffer: CVPixelBuffer) {
         // Vision이 입력이미지를 자동으로 크기조정을 해줄 것임.
