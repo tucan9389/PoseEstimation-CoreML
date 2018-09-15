@@ -6,7 +6,7 @@ This project is Pose Estimation on iOS with Core ML.<br>If you are interested in
 
 | Jointed Keypoints                                            | Concatenated heatmap                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![180705-poseestimation-demo.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180801-poseestimation-demo.gif?raw=true) | ![180705-poseestimation-demo.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180914-poseestimation-demo.gif?raw=true) |
+| ![poseestimation-demo-joint.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180801-poseestimation-demo.gif?raw=true) | ![poseestimation-demo-heatmap.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180914-poseestimation-demo.gif?raw=true) |
 
 [한국어 README](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/README_kr.md)
 
