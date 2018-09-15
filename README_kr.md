@@ -4,7 +4,10 @@
 
 여러가지 iOS+ML예제는 [iOS Projects with ML Models 저장소](https://github.com/motlabs/iOS-Proejcts-with-ML-Models)에 모아져있습니다.<br>
 이 프로젝트는 Core ML을 사용하여 Pose Estimation을 실행시켜본 예제입니다. <br>
-![180705-poseestimation-demo.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180801-poseestimation-demo.gif?raw=true)
+
+| Jointed Keypoints                                            | Concatenated heatmap                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![poseestimation-demo-joint.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180801-poseestimation-demo.gif?raw=true) | ![poseestimation-demo-heatmap.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180914-poseestimation-demo.gif?raw=true) |
 
 비디오 출처: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
 
@@ -44,3 +47,10 @@ Core ML용 Pose Estimation 모델(`model_cpm.mlmodel`)<br>
 ## 코드 작성
 
 (준비중)
+
+## 함께 볼 것
+
+- [motlabs/iOS-Proejcts-with-ML-Models](https://github.com/motlabs/iOS-Proejcts-with-ML-Models)<br>
+  : TensorFlow로 만든 머신러닝 모델을 iOS에서 사용해보는 프로젝트 모음
+- [edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)<br>
+  : 모바일용 Pose Estination TensorFlow 프로젝트
