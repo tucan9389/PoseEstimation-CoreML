@@ -69,4 +69,6 @@ No external library yet.
   : The challenge using machine learning model created from tensorflow on iOS
 - [edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)<br>
   : TensorFlow project for pose estimation for mobile
+- [tucan9389/FingertipEstimation-CoreML](https://github.com/tucan9389/FingertipEstimation-CoreML)<br>
+  : iOS project for fingertip estimation using CoreML.
 
