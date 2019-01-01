@@ -59,7 +59,7 @@ No external library yet.
 
 ### 3. Code
 
-(Ready to publish)
+(Prepare to publish)
 
 
 
