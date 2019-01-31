@@ -52,9 +52,7 @@ class JointViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // MobileNet 클래스는 `MobileNet.mlmodel`를 프로젝트에 넣고, 빌드시키면 자동으로 생성된 랩퍼 클래스
-        // MobileNet에서 만든 model: MLModel 객체로 (Vision에서 사용할) VNCoreMLModel 객체를 생성
-        // Vision은 모델의 입력 크기(이미지 크기)에 따라 자동으로 조정해 줌
+        // setup the model
         visionModel = try? VNCoreMLModel(for: EstimationModel().model)
         
         // setup camera
@@ -66,7 +64,7 @@ class JointViewController: UIViewController {
         // setup label point ui on pose view
         poseView.setUpOutputComponent()
         
-        // 성능측정용 델리게이트 설정
+        // setup delegate for performance measurement
         👨‍🔧.delegate = self
     }
     
@@ -107,7 +105,7 @@ class JointViewController: UIViewController {
 extension JointViewController {
     // MARK: - Inferencing
     func predictUsingVision(pixelBuffer: CVPixelBuffer) {
-        // Vision이 입력이미지를 자동으로 크기조정을 해줄 것임.
+        // vision framework configures the input size of image following our model's input configuration automatically
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
     }
@@ -119,7 +117,7 @@ extension JointViewController {
             let heatmap = observations.first?.featureValue.multiArrayValue {
             
             // convert heatmap to [keypoint]
-            let n_kpoints = convert(heatmap: heatmap)
+            let n_kpoints = heatmap.convertHeatmapToBodyPoint()
             
             DispatchQueue.main.sync {
                 // draw line
@@ -134,48 +132,6 @@ extension JointViewController {
         }
     }
     
-    func convert(heatmap: MLMultiArray) -> [BodyPoint?] {
-        guard heatmap.shape.count >= 3 else {
-            print("heatmap's shape is invalid. \(heatmap.shape)")
-            return []
-        }
-        let keypoint_number = heatmap.shape[0].intValue
-        let heatmap_w = heatmap.shape[1].intValue
-        let heatmap_h = heatmap.shape[2].intValue
-        
-        var n_kpoints = (0..<keypoint_number).map { _ -> BodyPoint? in
-            return nil
-        }
-        
-        for k in 0..<keypoint_number {
-            for i in 0..<heatmap_w {
-                for j in 0..<heatmap_h {
-                    let index = k*(heatmap_w*heatmap_h) + i*(heatmap_h) + j
-                    let confidence = heatmap[index].doubleValue
-                    guard confidence > 0 else { continue }
-                    if n_kpoints[k] == nil ||
-                        (n_kpoints[k] != nil && n_kpoints[k]!.maxConfidence < confidence) {
-                        n_kpoints[k] = BodyPoint(maxPoint: CGPoint(x: CGFloat(j), y: CGFloat(i)), maxConfidence: confidence)
-                    }
-                }
-            }
-        }
-        
-        
-        // transpose to (1.0, 1.0)
-        n_kpoints = n_kpoints.map { kpoint -> BodyPoint? in
-            if let kp = kpoint {
-                return BodyPoint(maxPoint: CGPoint(x: (kp.maxPoint.x+0.5)/CGFloat(heatmap_w),
-                                                   y: (kp.maxPoint.y+0.5)/CGFloat(heatmap_h)),
-                                 maxConfidence: kp.maxConfidence)
-            } else {
-                return nil
-            }
-        }
-        
-        return n_kpoints
-    }
-    
     func showKeypointsDescription(with n_kpoints: [BodyPoint?]) {
         self.tableData = n_kpoints
         self.labelsTableView.reloadData()
@@ -185,8 +141,7 @@ extension JointViewController {
 // MARK: - VideoCaptureDelegate
 extension JointViewController: VideoCaptureDelegate {
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
-        // 카메라에서 캡쳐된 화면은 pixelBuffer에 담김.
-        // Vision 프레임워크에서는 이미지 대신 pixelBuffer를 바로 사용 가능
+        // the captured image from camera is contained on pixelBuffer
         if let pixelBuffer = pixelBuffer {
             // start of measure
             self.👨‍🔧.🎬👏()

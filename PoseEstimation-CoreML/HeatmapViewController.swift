@@ -20,9 +20,6 @@ class HeatmapViewController: UIViewController {
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
     
-    // MARK - Performance Measurement Property
-    private let 👨‍🔧 = 📏()
-    
     // MARK - Core ML model
     typealias EstimationModel = model_cpm
     
@@ -42,6 +39,7 @@ class HeatmapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // setup the model
         visionModel = try? VNCoreMLModel(for: EstimationModel().model)
         
         // setup camera
@@ -85,15 +83,17 @@ class HeatmapViewController: UIViewController {
     
     // MARK: - Poseprocessing
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
-        self.👨‍🔧.🏷(with: "endInference")
+        
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
             let heatmap = observations.first?.featureValue.multiArrayValue {
 
+            // convert heatmap to Array<Array<Double>>
+            let heatmap3D = heatmap.convertHeatmapTo3DArray()
+            
             DispatchQueue.main.sync {
-                // end of measure
-                self.heatmapView.heatmap = heatmap
                 
-                self.👨‍🔧.🎬🤚()
+                // end of measure
+                self.heatmapView.heatmap3D = heatmap3D
             }
         }
     }
@@ -104,8 +104,6 @@ extension HeatmapViewController: VideoCaptureDelegate {
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
         // the captured image from camera is contained on pixelBuffer
         if let pixelBuffer = pixelBuffer {
-            // start of measure
-            self.👨‍🔧.🎬👏()
             
             // predict!
             self.predictUsingVision(pixelBuffer: pixelBuffer)

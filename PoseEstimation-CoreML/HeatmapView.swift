@@ -11,61 +11,15 @@ import CoreML
 
 class HeatmapView: UIView {
     
-    var heatmap: MLMultiArray? = nil {
+    var heatmap3D: Array<Array<Double>>? = nil {
         didSet {
-            if let heatmap = heatmap {
-                self.convertedHeatmap = convert(with: heatmap)
-            }
+//            if let heatmap = heatmap {
+//                self.convertedHeatmap = heatmap.convertHeatmapTo3DArray()
+//            }
             self.setNeedsDisplay()
         }
     }
-    var convertedHeatmap: Array<Array<Double>> = []
-    
-    private func convert(with heatmap: MLMultiArray) -> Array<Array<Double>> {
-        guard heatmap.shape.count >= 3 else {
-            print("heatmap's shape is invalid. \(heatmap.shape)")
-            return []
-        }
-        let keypoint_number = heatmap.shape[0].intValue
-        let heatmap_w = heatmap.shape[1].intValue
-        let heatmap_h = heatmap.shape[2].intValue
-        
-        var convertedHeatmap: Array<Array<Double>> = Array(repeating: Array(repeating: 0.0, count: heatmap_h), count: heatmap_w)
-        
-        for k in 0..<keypoint_number {
-            for i in 0..<heatmap_w {
-                for j in 0..<heatmap_h {
-                    let index = k*(heatmap_w*heatmap_h) + i*(heatmap_h) + j
-                    let confidence = heatmap[index].doubleValue
-                    guard confidence > 0 else { continue }
-                    convertedHeatmap[j][i] += confidence
-                }
-            }
-        }
-        
-        convertedHeatmap = convertedHeatmap.map { row in
-            return row.map { element in
-                if element > 1.0 {
-                    return 1.0
-                } else if element < 0 {
-                    return 0.0
-                } else {
-                    return element
-                }
-            }
-        }
-        
-//        if let max = (convertedHeatmap.map({ $0.max() }).compactMap({ $0 })).max(), max < 1.0 {
-//            convertedHeatmap = convertedHeatmap.map { row in
-//                return row.map { element in
-//                    return element/max
-//                }
-//            }
-//        }
-
-        
-        return convertedHeatmap
-    }
+    // var convertedHeatmap: Array<Array<Double>> = []
     
     override func draw(_ rect: CGRect) {
         
@@ -73,15 +27,17 @@ class HeatmapView: UIView {
             
             ctx.clear(rect);
             
+            guard let heatmap = self.heatmap3D else { return }
+            
             let size = self.bounds.size
-            let heatmap_w = convertedHeatmap.count
-            let heatmap_h = convertedHeatmap.first?.count ?? 0
+            let heatmap_w = heatmap.count
+            let heatmap_h = heatmap.first?.count ?? 0
             let w = size.width / CGFloat(heatmap_w)
             let h = size.height / CGFloat(heatmap_h)
             
             for j in 0..<heatmap_w {
                 for i in 0..<heatmap_h {
-                    let value = convertedHeatmap[i][j]
+                    let value = heatmap[i][j]
                     let alpha: CGFloat = CGFloat(value)
                     guard alpha > 0 else { continue; }
                     
