@@ -27,7 +27,7 @@ Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.
 Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 ☞ Download Core ML model [model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) or [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/hourglass_model).
 
-> input_name_shape_dict = {"image:0":[1,224,224,3]} image_input_names=["image:0"] <br>output_feature_names = ['Convolutional_Pose_Machine/stage_5_out:0']
+> input_name_shape_dict = {"image:0":[1,192,192,3]} image_input_names=["image:0"] <br>output_feature_names = ['Convolutional_Pose_Machine/stage_5_out:0']
 >
 > －in [https://github.com/edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)
 
@@ -37,7 +37,8 @@ Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 | Output shape               | `[1, 96, 96, 14]`                        | `[1, 48, 48, 14]`  |
 | Input node name            | `image`                                  | `image`            |
 | Output node name           | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
-| Inference time on iPhone X | 57 mm                                    | 33 mm              |
+| Model size                 | 2.6 MB                                   | 2.0 MB             |
+| Inference time on iPhone X | 51 mm                                    | 49 mm              |
 
 ## Build & Run
 
@@ -59,7 +60,30 @@ No external library yet.
 
 ### 3. Code
 
-(Prepare to publish)
+```swift
+import Vision
+
+// properties on JointViewController
+typealias EstimationModel = model_cpm // model name(model_cpm) must be same with mlmodel file name
+var request: VNCoreMLRequest!
+var visionModel: VNCoreMLModel!
+
+// on viewDidLoad
+visionModel = try? VNCoreMLModel(for: EstimationModel().model)
+request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
+request.imageCropAndScaleOption = .scaleFill
+
+func visionRequestDidComplete(request: VNRequest, error: Error?) { 
+    /* ------------------------------------------------------ */
+    /* something postprocessing what you want after inference */
+    /* ------------------------------------------------------ */
+}
+
+// on the inference point
+let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
+try? handler.perform([request])
+```
+
 ## Performance Test
 
 ### 1. Import the model
