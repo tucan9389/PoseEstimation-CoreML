@@ -12,7 +12,7 @@ class PoseView: UIView {
     
     var view_14: [UIView] = []
 
-    var bodyPoints: [JointViewController.BodyPoint?] = [] {
+    var bodyPoints: [BodyPoint?] = [] {
         didSet {
             self.setNeedsDisplay()
             self.drawKeypoints(with: bodyPoints)
@@ -58,10 +58,10 @@ class PoseView: UIView {
             let color = Constant.jointLineColor.cgColor
             if Constant.pointLabels.count == bodyPoints.count {
                 let _ = Constant.connectingPointIndexs.map { pIndex1, pIndex2 in
-                    if let bp1 = self.bodyPoints[pIndex1], bp1.confidence > 0.5,
-                        let bp2 = self.bodyPoints[pIndex2], bp2.confidence > 0.5 {
-                        let p1 = bp1.point
-                        let p2 = bp2.point
+                    if let bp1 = self.bodyPoints[pIndex1], bp1.maxConfidence > 0.5,
+                        let bp2 = self.bodyPoints[pIndex2], bp2.maxConfidence > 0.5 {
+                        let p1 = bp1.maxPoint
+                        let p2 = bp2.maxPoint
                         let point1 = CGPoint(x: p1.x * size.width, y: p1.y*size.height)
                         let point2 = CGPoint(x: p2.x * size.width, y: p2.y*size.height)
                         drawLine(ctx: ctx, from: point1, to: point2, color: color)
@@ -81,7 +81,7 @@ class PoseView: UIView {
         ctx.strokePath();
     }
     
-    func drawKeypoints(with n_kpoints: [JointViewController.BodyPoint?]) {
+    func drawKeypoints(with n_kpoints: [BodyPoint?]) {
         let imageFrame = view_14.first?.superview?.frame ?? .zero
         
         let minAlpha: CGFloat = 0.4
@@ -91,10 +91,10 @@ class PoseView: UIView {
         
         for (index, kp) in n_kpoints.enumerated() {
             if let n_kp = kp {
-                let x = n_kp.point.x * imageFrame.width
-                let y = n_kp.point.y * imageFrame.height
+                let x = n_kp.maxPoint.x * imageFrame.width
+                let y = n_kp.maxPoint.y * imageFrame.height
                 view_14[index].center = CGPoint(x: x, y: y)
-                let cRate = (n_kp.confidence - minC)/(maxC - minC)
+                let cRate = (n_kp.maxConfidence - minC)/(maxC - minC)
                 view_14[index].alpha = (maxAlpha - minAlpha) * CGFloat(cRate) + minAlpha
             } else {
                 view_14[index].center = CGPoint(x: -4000, y: -4000)
@@ -104,3 +104,63 @@ class PoseView: UIView {
     }
 }
 
+// MARK: - Constant
+struct Constant {
+    static let pointLabels = [
+        "top\t\t\t", //0
+        "neck\t\t", //1
+        
+        "R shoulder\t", //2
+        "R elbow\t\t", //3
+        "R wrist\t\t", //4
+        "L shoulder\t", //5
+        "L elbow\t\t", //6
+        "L wrist\t\t", //7
+        
+        "R hip\t\t", //8
+        "R knee\t\t", //9
+        "R ankle\t\t", //10
+        "L hip\t\t", //11
+        "L knee\t\t", //12
+        "L ankle\t\t", //13
+    ]
+    
+    static let connectingPointIndexs: [(Int, Int)] = [
+        (0, 1), // top-neck
+        
+        (1, 2), // neck-rshoulder
+        (2, 3), // rshoulder-relbow
+        (3, 4), // relbow-rwrist
+        (1, 8), // neck-rhip
+        (8, 9), // rhip-rknee
+        (9, 10), // rknee-rankle
+        
+        (1, 5), // neck-lshoulder
+        (5, 6), // lshoulder-lelbow
+        (6, 7), // lelbow-lwrist
+        (1, 11), // neck-lhip
+        (11, 12), // lhip-lknee
+        (12, 13), // lknee-lankle
+    ]
+    static let jointLineColor: UIColor = UIColor(displayP3Red: 87.0/255.0,
+                                                 green: 255.0/255.0,
+                                                 blue: 211.0/255.0,
+                                                 alpha: 0.5)
+    
+    static let colors: [UIColor] = [
+        .red,
+        .green,
+        .blue,
+        .cyan,
+        .yellow,
+        .magenta,
+        .orange,
+        .purple,
+        .brown,
+        .black,
+        .darkGray,
+        .lightGray,
+        .white,
+        .gray,
+        ]
+}

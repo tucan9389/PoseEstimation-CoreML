@@ -10,9 +10,12 @@ import UIKit
 import Vision
 import CoreMedia
 
+struct BodyPoint {
+    let maxPoint: CGPoint
+    let maxConfidence: Double
+}
+
 class JointViewController: UIViewController {
-    
-    public typealias BodyPoint = (point: CGPoint, confidence: Double)
     public typealias DetectObjectsCompletion = ([BodyPoint?]?, Error?) -> Void
     
     // MARK: - UI Properties
@@ -32,7 +35,6 @@ class JointViewController: UIViewController {
     
     // MARK - Core ML model
     typealias EstimationModel = model_cpm
-    var coremlModel: EstimationModel? = nil
     
     // MARK: - Vision Properties
     var request: VNCoreMLRequest!
@@ -55,13 +57,13 @@ class JointViewController: UIViewController {
         // Vision은 모델의 입력 크기(이미지 크기)에 따라 자동으로 조정해 줌
         visionModel = try? VNCoreMLModel(for: EstimationModel().model)
         
-        // 카메라 세팅
+        // setup camera
         setUpCamera()
         
-        // 레이블 테이블 세팅
+        // setup tableview datasource on bottom
         labelsTableView.dataSource = self
         
-        // 레이블 점 세팅
+        // setup label point ui on pose view
         poseView.setUpOutputComponent()
         
         // 성능측정용 델리게이트 설정
@@ -152,8 +154,8 @@ extension JointViewController {
                     let confidence = heatmap[index].doubleValue
                     guard confidence > 0 else { continue }
                     if n_kpoints[k] == nil ||
-                        (n_kpoints[k] != nil && n_kpoints[k]!.confidence < confidence) {
-                        n_kpoints[k] = (CGPoint(x: CGFloat(j), y: CGFloat(i)), confidence)
+                        (n_kpoints[k] != nil && n_kpoints[k]!.maxConfidence < confidence) {
+                        n_kpoints[k] = BodyPoint(maxPoint: CGPoint(x: CGFloat(j), y: CGFloat(i)), maxConfidence: confidence)
                     }
                 }
             }
@@ -163,9 +165,9 @@ extension JointViewController {
         // transpose to (1.0, 1.0)
         n_kpoints = n_kpoints.map { kpoint -> BodyPoint? in
             if let kp = kpoint {
-                return (CGPoint(x: (kp.point.x+0.5)/CGFloat(heatmap_w),
-                                y: (kp.point.y+0.5)/CGFloat(heatmap_h)),
-                        kp.confidence)
+                return BodyPoint(maxPoint: CGPoint(x: (kp.maxPoint.x+0.5)/CGFloat(heatmap_w),
+                                                   y: (kp.maxPoint.y+0.5)/CGFloat(heatmap_h)),
+                                 maxConfidence: kp.maxConfidence)
             } else {
                 return nil
             }
@@ -205,8 +207,8 @@ extension JointViewController: UITableViewDataSource {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         cell.textLabel?.text = Constant.pointLabels[indexPath.row]
         if let body_point = tableData[indexPath.row] {
-            let pointText: String = "\(String(format: "%.3f", body_point.point.x)), \(String(format: "%.3f", body_point.point.y))"
-            cell.detailTextLabel?.text = "(\(pointText)), [\(String(format: "%.3f", body_point.confidence))]"
+            let pointText: String = "\(String(format: "%.3f", body_point.maxPoint.x)), \(String(format: "%.3f", body_point.maxPoint.y))"
+            cell.detailTextLabel?.text = "(\(pointText)), [\(String(format: "%.3f", body_point.maxConfidence))]"
         } else {
             cell.detailTextLabel?.text = "N/A"
         }
@@ -223,66 +225,4 @@ extension JointViewController: 📏Delegate {
         self.etimeLabel.text = "execution: \(Int(executionTime*1000.0)) mm"
         self.fpsLabel.text = "fps: \(fps)"
     }
-}
-
-
-// MARK: - Constant
-struct Constant {
-    static let pointLabels = [
-        "top\t\t\t", //0
-        "neck\t\t", //1
-        
-        "R shoulder\t", //2
-        "R elbow\t\t", //3
-        "R wrist\t\t", //4
-        "L shoulder\t", //5
-        "L elbow\t\t", //6
-        "L wrist\t\t", //7
-        
-        "R hip\t\t", //8
-        "R knee\t\t", //9
-        "R ankle\t\t", //10
-        "L hip\t\t", //11
-        "L knee\t\t", //12
-        "L ankle\t\t", //13
-    ]
-    
-    static let connectingPointIndexs: [(Int, Int)] = [
-        (0, 1), // top-neck
-        
-        (1, 2), // neck-rshoulder
-        (2, 3), // rshoulder-relbow
-        (3, 4), // relbow-rwrist
-        (1, 8), // neck-rhip
-        (8, 9), // rhip-rknee
-        (9, 10), // rknee-rankle
-        
-        (1, 5), // neck-lshoulder
-        (5, 6), // lshoulder-lelbow
-        (6, 7), // lelbow-lwrist
-        (1, 11), // neck-lhip
-        (11, 12), // lhip-lknee
-        (12, 13), // lknee-lankle
-    ]
-    static let jointLineColor: UIColor = UIColor(displayP3Red: 87.0/255.0,
-                                                 green: 255.0/255.0,
-                                                 blue: 211.0/255.0,
-                                                 alpha: 0.5)
-    
-    static let colors: [UIColor] = [
-        .red,
-        .green,
-        .blue,
-        .cyan,
-        .yellow,
-        .magenta,
-        .orange,
-        .purple,
-        .brown,
-        .black,
-        .darkGray,
-        .lightGray,
-        .white,
-        .gray,
-    ]
 }
