@@ -20,6 +20,9 @@ class HeatmapViewController: UIViewController {
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
     
+    // MARK - Performance Measurement Property
+    private let 👨‍🔧 = 📏()
+    
     // MARK - Core ML model
     typealias EstimationModel = model_cpm
     
@@ -44,10 +47,23 @@ class HeatmapViewController: UIViewController {
         
         // setup camera
         setUpCamera()
+        
+        // setup delegate for performance measurement
+        👨‍🔧.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.videoCapture.start()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.videoCapture.stop()
     }
     
     // MARK: - SetUp Video
@@ -83,7 +99,7 @@ class HeatmapViewController: UIViewController {
     
     // MARK: - Poseprocessing
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
-        
+        self.👨‍🔧.🏷(with: "endInference")
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
             let heatmap = observations.first?.featureValue.multiArrayValue {
 
@@ -92,8 +108,11 @@ class HeatmapViewController: UIViewController {
             
             DispatchQueue.main.sync {
                 
-                // end of measure
+                // 
                 self.heatmapView.heatmap3D = heatmap3D
+                
+                // end of measure
+                self.👨‍🔧.🎬🤚()
             }
         }
     }
@@ -104,9 +123,22 @@ extension HeatmapViewController: VideoCaptureDelegate {
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
         // the captured image from camera is contained on pixelBuffer
         if let pixelBuffer = pixelBuffer {
+            // start of measure
+            self.👨‍🔧.🎬👏()
             
             // predict!
             self.predictUsingVision(pixelBuffer: pixelBuffer)
         }
+    }
+}
+
+
+// MARK: - 📏(Performance Measurement) Delegate
+extension HeatmapViewController: 📏Delegate {
+    func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {
+        //print(executionTime, fps)
+        self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) mm"
+        self.etimeLabel.text = "execution: \(Int(executionTime*1000.0)) mm"
+        self.fpsLabel.text = "fps: \(fps)"
     }
 }

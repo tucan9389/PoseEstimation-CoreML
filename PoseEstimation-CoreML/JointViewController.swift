@@ -72,6 +72,16 @@ class JointViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.videoCapture.start()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.videoCapture.stop()
+    }
+    
     // MARK: - SetUp Video
     func setUpCamera() {
         videoCapture = VideoCapture()
@@ -80,13 +90,13 @@ class JointViewController: UIViewController {
         videoCapture.setUp(sessionPreset: .vga640x480) { success in
             
             if success {
-                // UI에 비디오 미리보기 뷰 넣기
+                // add preview view on the layer
                 if let previewLayer = self.videoCapture.previewLayer {
                     self.videoPreview.layer.addSublayer(previewLayer)
                     self.resizePreviewLayer()
                 }
                 
-                // 초기설정이 끝나면 라이브 비디오를 시작할 수 있음
+                // start video preview when setup is done
                 self.videoCapture.start()
             }
         }
