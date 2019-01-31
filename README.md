@@ -6,7 +6,7 @@ This project is Pose Estimation on iOS with Core ML.<br>If you are interested in
 
 | Jointed Keypoints                                            | Concatenated heatmap                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![poseestimation-demo-joint.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180801-poseestimation-demo.gif?raw=true) | ![poseestimation-demo-heatmap.gif](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/resource/180914-poseestimation-demo.gif?raw=true) |
+| ![poseestimation-demo-joint.gif](resource/180801-poseestimation-demo.gif?raw=true) | ![poseestimation-demo-heatmap.gif](resource/180914-poseestimation-demo.gif) |
 
 [한국어 README](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/README_kr.md)
 
@@ -60,6 +60,21 @@ No external library yet.
 ### 3. Code
 
 (Prepare to publish)
+## Performance Test
+
+### 1. Import the model
+
+You can download cpm or hourglass model for Core ML from [edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile) repo.
+
+### 2. Fix the model name on [`PoseEstimation_CoreMLTests.swift`](PoseEstimation-CoreMLTests/PoseEstimation_CoreMLTests.swift)
+
+![fix-model-name-for-testing](resource/fix-model-name-for-testing.png)
+
+### 3. Run the test
+
+Hit the `⌘ + U` or click the `Build for Testing` icon.
+
+![build-for-testing](resource/build-for-testing.png)
 
 
 
