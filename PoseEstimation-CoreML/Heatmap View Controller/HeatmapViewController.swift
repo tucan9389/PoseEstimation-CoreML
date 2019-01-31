@@ -14,7 +14,7 @@ class HeatmapViewController: UIViewController {
 
     // MARK: - UI Properties
     @IBOutlet weak var videoPreview: UIView!
-    @IBOutlet weak var heatmapView: HeatmapView!
+    @IBOutlet weak var heatmapView: DrawingHeatmapView!
     
     @IBOutlet weak var inferenceLabel: UILabel!
     @IBOutlet weak var etimeLabel: UILabel!

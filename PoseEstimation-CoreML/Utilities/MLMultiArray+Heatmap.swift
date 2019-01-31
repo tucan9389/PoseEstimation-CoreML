@@ -8,6 +8,11 @@
 
 import CoreML
 
+struct BodyPoint {
+    let maxPoint: CGPoint
+    let maxConfidence: Double
+}
+
 extension MLMultiArray {
     func convertHeatmapToBodyPoint() -> [BodyPoint?] {
         guard self.shape.count >= 3 else {

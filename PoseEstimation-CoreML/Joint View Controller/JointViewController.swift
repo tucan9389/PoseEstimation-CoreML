@@ -10,17 +10,12 @@ import UIKit
 import Vision
 import CoreMedia
 
-struct BodyPoint {
-    let maxPoint: CGPoint
-    let maxConfidence: Double
-}
-
 class JointViewController: UIViewController {
     public typealias DetectObjectsCompletion = ([BodyPoint?]?, Error?) -> Void
     
     // MARK: - UI Properties
     @IBOutlet weak var videoPreview: UIView!
-    @IBOutlet weak var poseView: PoseView!
+    @IBOutlet weak var jointView: DrawingJointView!
     @IBOutlet weak var labelsTableView: UITableView!
     
     @IBOutlet weak var inferenceLabel: UILabel!
@@ -60,9 +55,6 @@ class JointViewController: UIViewController {
         
         // setup tableview datasource on bottom
         labelsTableView.dataSource = self
-        
-        // setup label point ui on pose view
-        poseView.setUpOutputComponent()
         
         // setup delegate for performance measurement
         👨‍🔧.delegate = self
@@ -131,7 +123,7 @@ extension JointViewController {
             
             DispatchQueue.main.sync {
                 // draw line
-                self.poseView.bodyPoints = n_kpoints
+                self.jointView.bodyPoints = n_kpoints
                 
                 // show key points description
                 self.showKeypointsDescription(with: n_kpoints)

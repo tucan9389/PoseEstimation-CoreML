@@ -8,24 +8,28 @@
 
 import UIKit
 
-class PoseView: UIView {
+class DrawingJointView: UIView {
     
-    var view_14: [UIView] = []
+    // the count of array may be <#14#> when use PoseEstimationForMobile's model
+    private var keypointLabelBGViews: [UIView] = []
 
-    var bodyPoints: [BodyPoint?] = [] {
+    public var bodyPoints: [BodyPoint?] = [] {
         didSet {
             self.setNeedsDisplay()
             self.drawKeypoints(with: bodyPoints)
         }
     }
     
-    func setUpOutputComponent() {
-        view_14 = Constant.colors.map { color in
+    private func setUpLabels(with keypointsCount: Int) {
+        self.subviews.forEach({ $0.removeFromSuperview() })
+        
+        keypointLabelBGViews = (0..<keypointsCount).map { index in
+            let color = Constant.colors[index%Constant.colors.count]
             let v = UIView(frame: CGRect(x: 0, y: 0, width: 4, height: 4))
             v.backgroundColor = color
             v.clipsToBounds = false
             let l = UILabel(frame: CGRect(x: 4 + 3, y: -3, width: 100, height: 8))
-            l.text = Constant.pointLabels[Constant.colors.index(where: {$0 == color})!]
+            l.text = Constant.pointLabels[index%Constant.colors.count]
             l.textColor = color
             l.font = UIFont.preferredFont(forTextStyle: .caption2)
             v.addSubview(l)
@@ -33,11 +37,10 @@ class PoseView: UIView {
             return v
         }
         
-        
         var x: CGFloat = 0.0
         let y: CGFloat = self.frame.size.height - 24
-        let _ = Constant.colors.map { color in
-            let index = Constant.colors.index(where: { color == $0 })
+        let _ = (0..<keypointsCount).map { index in
+            let color = Constant.colors[index%Constant.colors.count]
             if index == 2 || index == 8 { x += 28 }
             else { x += 14 }
             let v = UIView(frame: CGRect(x: x, y: y + 10, width: 4, height: 4))
@@ -71,7 +74,7 @@ class PoseView: UIView {
         }
     }
     
-    func drawLine(ctx: CGContext, from p1: CGPoint, to p2: CGPoint, color: CGColor) {
+    private func drawLine(ctx: CGContext, from p1: CGPoint, to p2: CGPoint, color: CGColor) {
         ctx.setStrokeColor(color)
         ctx.setLineWidth(3.0)
         
@@ -81,66 +84,70 @@ class PoseView: UIView {
         ctx.strokePath();
     }
     
-    func drawKeypoints(with n_kpoints: [BodyPoint?]) {
-        let imageFrame = view_14.first?.superview?.frame ?? .zero
+    private func drawKeypoints(with n_kpoints: [BodyPoint?]) {
+        let imageFrame = keypointLabelBGViews.first?.superview?.frame ?? .zero
         
         let minAlpha: CGFloat = 0.4
         let maxAlpha: CGFloat = 1.0
         let maxC: Double = 0.6
         let minC: Double = 0.1
         
+        if n_kpoints.count != keypointLabelBGViews.count {
+            setUpLabels(with: n_kpoints.count)
+        }
+        
         for (index, kp) in n_kpoints.enumerated() {
             if let n_kp = kp {
                 let x = n_kp.maxPoint.x * imageFrame.width
                 let y = n_kp.maxPoint.y * imageFrame.height
-                view_14[index].center = CGPoint(x: x, y: y)
+                keypointLabelBGViews[index].center = CGPoint(x: x, y: y)
                 let cRate = (n_kp.maxConfidence - minC)/(maxC - minC)
-                view_14[index].alpha = (maxAlpha - minAlpha) * CGFloat(cRate) + minAlpha
+                keypointLabelBGViews[index].alpha = (maxAlpha - minAlpha) * CGFloat(cRate) + minAlpha
             } else {
-                view_14[index].center = CGPoint(x: -4000, y: -4000)
-                view_14[index].alpha = minAlpha
+                keypointLabelBGViews[index].center = CGPoint(x: -4000, y: -4000)
+                keypointLabelBGViews[index].alpha = minAlpha
             }
         }
     }
 }
 
-// MARK: - Constant
+// MARK: - Constant for edvardHua/PoseEstimationForMobile
 struct Constant {
     static let pointLabels = [
-        "top\t\t\t", //0
-        "neck\t\t", //1
+        "top",          //0
+        "neck",         //1
         
-        "R shoulder\t", //2
-        "R elbow\t\t", //3
-        "R wrist\t\t", //4
-        "L shoulder\t", //5
-        "L elbow\t\t", //6
-        "L wrist\t\t", //7
+        "R shoulder",   //2
+        "R elbow",      //3
+        "R wrist",      //4
+        "L shoulder",   //5
+        "L elbow",      //6
+        "L wrist",      //7
         
-        "R hip\t\t", //8
-        "R knee\t\t", //9
-        "R ankle\t\t", //10
-        "L hip\t\t", //11
-        "L knee\t\t", //12
-        "L ankle\t\t", //13
+        "R hip",        //8
+        "R knee",       //9
+        "R ankle",      //10
+        "L hip",        //11
+        "L knee",       //12
+        "L ankle",      //13
     ]
     
     static let connectingPointIndexs: [(Int, Int)] = [
-        (0, 1), // top-neck
+        (0, 1),     // top-neck
         
-        (1, 2), // neck-rshoulder
-        (2, 3), // rshoulder-relbow
-        (3, 4), // relbow-rwrist
-        (1, 8), // neck-rhip
-        (8, 9), // rhip-rknee
-        (9, 10), // rknee-rankle
+        (1, 2),     // neck-rshoulder
+        (2, 3),     // rshoulder-relbow
+        (3, 4),     // relbow-rwrist
+        (1, 8),     // neck-rhip
+        (8, 9),     // rhip-rknee
+        (9, 10),    // rknee-rankle
         
-        (1, 5), // neck-lshoulder
-        (5, 6), // lshoulder-lelbow
-        (6, 7), // lelbow-lwrist
-        (1, 11), // neck-lhip
-        (11, 12), // lhip-lknee
-        (12, 13), // lknee-lankle
+        (1, 5),     // neck-lshoulder
+        (5, 6),     // lshoulder-lelbow
+        (6, 7),     // lelbow-lwrist
+        (1, 11),    // neck-lhip
+        (11, 12),   // lhip-lknee
+        (12, 13),   // lknee-lankle
     ]
     static let jointLineColor: UIColor = UIColor(displayP3Red: 87.0/255.0,
                                                  green: 255.0/255.0,

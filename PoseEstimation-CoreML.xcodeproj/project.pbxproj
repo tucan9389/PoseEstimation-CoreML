@@ -16,7 +16,7 @@
 		554F14892202C2B300B828B0 /* model_houtglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 554F14882202C2B300B828B0 /* model_houtglass.mlmodel */; };
 		554F148A2202C34900B828B0 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 554F14862202C28E00B828B0 /* model_cpm.mlmodel */; };
 		554F148B2202C34900B828B0 /* model_houtglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 554F14882202C2B300B828B0 /* model_houtglass.mlmodel */; };
-		555B477421F61234009026AB /* PoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555B477321F61234009026AB /* PoseView.swift */; };
+		555B477421F61234009026AB /* DrawingJointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555B477321F61234009026AB /* DrawingJointView.swift */; };
 		557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531220ED252100CFCCD7 /* AppDelegate.swift */; };
 		557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531420ED252100CFCCD7 /* JointViewController.swift */; };
 		557F531820ED252100CFCCD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 557F531620ED252100CFCCD7 /* Main.storyboard */; };
@@ -25,8 +25,7 @@
 		557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F532420ED25AF00CFCCD7 /* VideoCapture.swift */; };
 		557F532820ED25B000CFCCD7 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F532520ED25AF00CFCCD7 /* Measure.swift */; };
 		55AAFB1C21128863000B21A3 /* HeatmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */; };
-		55AAFB1E21128AB6000B21A3 /* HeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFB1D21128AB6000B21A3 /* HeatmapView.swift */; };
-		55F74D1B211465420064E7CA /* mv2_cpm_model_98000.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55F74D1A211465420064E7CA /* mv2_cpm_model_98000.mlmodel */; };
+		55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +46,7 @@
 		554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
 		554F14862202C28E00B828B0 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_cpm.mlmodel; sourceTree = "<group>"; };
 		554F14882202C2B300B828B0 /* model_houtglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_houtglass.mlmodel; sourceTree = "<group>"; };
-		555B477321F61234009026AB /* PoseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseView.swift; sourceTree = "<group>"; };
+		555B477321F61234009026AB /* DrawingJointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingJointView.swift; sourceTree = "<group>"; };
 		557F530F20ED252100CFCCD7 /* PoseEstimation-CoreML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PoseEstimation-CoreML.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		557F531220ED252100CFCCD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		557F531420ED252100CFCCD7 /* JointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointViewController.swift; sourceTree = "<group>"; };
@@ -58,8 +57,7 @@
 		557F532420ED25AF00CFCCD7 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		557F532520ED25AF00CFCCD7 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapViewController.swift; sourceTree = "<group>"; };
-		55AAFB1D21128AB6000B21A3 /* HeatmapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeatmapView.swift; sourceTree = "<group>"; };
-		55F74D1A211465420064E7CA /* mv2_cpm_model_98000.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = mv2_cpm_model_98000.mlmodel; sourceTree = "<group>"; };
+		55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingHeatmapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +87,33 @@
 			path = "PoseEstimation-CoreMLTests";
 			sourceTree = "<group>";
 		};
+		554F148C2203057400B828B0 /* Joint View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				557F531420ED252100CFCCD7 /* JointViewController.swift */,
+				555B477321F61234009026AB /* DrawingJointView.swift */,
+			);
+			path = "Joint View Controller";
+			sourceTree = "<group>";
+		};
+		554F148D2203058100B828B0 /* Heatmap View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */,
+				55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */,
+			);
+			path = "Heatmap View Controller";
+			sourceTree = "<group>";
+		};
+		554F148E2203059B00B828B0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				554F147F2202B39A00B828B0 /* MLMultiArray+Heatmap.swift */,
+				554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		557F530620ED252100CFCCD7 = {
 			isa = PBXGroup;
 			children = (
@@ -112,14 +137,10 @@
 			children = (
 				554F14862202C28E00B828B0 /* model_cpm.mlmodel */,
 				554F14882202C2B300B828B0 /* model_houtglass.mlmodel */,
-				55F74D1A211465420064E7CA /* mv2_cpm_model_98000.mlmodel */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
-				557F531420ED252100CFCCD7 /* JointViewController.swift */,
-				555B477321F61234009026AB /* PoseView.swift */,
-				55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */,
-				55AAFB1D21128AB6000B21A3 /* HeatmapView.swift */,
-				554F147F2202B39A00B828B0 /* MLMultiArray+Heatmap.swift */,
-				554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */,
+				554F148C2203057400B828B0 /* Joint View Controller */,
+				554F148D2203058100B828B0 /* Heatmap View Controller */,
+				554F148E2203059B00B828B0 /* Utilities */,
 				557F532420ED25AF00CFCCD7 /* VideoCapture.swift */,
 				557F532520ED25AF00CFCCD7 /* Measure.swift */,
 				557F531620ED252100CFCCD7 /* Main.storyboard */,
@@ -246,15 +267,14 @@
 				55AAFB1C21128863000B21A3 /* HeatmapViewController.swift in Sources */,
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
 				554F14802202B39A00B828B0 /* MLMultiArray+Heatmap.swift in Sources */,
-				55AAFB1E21128AB6000B21A3 /* HeatmapView.swift in Sources */,
+				55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */,
 				554F14872202C28E00B828B0 /* model_cpm.mlmodel in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
-				555B477421F61234009026AB /* PoseView.swift in Sources */,
+				555B477421F61234009026AB /* DrawingJointView.swift in Sources */,
 				554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
 				557F532820ED25B000CFCCD7 /* Measure.swift in Sources */,
 				554F14892202C2B300B828B0 /* model_houtglass.mlmodel in Sources */,
 				557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */,
-				55F74D1B211465420064E7CA /* mv2_cpm_model_98000.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

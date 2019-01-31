@@ -55,7 +55,7 @@
                                     <constraint firstAttribute="width" secondItem="2rN-aG-qiz" secondAttribute="height" multiplier="375:500" id="BHb-1Q-Fwx"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLx-8G-3ly" customClass="PoseView" customModule="PoseEstimation_CoreML">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLx-8G-3ly" customClass="DrawingJointView" customModule="PoseEstimation_CoreML">
                                 <rect key="frame" x="0.0" y="44" width="375" height="500"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -132,8 +132,8 @@
                         <outlet property="etimeLabel" destination="gwd-DA-CaS" id="eUM-MF-evc"/>
                         <outlet property="fpsLabel" destination="pAx-Q4-tNr" id="KJr-nm-Unj"/>
                         <outlet property="inferenceLabel" destination="wus-2Y-2XZ" id="NGh-0s-DWn"/>
+                        <outlet property="jointView" destination="PLx-8G-3ly" id="GUs-bx-Tof"/>
                         <outlet property="labelsTableView" destination="ANC-ac-LRL" id="TIh-sz-ufm"/>
-                        <outlet property="poseView" destination="PLx-8G-3ly" id="GUs-bx-Tof"/>
                         <outlet property="videoPreview" destination="2rN-aG-qiz" id="fqh-TA-pPD"/>
                     </connections>
                 </viewController>
@@ -156,7 +156,7 @@
                                     <constraint firstAttribute="width" secondItem="hfl-UW-9Tf" secondAttribute="height" multiplier="3:4" id="pDT-Dx-eH6"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKm-U6-N6o" customClass="HeatmapView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKm-U6-N6o" customClass="DrawingHeatmapView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="375" height="500"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>

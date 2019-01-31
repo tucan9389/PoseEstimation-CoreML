@@ -9,17 +9,13 @@
 import UIKit
 import CoreML
 
-class HeatmapView: UIView {
+class DrawingHeatmapView: UIView {
     
     var heatmap3D: Array<Array<Double>>? = nil {
         didSet {
-//            if let heatmap = heatmap {
-//                self.convertedHeatmap = heatmap.convertHeatmapTo3DArray()
-//            }
             self.setNeedsDisplay()
         }
     }
-    // var convertedHeatmap: Array<Array<Double>> = []
     
     override func draw(_ rect: CGRect) {
         
@@ -51,7 +47,6 @@ class HeatmapView: UIView {
                     bpath.stroke()
                 }
             }
-            
         }
-    }
+    } // end of draw(rect:)
 }
