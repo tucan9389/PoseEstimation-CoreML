@@ -24,6 +24,8 @@ Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.
 
 ## Download model
 
+### Get PoseEstimationForMobile's model
+
 Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 ☞ Download Core ML model [model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) or [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/hourglass_model).
 
@@ -39,12 +41,16 @@ Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 | Output node name | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
 | Model size       | 2.6 MB                                   | 2.0 MB             |
 
-### Inference Time
+#### Inference Time
 
 |           | cpm   | hourglass |
 | --------- | ----- | --------- |
 | iPhone X  | 51 mm | 49 mm     |
 | iPhone 8+ | 49 mm | 46 mm     |
+
+### Get your own model
+
+> Or you can use your own PoseEstimation model
 
 ## Build & Run
 
