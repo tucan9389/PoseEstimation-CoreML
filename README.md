@@ -31,14 +31,20 @@ Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 >
 > －in [https://github.com/edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)
 
-|                            | cpm                                      | hourglass          |
-| -------------------------- | ---------------------------------------- | ------------------ |
-| Input shape                | `[1, 192, 192, 3]`                       | `[1, 192, 192, 3]` |
-| Output shape               | `[1, 96, 96, 14]`                        | `[1, 48, 48, 14]`  |
-| Input node name            | `image`                                  | `image`            |
-| Output node name           | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
-| Model size                 | 2.6 MB                                   | 2.0 MB             |
-| Inference time on iPhone X | 51 mm                                    | 49 mm              |
+|                  | cpm                                      | hourglass          |
+| ---------------- | ---------------------------------------- | ------------------ |
+| Input shape      | `[1, 192, 192, 3]`                       | `[1, 192, 192, 3]` |
+| Output shape     | `[1, 96, 96, 14]`                        | `[1, 48, 48, 14]`  |
+| Input node name  | `image`                                  | `image`            |
+| Output node name | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
+| Model size       | 2.6 MB                                   | 2.0 MB             |
+
+### Inference Time
+
+|           | cpm   | hourglass |
+| --------- | ----- | --------- |
+| iPhone X  | 51 mm | 49 mm     |
+| iPhone 8+ | 49 mm | 46 mm     |
 
 ## Build & Run
 
