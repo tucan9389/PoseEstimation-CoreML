@@ -27,13 +27,8 @@ class HeatmapViewController: UIViewController {
     typealias EstimationModel = model_cpm
     
     // MARK: - Vision Properties
-    var request: VNCoreMLRequest!
-    var visionModel: VNCoreMLModel! {
-        didSet {
-            request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
-            request.imageCropAndScaleOption = .scaleFill
-        }
-    }
+    var request: VNCoreMLRequest?
+    var visionModel: VNCoreMLModel?
     
     // MARK: - AV Property
     var videoCapture: VideoCapture!
@@ -43,7 +38,7 @@ class HeatmapViewController: UIViewController {
         super.viewDidLoad()
         
         // setup the model
-        visionModel = try? VNCoreMLModel(for: EstimationModel().model)
+        setUpModel()
         
         // setup camera
         setUpCamera()
@@ -64,6 +59,17 @@ class HeatmapViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.videoCapture.stop()
+    }
+    
+    // MARK: - Setup Core ML
+    func setUpModel() {
+        if let visionModel = try? VNCoreMLModel(for: EstimationModel().model) {
+            self.visionModel = visionModel
+            request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
+            request?.imageCropAndScaleOption = .scaleFill
+        } else {
+            fatalError()
+        }
     }
     
     // MARK: - SetUp Video
@@ -92,6 +98,7 @@ class HeatmapViewController: UIViewController {
     
     // MARK: - Inferencing
     func predictUsingVision(pixelBuffer: CVPixelBuffer) {
+        guard let request = request else { fatalError() }
         // vision framework configures the input size of image following our model's input configuration automatically
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
