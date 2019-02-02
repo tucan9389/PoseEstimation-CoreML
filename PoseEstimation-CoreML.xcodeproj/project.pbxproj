@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		554F14772202B07B00B828B0 /* PoseEstimation_CoreMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F14762202B07B00B828B0 /* PoseEstimation_CoreMLTests.swift */; };
-		554F14802202B39A00B828B0 /* MLMultiArray+Heatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F147F2202B39A00B828B0 /* MLMultiArray+Heatmap.swift */; };
+		554F14802202B39A00B828B0 /* MLMultiArray+PoseEstimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F147F2202B39A00B828B0 /* MLMultiArray+PoseEstimation.swift */; };
 		554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */; };
 		554F14832202B82600B828B0 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */; };
 		554F14842202BB7200B828B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 557F531920ED252400CFCCD7 /* Assets.xcassets */; };
@@ -42,7 +42,7 @@
 		554F14742202B07B00B828B0 /* PoseEstimation-CoreMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PoseEstimation-CoreMLTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F14762202B07B00B828B0 /* PoseEstimation_CoreMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimation_CoreMLTests.swift; sourceTree = "<group>"; };
 		554F14782202B07B00B828B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		554F147F2202B39A00B828B0 /* MLMultiArray+Heatmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+Heatmap.swift"; sourceTree = "<group>"; };
+		554F147F2202B39A00B828B0 /* MLMultiArray+PoseEstimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MLMultiArray+PoseEstimation.swift"; sourceTree = "<group>"; };
 		554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
 		554F14862202C28E00B828B0 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_cpm.mlmodel; sourceTree = "<group>"; };
 		554F14882202C2B300B828B0 /* model_houtglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_houtglass.mlmodel; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		554F148E2203059B00B828B0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				554F147F2202B39A00B828B0 /* MLMultiArray+Heatmap.swift */,
+				554F147F2202B39A00B828B0 /* MLMultiArray+PoseEstimation.swift */,
 				554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */,
 			);
 			path = Utilities;
@@ -266,7 +266,7 @@
 			files = (
 				55AAFB1C21128863000B21A3 /* HeatmapViewController.swift in Sources */,
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
-				554F14802202B39A00B828B0 /* MLMultiArray+Heatmap.swift in Sources */,
+				554F14802202B39A00B828B0 /* MLMultiArray+PoseEstimation.swift in Sources */,
 				55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */,
 				554F14872202C28E00B828B0 /* model_cpm.mlmodel in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
