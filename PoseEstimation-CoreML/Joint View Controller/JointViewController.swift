@@ -32,13 +32,8 @@ class JointViewController: UIViewController {
     typealias EstimationModel = model_cpm
     
     // MARK: - Vision Properties
-    var request: VNCoreMLRequest!
-    var visionModel: VNCoreMLModel! {
-        didSet {
-            request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
-            request.imageCropAndScaleOption = .scaleFill
-        }
-    }
+    var request: VNCoreMLRequest?
+    var visionModel: VNCoreMLModel?
     
     // MARK: - AV Property
     var videoCapture: VideoCapture!
@@ -48,7 +43,7 @@ class JointViewController: UIViewController {
         super.viewDidLoad()
         
         // setup the model
-        visionModel = try? VNCoreMLModel(for: EstimationModel().model)
+        setUpModel()
         
         // setup camera
         setUpCamera()
@@ -72,6 +67,17 @@ class JointViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.videoCapture.stop()
+    }
+    
+    // MARK: - Setup Core ML
+    func setUpModel() {
+        if let visionModel = try? VNCoreMLModel(for: EstimationModel().model) {
+            self.visionModel = visionModel
+            request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
+            request?.imageCropAndScaleOption = .scaleFill
+        } else {
+            fatalError()
+        }
     }
     
     // MARK: - SetUp Video
@@ -104,9 +110,24 @@ class JointViewController: UIViewController {
     }
 }
 
+// MARK: - VideoCaptureDelegate
+extension JointViewController: VideoCaptureDelegate {
+    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
+        // the captured image from camera is contained on pixelBuffer
+        if let pixelBuffer = pixelBuffer {
+            // start of measure
+            self.👨‍🔧.🎬👏()
+            
+            // predict!
+            self.predictUsingVision(pixelBuffer: pixelBuffer)
+        }
+    }
+}
+
 extension JointViewController {
     // MARK: - Inferencing
     func predictUsingVision(pixelBuffer: CVPixelBuffer) {
+        guard let request = request else { fatalError() }
         // vision framework configures the input size of image following our model's input configuration automatically
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
         try? handler.perform([request])
@@ -137,20 +158,6 @@ extension JointViewController {
     func showKeypointsDescription(with n_kpoints: [BodyPoint?]) {
         self.tableData = n_kpoints
         self.labelsTableView.reloadData()
-    }
-}
-
-// MARK: - VideoCaptureDelegate
-extension JointViewController: VideoCaptureDelegate {
-    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
-        // the captured image from camera is contained on pixelBuffer
-        if let pixelBuffer = pixelBuffer {
-            // start of measure
-            self.👨‍🔧.🎬👏()
-            
-            // predict!
-            self.predictUsingVision(pixelBuffer: pixelBuffer)
-        }
     }
 }
 

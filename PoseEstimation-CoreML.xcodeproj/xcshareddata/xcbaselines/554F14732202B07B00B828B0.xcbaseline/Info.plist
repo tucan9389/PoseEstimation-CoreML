@@ -16,6 +16,18 @@
 				<string>com.apple.platform.iphoneos</string>
 			</dict>
 		</dict>
+		<key>EDBDCB77-B98E-4AEF-B959-01D8D37EAF06</key>
+		<dict>
+			<key>targetArchitecture</key>
+			<string>arm64</string>
+			<key>targetDevice</key>
+			<dict>
+				<key>modelCode</key>
+				<string>iPhone10,5</string>
+				<key>platformIdentifier</key>
+				<string>com.apple.platform.iphoneos</string>
+			</dict>
+		</dict>
 	</dict>
 </dict>
 </plist>
