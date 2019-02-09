@@ -1,5 +1,3 @@
-
-
 # PoseEstimation-CoreML
 
 This project is Pose Estimation on iOS with Core ML.<br>If you are interested in iOS + Machine Learning, visit [here](https://github.com/motlabs/iOS-Proejcts-with-ML-Models) you can see various DEMOs.<br>
@@ -43,10 +41,11 @@ Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 
 #### Inference Time
 
-|           | cpm   | hourglass |
-| --------- | ----- | --------- |
-| iPhone X  | 51 mm | 49 mm     |
-| iPhone 8+ | 49 mm | 46 mm     |
+|           | cpm    | hourglass |
+| --------- | ------ | --------- |
+| iPhone X  | 51 mm  | 49 mm     |
+| iPhone 8+ | 49 mm  | 46 mm     |
+| iPhone 6+ | 200 mm | 180 mm    |
 
 ### Get your own model
 

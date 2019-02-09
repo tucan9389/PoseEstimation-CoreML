@@ -152,6 +152,9 @@ extension JointViewController {
                 // end of measure
                 self.👨‍🔧.🎬🤚()
             }
+        } else {
+            // end of measure
+            self.👨‍🔧.🎬🤚()
         }
     }
     
