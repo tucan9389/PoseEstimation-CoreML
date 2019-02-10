@@ -31,6 +31,8 @@ Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 >
 > －in [https://github.com/edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)
 
+#### Matadata
+
 |                  | cpm                                      | hourglass          |
 | ---------------- | ---------------------------------------- | ------------------ |
 | Input shape      | `[1, 192, 192, 3]`                       | `[1, 192, 192, 3]` |
@@ -43,9 +45,9 @@ Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 
 |           | cpm    | hourglass |
 | --------- | ------ | --------- |
-| iPhone X  | 51 mm  | 49 mm     |
-| iPhone 8+ | 49 mm  | 46 mm     |
-| iPhone 6+ | 200 mm | 180 mm    |
+| iPhone X  | 51 ms  | 49 ms     |
+| iPhone 8+ | 49 ms  | 46 ms     |
+| iPhone 6+ | 200 ms | 180 ms    |
 
 ### Get your own model
 
@@ -71,25 +73,42 @@ No external library yet.
 
 ### 3. Code
 
+#### 3.1 Import Vision framework
+
 ```swift
 import Vision
+```
 
-// properties on JointViewController
-typealias EstimationModel = model_cpm // model name(model_cpm) must be same with mlmodel file name
+#### 3.2 Define properties for Core ML
+
+```swift
+// properties on ViewController
+typealias EstimationModel = model_cpm // model name(model_cpm) must be equal with mlmodel file name
 var request: VNCoreMLRequest!
 var visionModel: VNCoreMLModel!
+```
 
-// on viewDidLoad
-visionModel = try? VNCoreMLModel(for: EstimationModel().model)
-request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
-request.imageCropAndScaleOption = .scaleFill
+#### 3.3 Configure and prepare the model
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    visionModel = try? VNCoreMLModel(for: EstimationModel().model)
+	request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
+	request.imageCropAndScaleOption = .scaleFill
+}
 
 func visionRequestDidComplete(request: VNRequest, error: Error?) { 
     /* ------------------------------------------------------ */
     /* something postprocessing what you want after inference */
     /* ------------------------------------------------------ */
 }
+```
 
+#### 3.4 Inference 🏃‍♂️
+
+```swift
 // on the inference point
 let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
 try? handler.perform([request])
