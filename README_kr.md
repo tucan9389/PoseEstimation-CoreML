@@ -20,21 +20,29 @@
 ## 모델 준비
 
 Core ML용 Pose Estimation 모델(`model_cpm.mlmodel`)<br>
-☞ Download Core ML model [model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) or [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/blob/master/release/hourglass_model/hourglass.mlmodel).
+☞ Core ML 모델을 여기서 다운받으세요([model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) 혹은 [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/blob/master/release/hourglass_model/hourglass.mlmodel)).
 
 > input_name_shape_dict = {"image:0":[1,224,224,3]} image_input_names=["image:0"] <br>output_feature_names = ['Convolutional_Pose_Machine/stage_5_out:0']
 >
 > －in [https://github.com/edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)
 
-|                          | cpm                                      | hourglass          |
-| ------------------------ | ---------------------------------------- | ------------------ |
-| Input shape              | `[1, 192, 192, 3]`                       | `[1, 192, 192, 3]` |
-| Output shape             | `[1, 96, 96, 14]`                        | `[1, 48, 48, 14]`  |
-| Input node name          | `image`                                  | `image`            |
-| Output node name         | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
-| Inference time(iPhone X) | 57 mm                                    | 33 mm              |
+#### 메타정보
 
+|                  | cpm                                      | hourglass          |
+| ---------------- | ---------------------------------------- | ------------------ |
+| Input shape      | `[1, 192, 192, 3]`                       | `[1, 192, 192, 3]` |
+| Output shape     | `[1, 96, 96, 14]`                        | `[1, 48, 48, 14]`  |
+| Input node name  | `image`                                  | `image`            |
+| Output node name | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
+| Model size       | 2.6 MB                                   | 2.0 MB             |
 
+#### 추론시간
+
+|           | cpm    | hourglass |
+| --------- | ------ | --------- |
+| iPhone X  | 51 ms  | 49 ms     |
+| iPhone 8+ | 49 ms  | 46 ms     |
+| iPhone 6+ | 200 ms | 180 ms    |
 
 ## 빌드 준비
 
@@ -46,7 +54,61 @@ Core ML용 Pose Estimation 모델(`model_cpm.mlmodel`)<br>
 
 ## 코드 작성
 
-(준비중)
+#### 1. Vision 프레임크 불러오기
+
+```swift
+import Vision
+```
+
+#### 2. Core ML 프로퍼티 선언
+
+```swift
+typealias EstimationModel = model_cpm // model name(model_cpm) must be equal with mlmodel file name
+var request: VNCoreMLRequest!
+var visionModel: VNCoreMLModel!
+```
+
+#### 3. 모델 준비
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+
+    visionModel = try? VNCoreMLModel(for: EstimationModel().model)
+	request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
+	request.imageCropAndScaleOption = .scaleFill
+}
+
+func visionRequestDidComplete(request: VNRequest, error: Error?) { 
+    /* ------------------------------------------------------ */
+    /* something postprocessing what you want after inference */
+    /* ------------------------------------------------------ */
+}
+```
+
+#### 4. 추론 🏃‍♂️
+
+```swift
+// on the inference point
+let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
+try? handler.perform([request])
+```
+
+## Performance Test
+
+### 모델 가져오기
+
+You can download cpm or hourglass model for Core ML from [edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile) repo.
+
+### 모델 이름 변경([`PoseEstimation_CoreMLTests.swift`](PoseEstimation-CoreMLTests/PoseEstimation_CoreMLTests.swift))
+
+![fix-model-name-for-testing](/Users/canapio/Project/machine%20learning/MoT%20Labs/github_project/ml-ios-projects/PoseEstimation-CoreML/resource/fix-model-name-for-testing.png)
+
+### 테스트 실행
+
+단축키로는 `⌘ + U`를 누르거나  `Build for Testing` 아이콘을 누르세요.
+
+![build-for-testing](/Users/canapio/Project/machine%20learning/MoT%20Labs/github_project/ml-ios-projects/PoseEstimation-CoreML/resource/build-for-testing.png)
 
 ## 함께 볼 것
 
