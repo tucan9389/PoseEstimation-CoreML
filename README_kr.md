@@ -2,6 +2,10 @@
 
 # PoseEstimation-CoreML
 
+![platform-ios](https://img.shields.io/badge/platform-ios-lightgrey.svg)
+![swift-version](https://img.shields.io/badge/swift-4-red.svg)
+![lisence](https://img.shields.io/badge/license-MIT-black.svg)
+
 여러가지 iOS+ML예제는 [iOS Projects with ML Models 저장소](https://github.com/motlabs/iOS-Proejcts-with-ML-Models)에 모아져있습니다.<br>
 이 프로젝트는 Core ML을 사용하여 Pose Estimation을 실행시켜본 예제입니다. <br>
 
@@ -15,7 +19,7 @@
 
 - Xcode 9.2+
 - iOS 11.0+
-- Swift 4.1
+- Swift 4
 
 ## 모델 준비
 
