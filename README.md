@@ -47,11 +47,15 @@ Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
 
 #### Inference Time
 
-|           | cpm    | hourglass |
-| --------- | ------ | --------- |
-| iPhone X  | 51 ms  | 49 ms     |
-| iPhone 8+ | 49 ms  | 46 ms     |
-| iPhone 6+ | 200 ms | 180 ms    |
+|               | cpm       | hourglass |
+| ------------- | --------- | --------- |
+| iPhone XS     | (`TODO`)  | (`TODO`)  |
+| iPhone XS Max | (`TODO`)  | (`TODO`)  |
+| iPhone X      | 51 ms     | 49 ms     |
+| iPhone 8+     | 49 ms     | 46 ms     |
+| iPhone 8      | (`TODO`)  | (`TODO`)  |
+| iPhone 7      | (`TODO`)  | (`TODO`)  |
+| iPhone 6+     | 200 ms    | 180 ms    |
 
 ### Get your own model
 
@@ -103,7 +107,7 @@ override func viewDidLoad() {
 	request.imageCropAndScaleOption = .scaleFill
 }
 
-func visionRequestDidComplete(request: VNRequest, error: Error?) { 
+func visionRequestDidComplete(request: VNRequest, error: Error?) {
     /* ------------------------------------------------------ */
     /* something postprocessing what you want after inference */
     /* ------------------------------------------------------ */
@@ -144,4 +148,3 @@ Hit the `⌘ + U` or click the `Build for Testing` icon.
   : TensorFlow project for pose estimation for mobile
 - [tucan9389/FingertipEstimation-CoreML](https://github.com/tucan9389/FingertipEstimation-CoreML)<br>
   : iOS project for fingertip estimation using CoreML.
-

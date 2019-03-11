@@ -25,14 +25,14 @@ class PoseEstimation_CoreMLTests: XCTestCase {
         // <# CPM model #>
         cpmModel = try? VNCoreMLModel(for: model_cpm().model)
         if let visionModel = cpmModel {
-            cpmRequest = VNCoreMLRequest(model: visionModel, completionHandler: nil)
+            cpmRequest = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
         }
         cpmRequest?.imageCropAndScaleOption = .scaleFill
         
         // <# Hourglass model #>
         hourglassModel = try? VNCoreMLModel(for: model_houtglass().model)
         if let visionModel = hourglassModel {
-            hourglassRequest = VNCoreMLRequest(model: visionModel, completionHandler: nil)
+            hourglassRequest = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
         }
         hourglassRequest?.imageCropAndScaleOption = .scaleFill
         
@@ -64,5 +64,9 @@ class PoseEstimation_CoreMLTests: XCTestCase {
             let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
             try? handler.perform([request])
         }
+    }
+    
+    func visionRequestDidComplete(request: VNRequest, error: Error?) {
+        
     }
 }
