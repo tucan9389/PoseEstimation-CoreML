@@ -24,7 +24,12 @@
 ## 모델 준비
 
 Core ML용 Pose Estimation 모델(`model_cpm.mlmodel`)<br>
-☞ Core ML 모델을 여기서 다운받으세요([model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) 혹은 [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/blob/master/release/hourglass_model/hourglass.mlmodel)).
+> ~~☞ Core ML 모델을 여기서 다운받으세요([model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) 혹은 [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/blob/master/release/hourglass_model/hourglass.mlmodel)).~~
+> `DEPRECATED`
+
+위 저장소는 닫혔습니다. 우선 아래 모델을 사용해주세요.
+- [cpm](models/cpm_model)
+- [hourglass](models/hourglass_model)
 
 > input_name_shape_dict = {"image:0":[1,224,224,3]} image_input_names=["image:0"] <br>output_feature_names = ['Convolutional_Pose_Machine/stage_5_out:0']
 >
@@ -118,7 +123,7 @@ You can download cpm or hourglass model for Core ML from [edvardHua/PoseEstimati
 
 - [motlabs/iOS-Proejcts-with-ML-Models](https://github.com/motlabs/iOS-Proejcts-with-ML-Models)<br>
   : TensorFlow로 만든 머신러닝 모델을 iOS에서 사용해보는 프로젝트 모음
-- [edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)<br>
+- ~~[edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)~~ -> `DEPRECATED` <br>
   : 모바일용 Pose Estination TensorFlow 프로젝트
 - [tucan9389/FingertipEstimation-CoreML](https://github.com/tucan9389/FingertipEstimation-CoreML)<br>
   : [edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)를 이용해 데이터셋만 Fingertip으로 바꾸어 학습시킨 모델을 CoreML에 맞춰 구현한 iOS 프로젝트
