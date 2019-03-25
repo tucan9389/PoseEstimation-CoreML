@@ -28,17 +28,20 @@ Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.
 
 ### Get PoseEstimationForMobile's model
 
-> ~~Pose Estimation model for Core ML(`model_cpm.mlmodel`)<br>
-☞ Download Core ML model [model_cpm.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/cpm_model) or [hourglass.mlmodel](https://github.com/edvardHua/PoseEstimationForMobile/tree/master/release/hourglass_model).~~
-> `DEPRECATED`
-
-Above repository was closed, so download this temporary models from [following link](models).
+Download this temporary models from [following link](models).
 - [cpm](models/cpm_model)
 - [hourglass](models/hourglass_model)
 
+Or
+
+Here<br>
+☞ Download Core ML model [model_cpm.mlmodel](https://github.com/tucan9389/pose-estimation-for-mobile/tree/master/release/cpm_model) or [hourglass.mlmodel](https://github.com/tucan9389/pose-estimation-for-mobile/tree/master/release/hourglass_model).
+
+
+
 > input_name_shape_dict = {"image:0":[1,192,192,3]} image_input_names=["image:0"] <br>output_feature_names = ['Convolutional_Pose_Machine/stage_5_out:0']
 >
-> －in [https://github.com/edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)
+> －in [https://github.com/tucan9389/pose-estimation-for-mobile](https://github.com/tucan9389/pose-estimation-for-mobile)
 
 #### Matadata
 
@@ -131,7 +134,7 @@ try? handler.perform([request])
 
 ### 1. Import the model
 
-You can download cpm or hourglass model for Core ML from [edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile) repo.
+You can download cpm or hourglass model for Core ML from [tucan9389/pose-estimation-for-mobile](https://github.com/tucan9389/pose-estimation-for-mobile) repo.
 
 ### 2. Fix the model name on [`PoseEstimation_CoreMLTests.swift`](PoseEstimation-CoreMLTests/PoseEstimation_CoreMLTests.swift)
 
@@ -149,7 +152,7 @@ Hit the `⌘ + U` or click the `Build for Testing` icon.
 
 - [motlabs/iOS-Proejcts-with-ML-Models](https://github.com/motlabs/iOS-Proejcts-with-ML-Models)<br>
   : The challenge using machine learning model created from tensorflow on iOS
-- ~~[edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)~~ -> `DEPRECATED` <br>
+- [tucan9389/pose-estimation-for-mobile](https://github.com/tucan9389/pose-estimation-for-mobile) (~~[edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)~~ → `DEPRECATED`)<br>
   : TensorFlow project for pose estimation for mobile
 - [tucan9389/FingertipEstimation-CoreML](https://github.com/tucan9389/FingertipEstimation-CoreML)<br>
   : iOS project for fingertip estimation using CoreML.
