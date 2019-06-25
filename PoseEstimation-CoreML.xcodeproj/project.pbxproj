@@ -26,6 +26,9 @@
 		557F532820ED25B000CFCCD7 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F532520ED25AF00CFCCD7 /* Measure.swift */; };
 		55AAFB1C21128863000B21A3 /* HeatmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */; };
 		55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */; };
+		7118042F22773603007398DB /* hg_1e8_20190429222029.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7118042E22773603007398DB /* hg_1e8_20190429222029.mlmodel */; };
+		7165F7592271772A0010F164 /* StillImageHeatmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165F7582271772A0010F164 /* StillImageHeatmapViewController.swift */; };
+		7165F75C22717F010010F164 /* mv2_cpm_model_98000.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7165F75B22717F010010F164 /* mv2_cpm_model_98000.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		557F532520ED25AF00CFCCD7 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapViewController.swift; sourceTree = "<group>"; };
 		55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingHeatmapView.swift; sourceTree = "<group>"; };
+		7118042E22773603007398DB /* hg_1e8_20190429222029.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = hg_1e8_20190429222029.mlmodel; sourceTree = "<group>"; };
+		7165F7582271772A0010F164 /* StillImageHeatmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillImageHeatmapViewController.swift; sourceTree = "<group>"; };
+		7165F75B22717F010010F164 /* mv2_cpm_model_98000.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = mv2_cpm_model_98000.mlmodel; path = "../../../../../Just-Point/models/mv2_cpm_fingertip_p2_1_7/models/mv2_cpm_batch-5_lr-0.001_gpus-1_224x224_experiments-mv2_cpm_mydataset_p2_spot1/mlmodel/mv2_cpm_model_98000.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,9 +143,12 @@
 			children = (
 				554F14862202C28E00B828B0 /* model_cpm.mlmodel */,
 				554F14882202C2B300B828B0 /* model_houtglass.mlmodel */,
+				7165F75B22717F010010F164 /* mv2_cpm_model_98000.mlmodel */,
+				7118042E22773603007398DB /* hg_1e8_20190429222029.mlmodel */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
 				554F148C2203057400B828B0 /* Joint View Controller */,
 				554F148D2203058100B828B0 /* Heatmap View Controller */,
+				7165F75A227177320010F164 /* Still Image Heatmap View Controller */,
 				554F148E2203059B00B828B0 /* Utilities */,
 				557F532420ED25AF00CFCCD7 /* VideoCapture.swift */,
 				557F532520ED25AF00CFCCD7 /* Measure.swift */,
@@ -149,6 +158,14 @@
 				557F531E20ED252400CFCCD7 /* Info.plist */,
 			);
 			path = "PoseEstimation-CoreML";
+			sourceTree = "<group>";
+		};
+		7165F75A227177320010F164 /* Still Image Heatmap View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7165F7582271772A0010F164 /* StillImageHeatmapViewController.swift */,
+			);
+			path = "Still Image Heatmap View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,11 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7118042F22773603007398DB /* hg_1e8_20190429222029.mlmodel in Sources */,
 				55AAFB1C21128863000B21A3 /* HeatmapViewController.swift in Sources */,
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
+				7165F7592271772A0010F164 /* StillImageHeatmapViewController.swift in Sources */,
 				554F14802202B39A00B828B0 /* MLMultiArray+PoseEstimation.swift in Sources */,
 				55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */,
 				554F14872202C28E00B828B0 /* model_cpm.mlmodel in Sources */,
+				7165F75C22717F010010F164 /* mv2_cpm_model_98000.mlmodel in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
 				555B477421F61234009026AB /* DrawingJointView.swift in Sources */,
 				554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ChF-RA-qh1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ChF-RA-qh1">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -241,6 +241,93 @@
             </objects>
             <point key="canvasLocation" x="1341.5999999999999" y="464.77832512315274"/>
         </scene>
+        <!--Still Image-->
+        <scene sceneID="Lsh-Im-4EW">
+            <objects>
+                <navigationController id="oYo-ii-wbS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Still Image" id="5vE-1w-4b1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UXA-UH-TOD">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KIn-S9-XE0" kind="relationship" relationship="rootViewController" id="KMZ-eb-jdk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ua8-Sb-avI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1342" y="1145"/>
+        </scene>
+        <!--Still Image Heatmap View Controller-->
+        <scene sceneID="QJT-fY-zO9">
+            <objects>
+                <viewController id="KIn-S9-XE0" customClass="StillImageHeatmapViewController" customModule="PoseEstimation_CoreML" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j4b-Pt-NPg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPK-bK-sON">
+                                <rect key="frame" x="0.0" y="156" width="375" height="500"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JPK-bK-sON" secondAttribute="height" multiplier="3:4" id="kB6-tv-gSQ"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fn-xK-hL8">
+                                <rect key="frame" x="0.0" y="156" width="375" height="500"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.49467572773972601" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKh-LV-vCv" customClass="DrawingHeatmapView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="156" width="375" height="500"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PKh-LV-vCv" secondAttribute="height" multiplier="3:4" priority="750" id="YZT-uv-040"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ffs-pW-k94">
+                                <rect key="frame" x="0.0" y="156" width="375" height="500"/>
+                                <string key="text">Tap the camera item 
+on top right</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JPK-bK-sON" firstAttribute="trailing" secondItem="aBw-lF-W12" secondAttribute="trailing" id="Cyh-Bg-MJ0"/>
+                            <constraint firstItem="Ffs-pW-k94" firstAttribute="leading" secondItem="JPK-bK-sON" secondAttribute="leading" id="P4Y-aM-9aM"/>
+                            <constraint firstItem="7fn-xK-hL8" firstAttribute="leading" secondItem="JPK-bK-sON" secondAttribute="leading" id="PLJ-wn-fuW"/>
+                            <constraint firstItem="PKh-LV-vCv" firstAttribute="centerY" secondItem="JPK-bK-sON" secondAttribute="centerY" id="WL5-MO-Ohf"/>
+                            <constraint firstItem="7fn-xK-hL8" firstAttribute="trailing" secondItem="JPK-bK-sON" secondAttribute="trailing" id="WXg-2S-rBB"/>
+                            <constraint firstItem="Ffs-pW-k94" firstAttribute="trailing" secondItem="JPK-bK-sON" secondAttribute="trailing" id="ZgV-XH-LRd"/>
+                            <constraint firstItem="JPK-bK-sON" firstAttribute="centerY" secondItem="j4b-Pt-NPg" secondAttribute="centerY" id="cgQ-7a-Dq2"/>
+                            <constraint firstItem="JPK-bK-sON" firstAttribute="leading" secondItem="aBw-lF-W12" secondAttribute="leading" id="gL4-jH-6i6"/>
+                            <constraint firstItem="7fn-xK-hL8" firstAttribute="bottom" secondItem="JPK-bK-sON" secondAttribute="bottom" id="gju-gT-Z5K"/>
+                            <constraint firstItem="PKh-LV-vCv" firstAttribute="leading" secondItem="JPK-bK-sON" secondAttribute="leading" id="hVs-Xx-JcM"/>
+                            <constraint firstItem="7fn-xK-hL8" firstAttribute="top" secondItem="JPK-bK-sON" secondAttribute="top" id="oYD-Tp-qCO"/>
+                            <constraint firstItem="PKh-LV-vCv" firstAttribute="trailing" secondItem="JPK-bK-sON" secondAttribute="trailing" id="p9F-ry-Zak"/>
+                            <constraint firstItem="Ffs-pW-k94" firstAttribute="top" secondItem="JPK-bK-sON" secondAttribute="top" id="s2R-L8-U1l"/>
+                            <constraint firstItem="Ffs-pW-k94" firstAttribute="bottom" secondItem="JPK-bK-sON" secondAttribute="bottom" id="zTz-Jk-AXj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aBw-lF-W12"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6uj-6F-nrb">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="camera" id="M5z-ba-Erj">
+                            <connections>
+                                <action selector="tapPhotoLibraryItem:" destination="KIn-S9-XE0" id="NZv-9E-ngg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="guideLabel" destination="Ffs-pW-k94" id="wmu-cP-ber"/>
+                        <outlet property="heatmapView" destination="PKh-LV-vCv" id="aGA-LL-cnY"/>
+                        <outlet property="mainImageView" destination="JPK-bK-sON" id="Eyr-MO-c5R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DjW-la-Tir" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2080.8000000000002" y="1144.5812807881773"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1S5-jE-9aw">
             <objects>
@@ -254,6 +341,7 @@
                     <connections>
                         <segue destination="9CU-0Y-vts" kind="relationship" relationship="viewControllers" id="8ii-cb-uIc"/>
                         <segue destination="b0e-Kh-5x3" kind="relationship" relationship="viewControllers" id="AYI-bm-5Zp"/>
+                        <segue destination="oYo-ii-wbS" kind="relationship" relationship="viewControllers" id="n2h-3j-L6y"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmE-od-fjx" userLabel="First Responder" sceneMemberID="firstResponder"/>

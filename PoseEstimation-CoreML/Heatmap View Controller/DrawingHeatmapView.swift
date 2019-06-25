@@ -39,12 +39,13 @@ class DrawingHeatmapView: UIView {
                     
                     let rect: CGRect = CGRect(x: CGFloat(i) * w, y: CGFloat(j) * h, width: w, height: h)
                     
-                    let color: UIColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: alpha)
+                    let color: UIColor = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: alpha*0.58)
                     
                     let bpath: UIBezierPath = UIBezierPath(rect: rect)
                     
                     color.set()
                     bpath.stroke()
+                    bpath.fill()
                 }
             }
         }
