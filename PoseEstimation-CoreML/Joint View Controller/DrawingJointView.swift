@@ -13,7 +13,7 @@ class DrawingJointView: UIView {
     // the count of array may be <#14#> when use PoseEstimationForMobile's model
     private var keypointLabelBGViews: [UIView] = []
 
-    public var bodyPoints: [BodyPoint?] = [] {
+    public var bodyPoints: [PredictedPoint?] = [] {
         didSet {
             self.setNeedsDisplay()
             self.drawKeypoints(with: bodyPoints)
@@ -25,16 +25,16 @@ class DrawingJointView: UIView {
         
         keypointLabelBGViews = (0..<keypointsCount).map { index in
             let color = Constant.colors[index%Constant.colors.count]
-            let v = UIView(frame: CGRect(x: 0, y: 0, width: 4, height: 4))
-            v.backgroundColor = color
-            v.clipsToBounds = false
-            let l = UILabel(frame: CGRect(x: 4 + 3, y: -3, width: 100, height: 8))
-            l.text = Constant.pointLabels[index%Constant.colors.count]
-            l.textColor = color
-            l.font = UIFont.preferredFont(forTextStyle: .caption2)
-            v.addSubview(l)
-            self.addSubview(v)
-            return v
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 4, height: 4))
+            view.backgroundColor = color
+            view.clipsToBounds = false
+            let label = UILabel(frame: CGRect(x: 4 + 3, y: -3, width: 100, height: 8))
+            label.text = Constant.pointLabels[index%Constant.colors.count]
+            label.textColor = color
+            label.font = UIFont.preferredFont(forTextStyle: .caption2)
+            view.addSubview(label)
+            self.addSubview(view)
+            return view
         }
         
         var x: CGFloat = 0.0
@@ -43,10 +43,10 @@ class DrawingJointView: UIView {
             let color = Constant.colors[index%Constant.colors.count]
             if index == 2 || index == 8 { x += 28 }
             else { x += 14 }
-            let v = UIView(frame: CGRect(x: x, y: y + 10, width: 4, height: 4))
-            v.backgroundColor = color
+            let view = UIView(frame: CGRect(x: x, y: y + 10, width: 4, height: 4))
+            view.backgroundColor = color
             
-            self.addSubview(v)
+            self.addSubview(view)
             return
         }
     }
@@ -84,7 +84,7 @@ class DrawingJointView: UIView {
         ctx.strokePath();
     }
     
-    private func drawKeypoints(with n_kpoints: [BodyPoint?]) {
+    private func drawKeypoints(with n_kpoints: [PredictedPoint?]) {
         let imageFrame = keypointLabelBGViews.first?.superview?.frame ?? .zero
         
         let minAlpha: CGFloat = 0.4

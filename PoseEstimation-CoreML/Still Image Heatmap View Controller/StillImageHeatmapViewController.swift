@@ -12,19 +12,24 @@ import Vision
 import CoreMedia
 
 class StillImageHeatmapViewController: UIViewController {
-
+    
+    // MARK: - UI Properties
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var heatmapView: DrawingHeatmapView!
     @IBOutlet weak var guideLabel: UILabel!
     
     let galleryPicker = UIImagePickerController()
     
-    // MARK - Core ML model
-    typealias EstimationModel = model_cpm//mv2_cpm_model_98000
+    // MARK: - ML Properties
+    // Core ML model
+    typealias EstimationModel = model_cpm
     
-    // MARK: - Vision Properties
+    // Preprocess and Inference
     var request: VNCoreMLRequest?
     var visionModel: VNCoreMLModel?
+    
+    // Postprocess
+    var postProcessor: HeatmapPostProcessor = HeatmapPostProcessor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,10 +92,10 @@ extension StillImageHeatmapViewController {
     // MARK: - Poseprocessing
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
-            let heatmap = observations.first?.featureValue.multiArrayValue {
+            let heatmaps = observations.first?.featureValue.multiArrayValue {
             
             // convert heatmap to Array<Array<Double>>
-            let heatmap3D = heatmap.convertHeatmapTo3DArray()
+            let heatmap3D = postProcessor.convertTo3DArray(from: heatmaps)
 
             // must run on main thread
             self.heatmapView.heatmap3D = heatmap3D

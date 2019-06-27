@@ -20,18 +20,22 @@ class HeatmapViewController: UIViewController {
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
     
-    // MARK - Performance Measurement Property
+    // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
-    
-    // MARK - Core ML model
-    typealias EstimationModel = model_cpm
-    
-    // MARK: - Vision Properties
-    var request: VNCoreMLRequest?
-    var visionModel: VNCoreMLModel?
     
     // MARK: - AV Property
     var videoCapture: VideoCapture!
+    
+    // MARK: - ML Properties
+    // Core ML model
+    typealias EstimationModel = model_cpm
+    
+    // Preprocess and Inference
+    var request: VNCoreMLRequest?
+    var visionModel: VNCoreMLModel?
+    
+    // Postprocess
+    var postProcessor: HeatmapPostProcessor = HeatmapPostProcessor()
     
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
@@ -108,10 +112,10 @@ class HeatmapViewController: UIViewController {
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         self.👨‍🔧.🏷(with: "endInference")
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
-            let heatmap = observations.first?.featureValue.multiArrayValue {
+            let heatmaps = observations.first?.featureValue.multiArrayValue {
 
             // convert heatmap to Array<Array<Double>>
-            let heatmap3D = heatmap.convertHeatmapTo3DArray()
+            let heatmap3D = postProcessor.convertTo3DArray(from: heatmaps)
             
             DispatchQueue.main.sync {
                 

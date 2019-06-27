@@ -11,7 +11,7 @@ import Vision
 import CoreMedia
 
 class JointViewController: UIViewController {
-    public typealias DetectObjectsCompletion = ([BodyPoint?]?, Error?) -> Void
+    public typealias DetectObjectsCompletion = ([PredictedPoint?]?, Error?) -> Void
     
     // MARK: - UI Properties
     @IBOutlet weak var videoPreview: UIView!
@@ -22,21 +22,25 @@ class JointViewController: UIViewController {
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
     
-    // MARK - Inference Result Data
-    private var tableData: [BodyPoint?] = []
-    
-    // MARK - Performance Measurement Property
+    // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
-    
-    // MARK - Core ML model
-    typealias EstimationModel = model_cpm
-    
-    // MARK: - Vision Properties
-    var request: VNCoreMLRequest?
-    var visionModel: VNCoreMLModel?
     
     // MARK: - AV Property
     var videoCapture: VideoCapture!
+    
+    // MARK: - ML Properties
+    // Core ML model
+    typealias EstimationModel = model_cpm
+    
+    // Preprocess and Inference
+    var request: VNCoreMLRequest?
+    var visionModel: VNCoreMLModel?
+    
+    // Postprocess
+    var postProcessor: HeatmapPostProcessor = HeatmapPostProcessor()
+    
+    // Inference Result Data
+    private var tableData: [PredictedPoint?] = []
     
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
@@ -137,10 +141,10 @@ extension JointViewController {
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         self.👨‍🔧.🏷(with: "endInference")
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
-            let heatmap = observations.first?.featureValue.multiArrayValue {
+            let heatmaps = observations.first?.featureValue.multiArrayValue {
             
             // convert heatmap to [keypoint]
-            let n_kpoints = heatmap.convertHeatmapToBodyPoint()
+            let n_kpoints = postProcessor.convertToBodyPoint(from: heatmaps)
             
             DispatchQueue.main.sync {
                 // draw line
@@ -158,7 +162,7 @@ extension JointViewController {
         }
     }
     
-    func showKeypointsDescription(with n_kpoints: [BodyPoint?]) {
+    func showKeypointsDescription(with n_kpoints: [PredictedPoint?]) {
         self.tableData = n_kpoints
         self.labelsTableView.reloadData()
     }
