@@ -6,17 +6,17 @@
 
 This project is Pose Estimation on iOS with Core ML.<br>If you are interested in iOS + Machine Learning, visit [here](https://github.com/motlabs/iOS-Proejcts-with-ML-Models) you can see various DEMOs.<br>
 
-| Jointed Keypoints                                            | Concatenated heatmap                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![poseestimation-demo-joint.gif](resource/180801-poseestimation-demo.gif?raw=true) | ![poseestimation-demo-heatmap.gif](resource/180914-poseestimation-demo.gif) |
-
 [한국어 README](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/README_kr.md)
+
+| Jointed Keypoints                                            | Concatenated heatmap                                         | Still Image |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![poseestimation-demo-joint.gif](resource/180801-poseestimation-demo.gif) | ![poseestimation-demo-heatmap.gif](resource/180914-poseestimation-demo.gif) | (preparing...) |
+
+Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
 
 ## How it works
 
 ![how_it_works](resource/how_it_works.png)
-
-Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
 
 ## Requirements
 
@@ -34,10 +34,7 @@ Download this temporary models from [following link](models).
 
 Or
 
-Here<br>
 ☞ Download Core ML model [model_cpm.mlmodel](https://github.com/tucan9389/pose-estimation-for-mobile/tree/master/release/cpm_model) or [hourglass.mlmodel](https://github.com/tucan9389/pose-estimation-for-mobile/tree/master/release/hourglass_model).
-
-
 
 > input_name_shape_dict = {"image:0":[1,192,192,3]} image_input_names=["image:0"] <br>output_feature_names = ['Convolutional_Pose_Machine/stage_5_out:0']
 >
@@ -55,15 +52,16 @@ Here<br>
 
 #### Inference Time
 
-|               | cpm       | hourglass |
-| ------------- | --------- | --------- |
-| iPhone XS     | (`TODO`)  | (`TODO`)  |
-| iPhone XS Max | (`TODO`)  | (`TODO`)  |
-| iPhone X      | 51 ms     | 49 ms     |
-| iPhone 8+     | 49 ms     | 46 ms     |
-| iPhone 8      | (`TODO`)  | (`TODO`)  |
-| iPhone 7      | (`TODO`)  | (`TODO`)  |
-| iPhone 6+     | 200 ms    | 180 ms    |
+| Device                    | cpm       | hourglass |
+| ------------------------- | --------- | --------- |
+| iPhone XS                 | (`TODO`)  | (`TODO`)  |
+| iPhone XS Max             | (`TODO`)  | (`TODO`)  |
+| iPad Pro (3rd generation) | **21 ms** | **11 ms** |
+| iPhone X                  | 51 ms     | 49 ms     |
+| iPhone 8+                 | 49 ms     | 46 ms     |
+| iPhone 8                  | (`TODO`)  | (`TODO`)  |
+| iPhone 7                  | (`TODO`)  | (`TODO`)  |
+| iPhone 6+                 | 200 ms    | 180 ms    |
 
 ### Get your own model
 
