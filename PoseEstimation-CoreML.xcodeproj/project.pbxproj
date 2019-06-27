@@ -115,7 +115,7 @@
 			path = "Heatmap View Controller";
 			sourceTree = "<group>";
 		};
-		554F148E2203059B00B828B0 /* Utilities */ = {
+		554F148E2203059B00B828B0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				71EF2DC422C4878D009391C8 /* PredictedPoint.swift */,
@@ -123,7 +123,7 @@
 				71EF2DC022C3662A009391C8 /* MovingAverageFilter.swift */,
 				554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */,
 			);
-			path = Utilities;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		557F530620ED252100CFCCD7 = {
@@ -155,7 +155,7 @@
 				554F148C2203057400B828B0 /* Joint View Controller */,
 				554F148D2203058100B828B0 /* Heatmap View Controller */,
 				7165F75A227177320010F164 /* Still Image Heatmap View Controller */,
-				554F148E2203059B00B828B0 /* Utilities */,
+				554F148E2203059B00B828B0 /* Common */,
 				557F532420ED25AF00CFCCD7 /* VideoCapture.swift */,
 				557F532520ED25AF00CFCCD7 /* Measure.swift */,
 				557F531620ED252100CFCCD7 /* Main.storyboard */,
