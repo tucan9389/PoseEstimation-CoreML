@@ -14,13 +14,13 @@ extension CGPoint {
     }
     
     static func /(lhs: CGPoint, rhs: CGFloat) -> CGPoint {
-        guard rhs == 0.0 else { return lhs }
+        guard rhs != 0.0 else { return lhs }
         return CGPoint(x: lhs.x / rhs, y: lhs.y / rhs)
     }
 }
 
 class MovingAverageFilter {
-    var elements: [CGPoint?] = []
+    var elements: [PredictedPoint?] = []
     private var limit: Int
     
     init(limit: Int) {
@@ -29,17 +29,19 @@ class MovingAverageFilter {
         self.limit = limit
     }
     
-    func add(element: CGPoint?) {
+    func add(element: PredictedPoint?) {
         elements.append(element)
         while self.elements.count > self.limit {
             self.elements.removeFirst()
         }
     }
     
-    func averagedValue() -> CGPoint? {
-        let nonoptionalElements = elements.compactMap{ $0 }
-        guard !nonoptionalElements.isEmpty else { return nil }
-        let sum = nonoptionalElements.reduce( CGPoint.zero ) { $0 + $1 }
-        return sum / CGFloat(nonoptionalElements.count)
+    func averagedValue() -> PredictedPoint? {
+        let nonoptionalPoints: [CGPoint] = elements.compactMap{ $0?.maxPoint }
+        let nonoptionalConfidences: [Double] = elements.compactMap{ $0?.maxConfidence }
+        guard !nonoptionalPoints.isEmpty && !nonoptionalConfidences.isEmpty else { return nil }
+        let sumPoint = nonoptionalPoints.reduce( CGPoint.zero ) { $0 + $1 }
+        let sumConfidence = nonoptionalConfidences.reduce( 0.0 ) { $0 + $1 }
+        return PredictedPoint(maxPoint: sumPoint / CGFloat(nonoptionalPoints.count), maxConfidence: sumConfidence)
     }
 }

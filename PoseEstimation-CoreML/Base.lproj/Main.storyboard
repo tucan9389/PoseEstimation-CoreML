@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ANC-ac-LRL">
-                                <rect key="frame" x="0.0" y="544" width="375" height="185"/>
+                                <rect key="frame" x="0.0" y="588" width="375" height="141"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" textLabel="vuI-qX-Ro3" detailTextLabel="ao9-EW-FOm" rowHeight="30" style="IBUITableViewCellStyleValue1" id="vHG-rq-dWg">
@@ -49,14 +49,14 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rN-aG-qiz">
-                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="500"/>
                                 <color key="backgroundColor" red="0.86274509799999999" green="0.63529411759999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2rN-aG-qiz" secondAttribute="height" multiplier="375:500" id="BHb-1Q-Fwx"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLx-8G-3ly" customClass="DrawingJointView" customModule="PoseEstimation_CoreML">
-                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="500"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjo-wQ-8x2">
@@ -120,7 +120,7 @@
                             <constraint firstItem="ANC-ac-LRL" firstAttribute="top" secondItem="2rN-aG-qiz" secondAttribute="bottom" id="lpr-Gt-ULp"/>
                             <constraint firstItem="PLx-8G-3ly" firstAttribute="leading" secondItem="2rN-aG-qiz" secondAttribute="leading" id="td5-Sj-ZEW"/>
                             <constraint firstItem="PLx-8G-3ly" firstAttribute="top" secondItem="2rN-aG-qiz" secondAttribute="top" id="tea-wL-pgb"/>
-                            <constraint firstItem="2rN-aG-qiz" firstAttribute="top" secondItem="sDs-Q1-Yp7" secondAttribute="top" id="wFO-aE-wuF"/>
+                            <constraint firstItem="2rN-aG-qiz" firstAttribute="top" secondItem="tjo-wQ-8x2" secondAttribute="bottom" id="wFO-aE-wuF"/>
                             <constraint firstItem="tjo-wQ-8x2" firstAttribute="top" secondItem="sDs-Q1-Yp7" secondAttribute="top" id="y8B-rj-XB1"/>
                             <constraint firstItem="2rN-aG-qiz" firstAttribute="trailing" secondItem="sDs-Q1-Yp7" secondAttribute="trailing" id="yDi-ZH-NJJ"/>
                             <constraint firstItem="sDs-Q1-Yp7" firstAttribute="bottom" secondItem="ANC-ac-LRL" secondAttribute="bottom" id="yL7-n0-lsW"/>
@@ -150,14 +150,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfl-UW-9Tf">
-                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="500"/>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.4543942809" blue="0.74818307159999997" alpha="0.77022688360000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hfl-UW-9Tf" secondAttribute="height" multiplier="3:4" id="pDT-Dx-eH6"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKm-U6-N6o" customClass="DrawingHeatmapView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="500"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hKm-U6-N6o" secondAttribute="height" multiplier="3:4" id="Iot-8P-TQA"/>
@@ -217,7 +217,7 @@
                             <constraint firstItem="hfl-UW-9Tf" firstAttribute="leading" secondItem="o9C-jT-hHf" secondAttribute="leading" id="0Bg-0F-U7k"/>
                             <constraint firstItem="hKm-U6-N6o" firstAttribute="leading" secondItem="hfl-UW-9Tf" secondAttribute="leading" id="5GY-fT-18f"/>
                             <constraint firstItem="SyG-oX-ZlQ" firstAttribute="top" secondItem="o9C-jT-hHf" secondAttribute="top" id="SQU-4D-4Gb"/>
-                            <constraint firstItem="hfl-UW-9Tf" firstAttribute="top" secondItem="o9C-jT-hHf" secondAttribute="top" id="Uhd-VD-UHZ"/>
+                            <constraint firstItem="hfl-UW-9Tf" firstAttribute="top" secondItem="SyG-oX-ZlQ" secondAttribute="bottom" id="Uhd-VD-UHZ"/>
                             <constraint firstItem="o9C-jT-hHf" firstAttribute="trailing" secondItem="SyG-oX-ZlQ" secondAttribute="trailing" id="WZc-9x-599"/>
                             <constraint firstItem="o9C-jT-hHf" firstAttribute="trailing" secondItem="hfl-UW-9Tf" secondAttribute="trailing" id="aKL-aL-RRs"/>
                             <constraint firstItem="hKm-U6-N6o" firstAttribute="top" secondItem="hfl-UW-9Tf" secondAttribute="top" id="cBA-at-c5x"/>

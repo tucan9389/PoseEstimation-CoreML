@@ -38,6 +38,7 @@ class JointViewController: UIViewController {
     
     // Postprocess
     var postProcessor: HeatmapPostProcessor = HeatmapPostProcessor()
+    var mvfilters: [MovingAverageFilter] = []
     
     // Inference Result Data
     private var tableData: [PredictedPoint?] = []
@@ -137,25 +138,41 @@ extension JointViewController {
         try? handler.perform([request])
     }
     
-    // MARK: - Poseprocessing
+    // MARK: - Postprocessing
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
         self.👨‍🔧.🏷(with: "endInference")
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
             let heatmaps = observations.first?.featureValue.multiArrayValue {
             
-            // convert heatmap to [keypoint]
-            let n_kpoints = postProcessor.convertToBodyPoint(from: heatmaps)
+            /* =================================================================== */
+            /* ========================= post-processing ========================= */
             
+            /* ------------------ convert heatmap to point array ----------------- */
+            var predictedPoints = postProcessor.convertToPredictedPoints(from: heatmaps)
+            
+            /* --------------------- moving average filter ----------------------- */
+            if predictedPoints.count != mvfilters.count {
+                mvfilters = predictedPoints.map { _ in MovingAverageFilter(limit: 3) }
+            }
+            for (predictedPoint, filter) in zip(predictedPoints, mvfilters) {
+                filter.add(element: predictedPoint)
+            }
+            predictedPoints = mvfilters.map { $0.averagedValue() }
+            /* =================================================================== */
+            
+            /* =================================================================== */
+            /* ======================= display the results ======================= */
             DispatchQueue.main.sync {
                 // draw line
-                self.jointView.bodyPoints = n_kpoints
+                self.jointView.bodyPoints = predictedPoints
                 
                 // show key points description
-                self.showKeypointsDescription(with: n_kpoints)
+                self.showKeypointsDescription(with: predictedPoints)
                 
                 // end of measure
                 self.👨‍🔧.🎬🤚()
             }
+            /* =================================================================== */
         } else {
             // end of measure
             self.👨‍🔧.🎬🤚()
@@ -186,7 +203,6 @@ extension JointViewController: UITableViewDataSource {
         return cell
     }
 }
-
 
 // MARK: - 📏(Performance Measurement) Delegate
 extension JointViewController: 📏Delegate {

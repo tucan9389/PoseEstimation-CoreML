@@ -10,7 +10,7 @@ import Foundation
 import CoreML
 
 class HeatmapPostProcessor {
-    func convertToBodyPoint(from heatmaps: MLMultiArray) -> [PredictedPoint?] {
+    func convertToPredictedPoints(from heatmaps: MLMultiArray) -> [PredictedPoint?] {
         guard heatmaps.shape.count >= 3 else {
             print("heatmap's shape is invalid. \(heatmaps.shape)")
             return []
