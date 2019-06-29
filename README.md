@@ -10,7 +10,7 @@ This project is Pose Estimation on iOS with Core ML.<br>If you are interested in
 
 | Jointed Keypoints                                            | Concatenated heatmap                                         | Still Image |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![poseestimation-demo-joint.gif](resource/180801-poseestimation-demo.gif) | ![poseestimation-demo-heatmap.gif](resource/180914-poseestimation-demo.gif) | (preparing...) |
+| ![poseestimation-demo-joint.gif](resource/190629-poseestimation-joint-demo.gif) | ![poseestimation-demo-heatmap.gif](resource/190629-poseestimation-heatmap-demo.gif) | ![poseestimation-demo-stillimage.gif](resource/190629-poseestimation-stillimage-demo.gif) |
 
 Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
 
