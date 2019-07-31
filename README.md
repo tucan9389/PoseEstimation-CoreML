@@ -24,7 +24,7 @@ Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.
 - iOS 11.0+
 - Swift 4
 
-## Download model
+## Model
 
 ### Get PoseEstimationForMobile's model
 
@@ -40,28 +40,33 @@ Or
 >
 > －in [https://github.com/tucan9389/pose-estimation-for-mobile](https://github.com/tucan9389/pose-estimation-for-mobile)
 
-#### Matadata
+### Model Size, Minimum iOS Version, Input/Output Shape
 
-|                  | cpm                                      | hourglass          |
-| ---------------- | ---------------------------------------- | ------------------ |
-| Input shape      | `[1, 192, 192, 3]`                       | `[1, 192, 192, 3]` |
-| Output shape     | `[1, 96, 96, 14]`                        | `[1, 48, 48, 14]`  |
-| Input node name  | `image`                                  | `image`            |
-| Output node name | `Convolutional_Pose_Machine/stage_5_out` | `hourglass_out_3`  |
-| Model size       | 2.6 MB                                   | 2.0 MB             |
+| Model | Size<br>(MB) | Minimum<br>iOS Version | Input Shape | Output Shape |
+| ----: | :----: | :----: | :----: | :----: |
+| cpm | 2.6 | iOS11 | `[1, 192, 192, 3]` | `[1, 96, 96, 14]` |
+| hourhglass | 2 | iOS11 | `[1, 192, 192, 3]` | `[1, 48, 48, 14]` |
 
-#### Inference Time
+### Infernece Time (ms)
 
-| Device                    | cpm       | hourglass |
-| ------------------------- | --------- | --------- |
-| iPhone XS                 | (`TODO`)  | (`TODO`)  |
-| iPhone XS Max             | (`TODO`)  | (`TODO`)  |
-| iPad Pro (3rd generation) | **21 ms** | **11 ms** |
-| iPhone X                  | 51 ms     | 49 ms     |
-| iPhone 8+                 | 49 ms     | 46 ms     |
-| iPhone 8                  | (`TODO`)  | (`TODO`)  |
-| iPhone 7                  | (`TODO`)  | (`TODO`)  |
-| iPhone 6+                 | 200 ms    | 180 ms    |
+| Model vs. Device | XS | XS<br>Max | XR | X | 8 | 8+ | 7 | 7+ | 6S+ | 6+ |
+| ----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| cpm | - | 27 | 27 | 32 | 31 | 31 | 39 | 37 | 44 | 115 |
+| hourhglass | - | 6 | 7 | 29 | 31 | 32 | 37 | 42 | 48 | 94 |
+
+### Total Time (ms)
+
+| Model vs. Device | XS | XS<br>Max | XR | X | 8 | 8+ | 7 | 7+ | 6S+ | 6+ |
+| ----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| cpm | - | 39 | 40 | 46 | 47 | 45 | 55 | 58 | 56 | 139 |
+| hourhglass | - | 15 | 15 | 38 | 40 | 40 | 48 | 55 | 58 | 106 |
+
+### FPS
+
+| Model vs. Device | XS | XS<br>Max | XR | X | 8 | 8+ | 7 | 7+ | 6S+ | 6+ |
+| ----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| cpm | - | 23 | 23 | 20 | 20 | 21 | 17 | 16 | 16 | 6 |
+| hourhglass | - | 23 | 23 | 24 | 23 | 23 | 19 | 16 | 15 | 8 |
 
 ### Get your own model
 
