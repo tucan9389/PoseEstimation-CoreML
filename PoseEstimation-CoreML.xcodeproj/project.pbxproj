@@ -11,10 +11,6 @@
 		554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */; };
 		554F14832202B82600B828B0 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */; };
 		554F14842202BB7200B828B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 557F531920ED252400CFCCD7 /* Assets.xcassets */; };
-		554F14872202C28E00B828B0 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 554F14862202C28E00B828B0 /* model_cpm.mlmodel */; };
-		554F14892202C2B300B828B0 /* model_houtglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 554F14882202C2B300B828B0 /* model_houtglass.mlmodel */; };
-		554F148A2202C34900B828B0 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 554F14862202C28E00B828B0 /* model_cpm.mlmodel */; };
-		554F148B2202C34900B828B0 /* model_houtglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 554F14882202C2B300B828B0 /* model_houtglass.mlmodel */; };
 		555B477421F61234009026AB /* DrawingJointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555B477321F61234009026AB /* DrawingJointView.swift */; };
 		557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531220ED252100CFCCD7 /* AppDelegate.swift */; };
 		557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F531420ED252100CFCCD7 /* JointViewController.swift */; };
@@ -25,12 +21,13 @@
 		557F532820ED25B000CFCCD7 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F532520ED25AF00CFCCD7 /* Measure.swift */; };
 		55AAFB1C21128863000B21A3 /* HeatmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */; };
 		55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */; };
-		7118042F22773603007398DB /* hg_1e8_20190429222029.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7118042E22773603007398DB /* hg_1e8_20190429222029.mlmodel */; };
+		714087F32302E7AC00F7EDF4 /* PoseMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714087F22302E7AC00F7EDF4 /* PoseMatchingViewController.swift */; };
 		7165F7592271772A0010F164 /* StillImageHeatmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165F7582271772A0010F164 /* StillImageHeatmapViewController.swift */; };
-		7165F75C22717F010010F164 /* mv2_cpm_model_98000.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7165F75B22717F010010F164 /* mv2_cpm_model_98000.mlmodel */; };
 		71EF2DC122C3662A009391C8 /* MovingAverageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF2DC022C3662A009391C8 /* MovingAverageFilter.swift */; };
 		71EF2DC322C469FD009391C8 /* HeatmapPostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF2DC222C469FD009391C8 /* HeatmapPostProcessor.swift */; };
 		71EF2DC522C4878D009391C8 /* PredictedPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF2DC422C4878D009391C8 /* PredictedPoint.swift */; };
+		71F1455322F1C890000ED787 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455122F1C890000ED787 /* model_cpm.mlmodel */; };
+		71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +45,6 @@
 		554F14762202B07B00B828B0 /* PoseEstimation_CoreMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimation_CoreMLTests.swift; sourceTree = "<group>"; };
 		554F14782202B07B00B828B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
-		554F14862202C28E00B828B0 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_cpm.mlmodel; sourceTree = "<group>"; };
-		554F14882202C2B300B828B0 /* model_houtglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_houtglass.mlmodel; sourceTree = "<group>"; };
 		555B477321F61234009026AB /* DrawingJointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingJointView.swift; sourceTree = "<group>"; };
 		557F530F20ED252100CFCCD7 /* PoseEstimation-CoreML.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PoseEstimation-CoreML.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		557F531220ED252100CFCCD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,12 +57,13 @@
 		557F532520ED25AF00CFCCD7 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapViewController.swift; sourceTree = "<group>"; };
 		55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingHeatmapView.swift; sourceTree = "<group>"; };
-		7118042E22773603007398DB /* hg_1e8_20190429222029.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = hg_1e8_20190429222029.mlmodel; sourceTree = "<group>"; };
+		714087F22302E7AC00F7EDF4 /* PoseMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseMatchingViewController.swift; sourceTree = "<group>"; };
 		7165F7582271772A0010F164 /* StillImageHeatmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillImageHeatmapViewController.swift; sourceTree = "<group>"; };
-		7165F75B22717F010010F164 /* mv2_cpm_model_98000.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = mv2_cpm_model_98000.mlmodel; path = "../../../../../Just-Point/models/mv2_cpm_fingertip_p2_1_7/models/mv2_cpm_batch-5_lr-0.001_gpus-1_224x224_experiments-mv2_cpm_mydataset_p2_spot1/mlmodel/mv2_cpm_model_98000.mlmodel"; sourceTree = "<group>"; };
 		71EF2DC022C3662A009391C8 /* MovingAverageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingAverageFilter.swift; sourceTree = "<group>"; };
 		71EF2DC222C469FD009391C8 /* HeatmapPostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapPostProcessor.swift; sourceTree = "<group>"; };
 		71EF2DC422C4878D009391C8 /* PredictedPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedPoint.swift; sourceTree = "<group>"; };
+		71F1455122F1C890000ED787 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_cpm.mlmodel; sourceTree = "<group>"; };
+		71F1455222F1C890000ED787 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_hourglass.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,14 +143,13 @@
 		557F531120ED252100CFCCD7 /* PoseEstimation-CoreML */ = {
 			isa = PBXGroup;
 			children = (
-				554F14862202C28E00B828B0 /* model_cpm.mlmodel */,
-				554F14882202C2B300B828B0 /* model_houtglass.mlmodel */,
-				7165F75B22717F010010F164 /* mv2_cpm_model_98000.mlmodel */,
-				7118042E22773603007398DB /* hg_1e8_20190429222029.mlmodel */,
+				71F1455122F1C890000ED787 /* model_cpm.mlmodel */,
+				71F1455222F1C890000ED787 /* model_hourglass.mlmodel */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
 				554F148C2203057400B828B0 /* Joint View Controller */,
 				554F148D2203058100B828B0 /* Heatmap View Controller */,
 				7165F75A227177320010F164 /* Still Image Heatmap View Controller */,
+				714087F42302E7B000F7EDF4 /* Pose Matching View Controller */,
 				554F148E2203059B00B828B0 /* Common */,
 				557F532420ED25AF00CFCCD7 /* VideoCapture.swift */,
 				557F532520ED25AF00CFCCD7 /* Measure.swift */,
@@ -164,6 +159,14 @@
 				557F531E20ED252400CFCCD7 /* Info.plist */,
 			);
 			path = "PoseEstimation-CoreML";
+			sourceTree = "<group>";
+		};
+		714087F42302E7B000F7EDF4 /* Pose Matching View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				714087F22302E7AC00F7EDF4 /* PoseMatchingViewController.swift */,
+			);
+			path = "Pose Matching View Controller";
 			sourceTree = "<group>";
 		};
 		7165F75A227177320010F164 /* Still Image Heatmap View Controller */ = {
@@ -277,8 +280,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				554F148A2202C34900B828B0 /* model_cpm.mlmodel in Sources */,
-				554F148B2202C34900B828B0 /* model_houtglass.mlmodel in Sources */,
 				554F14772202B07B00B828B0 /* PoseEstimation_CoreMLTests.swift in Sources */,
 				554F14832202B82600B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
 			);
@@ -288,20 +289,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7118042F22773603007398DB /* hg_1e8_20190429222029.mlmodel in Sources */,
+				71F1455322F1C890000ED787 /* model_cpm.mlmodel in Sources */,
 				55AAFB1C21128863000B21A3 /* HeatmapViewController.swift in Sources */,
 				71EF2DC122C3662A009391C8 /* MovingAverageFilter.swift in Sources */,
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
 				7165F7592271772A0010F164 /* StillImageHeatmapViewController.swift in Sources */,
 				55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */,
-				554F14872202C28E00B828B0 /* model_cpm.mlmodel in Sources */,
-				7165F75C22717F010010F164 /* mv2_cpm_model_98000.mlmodel in Sources */,
+				71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
 				555B477421F61234009026AB /* DrawingJointView.swift in Sources */,
 				71EF2DC322C469FD009391C8 /* HeatmapPostProcessor.swift in Sources */,
 				554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
 				557F532820ED25B000CFCCD7 /* Measure.swift in Sources */,
-				554F14892202C2B300B828B0 /* model_houtglass.mlmodel in Sources */,
+				714087F32302E7AC00F7EDF4 /* PoseMatchingViewController.swift in Sources */,
 				557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */,
 				71EF2DC522C4878D009391C8 /* PredictedPoint.swift in Sources */,
 			);

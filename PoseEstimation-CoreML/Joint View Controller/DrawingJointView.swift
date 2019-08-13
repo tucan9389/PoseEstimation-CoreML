@@ -60,7 +60,7 @@ class DrawingJointView: UIView {
             
             let color = Constant.jointLineColor.cgColor
             if Constant.pointLabels.count == bodyPoints.count {
-                let _ = Constant.connectingPointIndexs.map { pIndex1, pIndex2 in
+                let _ = Constant.connectedPointIndexPairs.map { pIndex1, pIndex2 in
                     if let bp1 = self.bodyPoints[pIndex1], bp1.maxConfidence > 0.5,
                         let bp2 = self.bodyPoints[pIndex2], bp2.maxConfidence > 0.5 {
                         let p1 = bp1.maxPoint
@@ -132,7 +132,7 @@ struct Constant {
         "L ankle",      //13
     ]
     
-    static let connectingPointIndexs: [(Int, Int)] = [
+    static let connectedPointIndexPairs: [(Int, Int)] = [
         (0, 1),     // top-neck
         
         (1, 2),     // neck-rshoulder
@@ -154,7 +154,7 @@ struct Constant {
                                                  blue: 211.0/255.0,
                                                  alpha: 0.5)
     
-    static let colors: [UIColor] = [
+    static var colors: [UIColor] = [
         .red,
         .green,
         .blue,
@@ -169,5 +169,7 @@ struct Constant {
         .lightGray,
         .white,
         .gray,
-        ]
+    ]
+
+        
 }
