@@ -16,6 +16,7 @@ class PoseMatchingViewController: UIViewController {
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var jointView: DrawingJointView!
     @IBOutlet var capturedJointViews: [DrawingJointView]!
+    var capturedPointsArray: [[CapturedPoint?]?] = []
     
     var capturedIndex = 0
     
@@ -69,6 +70,8 @@ class PoseMatchingViewController: UIViewController {
             capturedJointView.layer.borderWidth = 2
             capturedJointView.layer.borderColor = UIColor.gray.cgColor
         }
+        
+        capturedPointsArray = capturedJointViews.map { _ in return nil }
     }
     
     // MARK: - Setup Core ML
@@ -111,11 +114,18 @@ class PoseMatchingViewController: UIViewController {
         videoCapture.previewLayer?.frame = videoPreview.bounds
     }
     
+    // CAPTURE THE CURRENT POSE
     @IBAction func tapCapture(_ sender: Any) {
         let currentIndex = capturedIndex % capturedJointViews.count
         let capturedJointView = capturedJointViews[currentIndex]
         
-        capturedJointView.bodyPoints = jointView.bodyPoints
+        let predictedPoints = jointView.bodyPoints
+        capturedJointView.bodyPoints = predictedPoints
+        let capturedPoints: [CapturedPoint?] = predictedPoints.map { predictedPoint in
+            guard let predictedPoint = predictedPoint else { return nil }
+            return CapturedPoint(predictedPoint: predictedPoint)
+        }
+        capturedPointsArray[capturedIndex] = capturedPoints
         
         capturedIndex += 1
     }

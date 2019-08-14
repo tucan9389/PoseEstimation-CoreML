@@ -12,3 +12,11 @@ struct PredictedPoint {
     let maxPoint: CGPoint
     let maxConfidence: Double
 }
+
+struct CapturedPoint {
+    let point: CGPoint
+    
+    init(predictedPoint: PredictedPoint) {
+        point = predictedPoint.maxPoint
+    }
+}
