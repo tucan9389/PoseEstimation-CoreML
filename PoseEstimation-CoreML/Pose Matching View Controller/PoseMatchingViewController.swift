@@ -16,6 +16,8 @@ class PoseMatchingViewController: UIViewController {
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var jointView: DrawingJointView!
     @IBOutlet var capturedJointViews: [DrawingJointView]!
+    @IBOutlet var capturedJointConfidenceLabels: [UILabel]!
+    @IBOutlet var capturedJointBGViews: [UIView]!
     var capturedPointsArray: [[CapturedPoint?]?] = []
     
     var capturedIndex = 0
@@ -72,6 +74,18 @@ class PoseMatchingViewController: UIViewController {
         }
         
         capturedPointsArray = capturedJointViews.map { _ in return nil }
+        
+        for currentIndex in 0..<capturedPointsArray.count {
+            // retrieving a value for a key
+            if let data = UserDefaults.standard.data(forKey: "points-\(currentIndex)"),
+                let capturedPoints = NSKeyedUnarchiver.unarchiveObject(with: data) as? [CapturedPoint?] {
+                capturedPointsArray[currentIndex] = capturedPoints
+                capturedJointViews[currentIndex].bodyPoints = capturedPoints.map { capturedPoint in
+                    if let capturedPoint = capturedPoint { return PredictedPoint(capturedPoint: capturedPoint) }
+                    else { return nil }
+                }
+            }
+        }
     }
     
     // MARK: - Setup Core ML
@@ -125,7 +139,11 @@ class PoseMatchingViewController: UIViewController {
             guard let predictedPoint = predictedPoint else { return nil }
             return CapturedPoint(predictedPoint: predictedPoint)
         }
-        capturedPointsArray[capturedIndex] = capturedPoints
+        capturedPointsArray[currentIndex] = capturedPoints
+        
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: capturedPoints)
+        UserDefaults.standard.set(encodedData, forKey: "points-\(currentIndex)")
+        print(UserDefaults.standard.synchronize())
         
         capturedIndex += 1
     }
@@ -171,12 +189,25 @@ extension PoseMatchingViewController {
         predictedPoints = mvfilters.map { $0.averagedValue() }
         /* =================================================================== */
         
+        let matchingRatios = capturedPointsArray
+            .map { $0?.match(with: predictedPoints) }
+            .compactMap { $0 }
+        
+        
+        
         /* =================================================================== */
         /* ======================= display the results ======================= */
         DispatchQueue.main.sync { [weak self] in
             guard let self = self else { return }
             // draw line
             self.jointView.bodyPoints = predictedPoints
+            
+            for (matchingRatio, (capturedJointBGView, capturedJointConfidenceLabel)) in zip(matchingRatios, zip(self.capturedJointBGViews, self.capturedJointConfidenceLabels)) {
+                let text = String(format: "%.2f%", matchingRatio*100)
+                capturedJointConfidenceLabel.text = text
+                
+            }
+//            print(matchingRatios)
         }
         /* =================================================================== */
     }
