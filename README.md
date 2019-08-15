@@ -10,7 +10,7 @@ This project is Pose Estimation on iOS with Core ML.<br>If you are interested in
 
 | Jointed Keypoints | Concatenated heatmap  | Still Image | Pose Matching |
 | :-----: | :-----: | :-----: | :----: |
-| ![poseestimation-demo-joint.gif](resource/190629-poseestimation-joint-demo.gif) | ![poseestimation-demo-heatmap.gif](resource/190629-poseestimation-heatmap-demo.gif) | ![poseestimation-demo-stillimage.gif](resource/190629-poseestimation-stillimage-demo.gif) | Preparing...([PR](#19)) |
+| ![poseestimation-demo-joint.gif](resource/190629-poseestimation-joint-demo.gif) | ![poseestimation-demo-heatmap.gif](resource/190629-poseestimation-heatmap-demo.gif) | ![poseestimation-demo-stillimage.gif](resource/190629-poseestimation-stillimage-demo.gif) | Preparing...([PR](https://github.com/tucan9389/PoseEstimation-CoreML/pull/19)) |
 
 Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
 
@@ -150,13 +150,13 @@ You can download cpm or hourglass model for Core ML from [tucan9389/pose-estimat
 
 ### 2. Fix the model name on [`PoseEstimation_CoreMLTests.swift`](PoseEstimation-CoreMLTests/PoseEstimation_CoreMLTests.swift)
 
-![fix-model-name-for-testing](resource/fix-model-name-for-testing.png)
+<img src="resource/fix-model-name-for-testing.png" width="660px">
 
 ### 3. Run the test
 
 Hit the `⌘ + U` or click the `Build for Testing` icon.
 
-![build-for-testing](resource/build-for-testing.png)
+<img src="resource/build-for-testing.png" width="320px">
 
 
 
