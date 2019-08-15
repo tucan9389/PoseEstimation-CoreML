@@ -267,7 +267,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXB-KZ-K0f">
-                                <rect key="frame" x="0.0" y="88" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="25.666666666666686" width="375" height="500.00000000000006"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.90588235289999997" blue="0.10980392160000001" alpha="0.66521297089999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="600" id="Njs-HF-Oon"/>
@@ -275,17 +275,17 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1i-aw-rU0" customClass="DrawingJointView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="150.66666666666663" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="375"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="B1i-aw-rU0" secondAttribute="height" multiplier="1:1" id="TPp-zw-UWU"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mh5-gE-hl2">
-                                <rect key="frame" x="0.0" y="588" width="375" height="141"/>
+                                <rect key="frame" x="0.0" y="463" width="375" height="266"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhA-Z3-8F3">
-                                        <rect key="frame" x="4" y="26" width="88.666666666666671" height="89"/>
+                                        <rect key="frame" x="4" y="88.666666666666629" width="88.666666666666671" height="88.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pose 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg4-YB-cKm">
                                                 <rect key="frame" x="27" y="2" width="35" height="13"/>
@@ -294,7 +294,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd1-xq-t9Y">
-                                                <rect key="frame" x="5.3333333333333357" y="61.333333333333371" width="78" height="25.666666666666664"/>
+                                                <rect key="frame" x="5.3333333333333357" y="61.333333333333371" width="78" height="25.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -309,14 +309,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmX-0R-ylu" customClass="DrawingJointView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
-                                        <rect key="frame" x="4" y="26" width="88.666666666666671" height="89"/>
+                                        <rect key="frame" x="4" y="88.666666666666629" width="88.666666666666671" height="88.666666666666686"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="nmX-0R-ylu" secondAttribute="height" multiplier="1:1" id="Tiy-EW-Wkc"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jh3-lS-lss">
-                                        <rect key="frame" x="96.666666666666686" y="26" width="89" height="89"/>
+                                        <rect key="frame" x="96.666666666666686" y="88.666666666666629" width="89" height="88.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pose 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOa-p8-EV0">
                                                 <rect key="frame" x="26" y="2" width="37" height="13"/>
@@ -325,7 +325,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfQ-Uc-l2d">
-                                                <rect key="frame" x="5.3333333333333286" y="61.333333333333371" width="78" height="25.666666666666664"/>
+                                                <rect key="frame" x="5.3333333333333286" y="61.333333333333371" width="78" height="25.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -340,11 +340,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqC-WD-m3H" customClass="DrawingJointView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
-                                        <rect key="frame" x="96.666666666666686" y="26" width="89" height="89"/>
+                                        <rect key="frame" x="96.666666666666686" y="88.666666666666629" width="89" height="88.666666666666686"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxO-gy-dTc">
-                                        <rect key="frame" x="189.66666666666666" y="26" width="88.666666666666657" height="89"/>
+                                        <rect key="frame" x="189.66666666666666" y="88.666666666666629" width="88.666666666666657" height="88.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pose 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2x-sE-fIv">
                                                 <rect key="frame" x="25.666666666666686" y="2" width="37" height="13"/>
@@ -353,7 +353,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gm5-07-cCU">
-                                                <rect key="frame" x="5.3333333333333428" y="61.333333333333371" width="78" height="25.666666666666664"/>
+                                                <rect key="frame" x="5.3333333333333428" y="61.333333333333371" width="78" height="25.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -368,11 +368,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B0b-kV-Nw7" customClass="DrawingJointView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
-                                        <rect key="frame" x="189.66666666666666" y="26" width="88.666666666666657" height="89"/>
+                                        <rect key="frame" x="189.66666666666666" y="88.666666666666629" width="88.666666666666657" height="88.666666666666686"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWv-uq-9oZ">
-                                        <rect key="frame" x="282.33333333333331" y="26" width="88.666666666666686" height="89"/>
+                                        <rect key="frame" x="282.33333333333331" y="88.666666666666629" width="88.666666666666686" height="88.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pose 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-Y7-zs9">
                                                 <rect key="frame" x="25.333333333333371" y="2" width="38" height="13"/>
@@ -381,7 +381,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29C-uK-GGx">
-                                                <rect key="frame" x="5.3333333333333712" y="61.333333333333371" width="78" height="25.666666666666664"/>
+                                                <rect key="frame" x="5.3333333333333712" y="61.333333333333371" width="78" height="25.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -396,7 +396,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFq-3u-WKh" customClass="DrawingJointView" customModule="PoseEstimation_CoreML" customModuleProvider="target">
-                                        <rect key="frame" x="282.33333333333331" y="26" width="88.666666666666686" height="89"/>
+                                        <rect key="frame" x="282.33333333333331" y="88.666666666666629" width="88.666666666666686" height="88.666666666666686"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -438,16 +438,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZXB-KZ-K0f" firstAttribute="top" secondItem="na2-5i-Dot" secondAttribute="top" id="2Tx-mh-HB9"/>
+                            <constraint firstItem="ZXB-KZ-K0f" firstAttribute="centerY" secondItem="B1i-aw-rU0" secondAttribute="centerY" id="4Ga-zT-Xd9"/>
                             <constraint firstItem="ZXB-KZ-K0f" firstAttribute="width" secondItem="fVM-GF-2fZ" secondAttribute="width" priority="750" id="64U-VA-XN0"/>
                             <constraint firstItem="B1i-aw-rU0" firstAttribute="width" secondItem="ZXB-KZ-K0f" secondAttribute="width" id="8Fp-qR-Sl7"/>
                             <constraint firstItem="mh5-gE-hl2" firstAttribute="leading" secondItem="na2-5i-Dot" secondAttribute="leading" id="LPo-6k-HLg"/>
                             <constraint firstItem="ZXB-KZ-K0f" firstAttribute="centerX" secondItem="fVM-GF-2fZ" secondAttribute="centerX" id="R5e-8t-aNY"/>
+                            <constraint firstItem="B1i-aw-rU0" firstAttribute="top" secondItem="na2-5i-Dot" secondAttribute="top" id="XGr-Vn-R13"/>
                             <constraint firstItem="na2-5i-Dot" firstAttribute="bottom" secondItem="mh5-gE-hl2" secondAttribute="bottom" id="bco-Ij-bqf"/>
-                            <constraint firstItem="B1i-aw-rU0" firstAttribute="centerY" secondItem="ZXB-KZ-K0f" secondAttribute="centerY" id="jRz-N3-kqg"/>
                             <constraint firstItem="na2-5i-Dot" firstAttribute="trailing" secondItem="mh5-gE-hl2" secondAttribute="trailing" id="jtd-AG-VSb"/>
                             <constraint firstItem="B1i-aw-rU0" firstAttribute="centerX" secondItem="ZXB-KZ-K0f" secondAttribute="centerX" id="xbS-51-Woh"/>
-                            <constraint firstItem="mh5-gE-hl2" firstAttribute="top" secondItem="ZXB-KZ-K0f" secondAttribute="bottom" id="yLt-up-jGR"/>
+                            <constraint firstItem="mh5-gE-hl2" firstAttribute="top" secondItem="B1i-aw-rU0" secondAttribute="bottom" id="yLt-up-jGR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="na2-5i-Dot"/>
                     </view>
