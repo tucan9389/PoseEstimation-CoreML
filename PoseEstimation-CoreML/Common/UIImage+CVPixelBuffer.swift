@@ -48,4 +48,5 @@ extension UIImage {
         status = CVPixelBufferUnlockBaseAddress(pxbuffer!, CVPixelBufferLockFlags(rawValue: 0));
         return pxbuffer!;
         
-    }}
+    }
+}

@@ -10,6 +10,8 @@ import UIKit
 
 class DrawingJointView: UIView {
     
+    static let threshold = 0.23
+    
     // the count of array may be <#14#> when use PoseEstimationForMobile's model
     private var keypointLabelBGViews: [UIView] = []
 
@@ -23,13 +25,17 @@ class DrawingJointView: UIView {
     private func setUpLabels(with keypointsCount: Int) {
         self.subviews.forEach({ $0.removeFromSuperview() })
         
+        let pointSize = CGSize(width: 12, height: 12)
         keypointLabelBGViews = (0..<keypointsCount).map { index in
-            let color = Constant.colors[index%Constant.colors.count]
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 4, height: 4))
+            let color = PoseEstimationForMobileConstant.colors[index%PoseEstimationForMobileConstant.colors.count]
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: pointSize.width, height: pointSize.height))
             view.backgroundColor = color
             view.clipsToBounds = false
-            let label = UILabel(frame: CGRect(x: 4 + 3, y: -3, width: 100, height: 8))
-            label.text = Constant.pointLabels[index%Constant.colors.count]
+            view.layer.cornerRadius = 3
+            view.layer.borderColor = UIColor.black.cgColor
+            view.layer.borderWidth = 1.4
+            let label = UILabel(frame: CGRect(x: pointSize.width * 1.4, y: 0, width: 100, height: pointSize.height))
+            label.text = PoseEstimationForMobileConstant.pointLabels[index%PoseEstimationForMobileConstant.colors.count]
             label.textColor = color
             label.font = UIFont.preferredFont(forTextStyle: .caption2)
             view.addSubview(label)
@@ -37,18 +43,18 @@ class DrawingJointView: UIView {
             return view
         }
         
-        var x: CGFloat = 0.0
-        let y: CGFloat = self.frame.size.height - 24
-        let _ = (0..<keypointsCount).map { index in
-            let color = Constant.colors[index%Constant.colors.count]
-            if index == 2 || index == 8 { x += 28 }
-            else { x += 14 }
-            let view = UIView(frame: CGRect(x: x, y: y + 10, width: 4, height: 4))
-            view.backgroundColor = color
-            
-            self.addSubview(view)
-            return
-        }
+        //var x: CGFloat = 0.0
+        //let y: CGFloat = self.frame.size.height - 24
+        //let _ = (0..<keypointsCount).map { index in
+        //    let color = Constant.colors[index%Constant.colors.count]
+        //    if index == 2 || index == 8 { x += 28 }
+        //    else { x += 14 }
+        //    let view = UIView(frame: CGRect(x: x, y: y + 10, width: 4, height: 4))
+        //    view.backgroundColor = color
+        //
+        //    self.addSubview(view)
+        //    return
+        //}
     }
     
     override func draw(_ rect: CGRect) {
@@ -58,11 +64,11 @@ class DrawingJointView: UIView {
             
             let size = self.bounds.size
             
-            let color = Constant.jointLineColor.cgColor
-            if Constant.pointLabels.count == bodyPoints.count {
-                let _ = Constant.connectingPointIndexs.map { pIndex1, pIndex2 in
-                    if let bp1 = self.bodyPoints[pIndex1], bp1.maxConfidence > 0.5,
-                        let bp2 = self.bodyPoints[pIndex2], bp2.maxConfidence > 0.5 {
+            let color = PoseEstimationForMobileConstant.jointLineColor.cgColor
+            if PoseEstimationForMobileConstant.pointLabels.count == bodyPoints.count {
+                let _ = PoseEstimationForMobileConstant.connectedPointIndexPairs.map { pIndex1, pIndex2 in
+                    if let bp1 = self.bodyPoints[pIndex1], bp1.maxConfidence > DrawingJointView.threshold,
+                        let bp2 = self.bodyPoints[pIndex2], bp2.maxConfidence > DrawingJointView.threshold {
                         let p1 = bp1.maxPoint
                         let p2 = bp2.maxPoint
                         let point1 = CGPoint(x: p1.x * size.width, y: p1.y*size.height)
@@ -112,7 +118,7 @@ class DrawingJointView: UIView {
 }
 
 // MARK: - Constant for edvardHua/PoseEstimationForMobile
-struct Constant {
+struct PoseEstimationForMobileConstant {
     static let pointLabels = [
         "top",          //0
         "neck",         //1
@@ -132,7 +138,7 @@ struct Constant {
         "L ankle",      //13
     ]
     
-    static let connectingPointIndexs: [(Int, Int)] = [
+    static let connectedPointIndexPairs: [(Int, Int)] = [
         (0, 1),     // top-neck
         
         (1, 2),     // neck-rshoulder
@@ -154,7 +160,7 @@ struct Constant {
                                                  blue: 211.0/255.0,
                                                  alpha: 0.5)
     
-    static let colors: [UIColor] = [
+    static var colors: [UIColor] = [
         .red,
         .green,
         .blue,
@@ -169,5 +175,7 @@ struct Constant {
         .lightGray,
         .white,
         .gray,
-        ]
+    ]
+
+        
 }

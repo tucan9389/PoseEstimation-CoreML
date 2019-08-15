@@ -8,11 +8,20 @@ This project is Pose Estimation on iOS with Core ML.<br>If you are interested in
 
 [한국어 README](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/README_kr.md)
 
-| Jointed Keypoints                                            | Concatenated heatmap                                         | Still Image |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![poseestimation-demo-joint.gif](resource/190629-poseestimation-joint-demo.gif) | ![poseestimation-demo-heatmap.gif](resource/190629-poseestimation-heatmap-demo.gif) | ![poseestimation-demo-stillimage.gif](resource/190629-poseestimation-stillimage-demo.gif) |
+| Jointed Keypoints | Concatenated heatmap  | Still Image | Pose Matching |
+| :-----: | :-----: | :-----: | :----: |
+| ![poseestimation-demo-joint.gif](resource/190629-poseestimation-joint-demo.gif) | ![poseestimation-demo-heatmap.gif](resource/190629-poseestimation-heatmap-demo.gif) | ![poseestimation-demo-stillimage.gif](resource/190629-poseestimation-stillimage-demo.gif) | Preparing...([PR](#19)) |
 
 Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
+
+## Features
+
+- Estimate body pose on a image
+- Inference with camera's pixel buffer on real-time
+- Inference with a photo library's image
+- Visualize as heatmaps
+- Visualize as lines and points
+- Pose capturing and pose matching
 
 ## How it works
 

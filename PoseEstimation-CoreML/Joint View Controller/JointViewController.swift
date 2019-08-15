@@ -81,7 +81,7 @@ class JointViewController: UIViewController {
             request = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
             request?.imageCropAndScaleOption = .scaleFill
         } else {
-            fatalError()
+            fatalError("cannot load the ml model")
         }
     }
     
@@ -193,7 +193,7 @@ extension JointViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        cell.textLabel?.text = Constant.pointLabels[indexPath.row]
+        cell.textLabel?.text = PoseEstimationForMobileConstant.pointLabels[indexPath.row]
         if let body_point = tableData[indexPath.row] {
             let pointText: String = "\(String(format: "%.3f", body_point.maxPoint.x)), \(String(format: "%.3f", body_point.maxPoint.y))"
             cell.detailTextLabel?.text = "(\(pointText)), [\(String(format: "%.3f", body_point.maxConfidence))]"
@@ -207,9 +207,8 @@ extension JointViewController: UITableViewDataSource {
 // MARK: - 📏(Performance Measurement) Delegate
 extension JointViewController: 📏Delegate {
     func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {
-        //print(executionTime, fps)
-        self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) mm"
-        self.etimeLabel.text = "execution: \(Int(executionTime*1000.0)) mm"
+        self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) ms"
+        self.etimeLabel.text = "execution: \(Int(executionTime*1000.0)) ms"
         self.fpsLabel.text = "fps: \(fps)"
     }
 }
