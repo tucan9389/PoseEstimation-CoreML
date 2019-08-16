@@ -190,7 +190,7 @@ extension PoseMatchingViewController {
         /* =================================================================== */
         
         let matchingRatios = capturedPointsArray
-            .map { $0?.match(with: predictedPoints) }
+            .map { $0?.matchVector(with: predictedPoints) }
             .compactMap { $0 }
         
         
@@ -202,11 +202,18 @@ extension PoseMatchingViewController {
             // draw line
             self.jointView.bodyPoints = predictedPoints
             
+            var topCapturedJointBGView: UIView?
+            var maxMatchingRatio: CGFloat = 0
             for (matchingRatio, (capturedJointBGView, capturedJointConfidenceLabel)) in zip(matchingRatios, zip(self.capturedJointBGViews, self.capturedJointConfidenceLabels)) {
                 let text = String(format: "%.2f%", matchingRatio*100)
                 capturedJointConfidenceLabel.text = text
-                
+                capturedJointBGView.backgroundColor = .clear
+                if matchingRatio > 0.80 && maxMatchingRatio < matchingRatio {
+                    maxMatchingRatio = matchingRatio
+                    topCapturedJointBGView = capturedJointBGView
+                }
             }
+            topCapturedJointBGView?.backgroundColor = UIColor(red: 0.5, green: 1.0, blue: 0.5, alpha: 0.4)
 //            print(matchingRatios)
         }
         /* =================================================================== */

@@ -155,10 +155,7 @@ struct PoseEstimationForMobileConstant {
         (11, 12),   // lhip-lknee
         (12, 13),   // lknee-lankle
     ]
-    static let jointLineColor: UIColor = UIColor(displayP3Red: 87.0/255.0,
-                                                 green: 255.0/255.0,
-                                                 blue: 211.0/255.0,
-                                                 alpha: 0.5)
+    static let jointLineColor: UIColor = UIColor(red: 26.0/255.0, green: 187.0/255.0, blue: 229.0/255.0, alpha: 0.8)
     
     static var colors: [UIColor] = [
         .red,
