@@ -150,13 +150,13 @@ You can download cpm or hourglass model for Core ML from [tucan9389/pose-estimat
 
 ### 2. Fix the model name on [`PoseEstimation_CoreMLTests.swift`](PoseEstimation-CoreMLTests/PoseEstimation_CoreMLTests.swift)
 
-![fix-model-name-for-testing](resource/fix-model-name-for-testing.png)
+<img src="resource/fix-model-name-for-testing.png" width="660px">
 
 ### 3. Run the test
 
 Hit the `⌘ + U` or click the `Build for Testing` icon.
 
-![build-for-testing](resource/build-for-testing.png)
+<img src="resource/build-for-testing.png" width="320px">
 
 
 
