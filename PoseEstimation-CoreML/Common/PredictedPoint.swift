@@ -51,8 +51,54 @@ struct CapturedPointAngle {
     ]
 }
 
+struct CapturedPointVector {
+    static let vectorIndicesArray = [
+        (0, 1),
+        (1, 2),
+        (2, 3),
+        (3, 4),
+        (1, 5),
+        (5, 6),
+        (6, 7)
+    ]
+}
+
 extension Array where Element == CapturedPoint? {
-    func match(with predictedPoints: [PredictedPoint?]) -> CGFloat {
+    func matchVector(with predictedPoints: [PredictedPoint?]) -> CGFloat {
+        guard predictedPoints.count >= 8, self.count >= 8 else {
+            return -100000
+        }
+        
+        var numberOfValidCaputrePointAngle = 0
+        var totalAngleLoss: CGFloat = 0
+        
+        for (index1, index2) in CapturedPointVector.vectorIndicesArray {
+            guard let p1_1 = self[index1]?.point,
+                let p1_2 = self[index2]?.point,
+                let p2_1 = predictedPoints[index1]?.maxPoint,
+                let p2_2 = predictedPoints[index2]?.maxPoint else {
+                    continue
+            }
+            
+            let vec1 = p1_2 - p1_1
+            let vec2 = p2_2 - p2_1
+            let angleLoss = CGPoint.zero.angle(with: vec1, and: vec2)
+            
+            totalAngleLoss += angleLoss
+            numberOfValidCaputrePointAngle += 1
+        }
+        
+        if numberOfValidCaputrePointAngle == 0 {
+            return 0
+        } else {
+            var ratio = (totalAngleLoss / CGFloat(numberOfValidCaputrePointAngle)) / ((CGFloat.pi)/2)
+            if ratio < 0 { ratio = 0}
+            else if ratio > 1 { ratio = 1}
+            return 1 - ratio
+        }
+    }
+    
+    func matchAngle(with predictedPoints: [PredictedPoint?]) -> CGFloat {
         guard predictedPoints.count >= 8, self.count >= 8 else {
             return -100000
         }
@@ -110,4 +156,8 @@ extension CGPoint {
         if (angle > CGFloat.pi) { angle = 2*CGFloat.pi - angle }
         return angle
     }
+}
+
+func - (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x - right.x, y: left.y - right.y)
 }
