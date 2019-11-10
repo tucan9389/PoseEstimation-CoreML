@@ -17,7 +17,7 @@ public protocol VideoCaptureDelegate: class {
 public class VideoCapture: NSObject {
     public var previewLayer: AVCaptureVideoPreviewLayer?
     public weak var delegate: VideoCaptureDelegate?
-    public var fps = 15
+    public var fps = 30
     
     let captureSession = AVCaptureSession()
     let videoOutput = AVCaptureVideoDataOutput()
@@ -47,6 +47,13 @@ public class VideoCapture: NSObject {
             print("Error: no video devices available")
             return
         }
+        
+        // CMTimeMake(value: 1, timescale: Int32(fps))
+//        
+//        try? captureDevice.lockForConfiguration()
+//        captureDevice.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale: 30)
+//        captureDevice.activeVideoMaxFrameDuration = CMTimeMake(value: 1, timescale: 30)
+//        captureDevice.unlockForConfiguration()
         
         guard let videoInput = try? AVCaptureDeviceInput(device: captureDevice) else {
             print("Error: could not create AVCaptureDeviceInput")

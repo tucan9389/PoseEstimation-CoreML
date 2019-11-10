@@ -95,7 +95,7 @@ extension StillImageHeatmapViewController {
             let heatmaps = observations.first?.featureValue.multiArrayValue {
             
             // convert heatmap to Array<Array<Double>>
-            let heatmap3D = postProcessor.convertTo3DArray(from: heatmaps)
+            let heatmap3D = postProcessor.convertTo2DArray(from: heatmaps)
 
             // must run on main thread
             self.heatmapView.heatmap3D = heatmap3D

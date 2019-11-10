@@ -34,6 +34,7 @@ class DrawingJointView: UIView {
             view.layer.cornerRadius = 3
             view.layer.borderColor = UIColor.black.cgColor
             view.layer.borderWidth = 1.4
+            
             let label = UILabel(frame: CGRect(x: pointSize.width * 1.4, y: 0, width: 100, height: pointSize.height))
             label.text = PoseEstimationForMobileConstant.pointLabels[index%PoseEstimationForMobileConstant.colors.count]
             label.textColor = color

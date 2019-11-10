@@ -1,20 +1,21 @@
 //
-//  HeatmapViewController.swift
+//  HeatmapsViewController.swift
 //  PoseEstimation-CoreML
 //
-//  Created by GwakDoyoung on 02/08/2018.
-//  Copyright © 2018 tucan9389. All rights reserved.
+//  Created by Doyoung Gwak on 2019/11/10.
+//  Copyright © 2019 tucan9389. All rights reserved.
 //
 
 import UIKit
 import Vision
 import CoreMedia
 
-class HeatmapViewController: UIViewController {
-
+class HeatmapsViewController: UIViewController {
+    
     // MARK: - UI Properties
     @IBOutlet weak var videoPreview: UIView!
-    @IBOutlet weak var heatmapView: DrawingHeatmapView!
+    @IBOutlet weak var mainHeatmapView: DrawingHeatmapView!
+    @IBOutlet var subHeatmapViews: [DrawingHeatmapView]!
     
     @IBOutlet weak var inferenceLabel: UILabel!
     @IBOutlet weak var etimeLabel: UILabel!
@@ -115,12 +116,19 @@ class HeatmapViewController: UIViewController {
             let heatmaps = observations.first?.featureValue.multiArrayValue {
 
             // convert heatmap to Array<Array<Double>>
-            let heatmap3D = postProcessor.convertTo2DArray(from: heatmaps)
+            let heatmap = postProcessor.convertTo2DArray(from: heatmaps)
+            let keypointCount = heatmaps.shape[0].intValue
             
             DispatchQueue.main.sync {
                 
-                // 
-                self.heatmapView.heatmap3D = heatmap3D
+                //
+                self.mainHeatmapView.heatmap3D = heatmap
+                
+                for (keypointNumber, subHeatmapView) in zip(0..<keypointCount, self.subHeatmapViews) {
+                    subHeatmapView.heatmap3D = nil
+                    subHeatmapView.keypointNumber = keypointNumber
+                    subHeatmapView.heatmaps = heatmaps
+                }
                 
                 // end of measure
                 self.👨‍🔧.🎬🤚()
@@ -130,7 +138,7 @@ class HeatmapViewController: UIViewController {
 }
 
 // MARK: - VideoCaptureDelegate
-extension HeatmapViewController: VideoCaptureDelegate {
+extension HeatmapsViewController: VideoCaptureDelegate {
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
         // the captured image from camera is contained on pixelBuffer
         if let pixelBuffer = pixelBuffer {
@@ -145,7 +153,7 @@ extension HeatmapViewController: VideoCaptureDelegate {
 
 
 // MARK: - 📏(Performance Measurement) Delegate
-extension HeatmapViewController: 📏Delegate {
+extension HeatmapsViewController: 📏Delegate {
     func updateMeasure(inferenceTime: Double, executionTime: Double, fps: Int) {
         //print(executionTime, fps)
         self.inferenceLabel.text = "inference: \(Int(inferenceTime*1000.0)) mm"

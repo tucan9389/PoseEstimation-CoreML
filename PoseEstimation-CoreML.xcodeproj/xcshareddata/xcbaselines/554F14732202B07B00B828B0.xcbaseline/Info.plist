@@ -16,6 +16,18 @@
 				<string>com.apple.platform.iphoneos</string>
 			</dict>
 		</dict>
+		<key>62A19D3D-FD57-4DD5-8BC3-B13B6CA10E2F</key>
+		<dict>
+			<key>targetArchitecture</key>
+			<string>arm64e</string>
+			<key>targetDevice</key>
+			<dict>
+				<key>modelCode</key>
+				<string>iPhone12,3</string>
+				<key>platformIdentifier</key>
+				<string>com.apple.platform.iphoneos</string>
+			</dict>
+		</dict>
 		<key>64B97823-039E-42B5-849C-EB414F258635</key>
 		<dict>
 			<key>targetArchitecture</key>

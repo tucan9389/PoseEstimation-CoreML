@@ -49,6 +49,8 @@ class HeatmapPostProcessor {
         
         //print(maxvalue, minvalue)
         
+//        print(n_kpoints.first??.maxPoint.x ?? -1, n_kpoints.first??.maxPoint.y ?? -1)
+        
         // transpose to (1.0, 1.0)
         n_kpoints = n_kpoints.map { kpoint -> PredictedPoint? in
             if let kp = kpoint {
@@ -65,7 +67,7 @@ class HeatmapPostProcessor {
         return n_kpoints
     }
     
-    func convertTo3DArray(from heatmaps: MLMultiArray) -> Array<Array<Double>> {
+    func convertTo2DArray(from heatmaps: MLMultiArray) -> Array<Array<Double>> {
         guard heatmaps.shape.count >= 3 else {
             print("heatmap's shape is invalid. \(heatmaps.shape)")
             return []
@@ -77,12 +79,12 @@ class HeatmapPostProcessor {
         var convertedHeatmap: Array<Array<Double>> = Array(repeating: Array(repeating: 0.0, count: heatmap_h), count: heatmap_w)
         
         for k in 0..<keypoint_number {
-            for i in 0..<heatmap_w {
-                for j in 0..<heatmap_h {
-                    let index = k*(heatmap_w*heatmap_h) + i*(heatmap_h) + j
+            for y in 0..<heatmap_w {
+                for x in 0..<heatmap_h {
+                    let index = k*(heatmap_w*heatmap_h) + y*(heatmap_h) + x
                     let confidence = heatmaps[index].doubleValue
                     guard confidence > 0 else { continue }
-                    convertedHeatmap[j][i] += confidence
+                    convertedHeatmap[x][y] += confidence
                 }
             }
         }
