@@ -22,12 +22,15 @@
 		55AAFB1C21128863000B21A3 /* HeatmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */; };
 		55AAFB1E21128AB6000B21A3 /* DrawingHeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */; };
 		714087F32302E7AC00F7EDF4 /* PoseMatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714087F22302E7AC00F7EDF4 /* PoseMatchingViewController.swift */; };
+		714D590F2377F87A00BBE1DC /* HeatmapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714D590E2377F87A00BBE1DC /* HeatmapsViewController.swift */; };
 		7165F7592271772A0010F164 /* StillImageHeatmapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7165F7582271772A0010F164 /* StillImageHeatmapViewController.swift */; };
 		71EF2DC122C3662A009391C8 /* MovingAverageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF2DC022C3662A009391C8 /* MovingAverageFilter.swift */; };
 		71EF2DC322C469FD009391C8 /* HeatmapPostProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF2DC222C469FD009391C8 /* HeatmapPostProcessor.swift */; };
 		71EF2DC522C4878D009391C8 /* PredictedPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF2DC422C4878D009391C8 /* PredictedPoint.swift */; };
 		71F1455322F1C890000ED787 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455122F1C890000ED787 /* model_cpm.mlmodel */; };
 		71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
+		71F3DAE223659D7400DB67F8 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455122F1C890000ED787 /* model_cpm.mlmodel */; };
+		71F3DAE323659D7700DB67F8 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,7 @@
 		55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapViewController.swift; sourceTree = "<group>"; };
 		55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingHeatmapView.swift; sourceTree = "<group>"; };
 		714087F22302E7AC00F7EDF4 /* PoseMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseMatchingViewController.swift; sourceTree = "<group>"; };
+		714D590E2377F87A00BBE1DC /* HeatmapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapsViewController.swift; sourceTree = "<group>"; };
 		7165F7582271772A0010F164 /* StillImageHeatmapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StillImageHeatmapViewController.swift; sourceTree = "<group>"; };
 		71EF2DC022C3662A009391C8 /* MovingAverageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingAverageFilter.swift; sourceTree = "<group>"; };
 		71EF2DC222C469FD009391C8 /* HeatmapPostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapPostProcessor.swift; sourceTree = "<group>"; };
@@ -106,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				55AAFB1B21128863000B21A3 /* HeatmapViewController.swift */,
-				55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */,
+				714D590E2377F87A00BBE1DC /* HeatmapsViewController.swift */,
 			);
 			path = "Heatmap View Controller";
 			sourceTree = "<group>";
@@ -148,6 +152,7 @@
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
 				554F148C2203057400B828B0 /* Joint View Controller */,
 				554F148D2203058100B828B0 /* Heatmap View Controller */,
+				55AAFB1D21128AB6000B21A3 /* DrawingHeatmapView.swift */,
 				7165F75A227177320010F164 /* Still Image Heatmap View Controller */,
 				714087F42302E7B000F7EDF4 /* Pose Matching View Controller */,
 				554F148E2203059B00B828B0 /* Common */,
@@ -280,8 +285,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F3DAE223659D7400DB67F8 /* model_cpm.mlmodel in Sources */,
 				554F14772202B07B00B828B0 /* PoseEstimation_CoreMLTests.swift in Sources */,
 				554F14832202B82600B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
+				71F3DAE323659D7700DB67F8 /* model_hourglass.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +305,7 @@
 				71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
 				555B477421F61234009026AB /* DrawingJointView.swift in Sources */,
+				714D590F2377F87A00BBE1DC /* HeatmapsViewController.swift in Sources */,
 				71EF2DC322C469FD009391C8 /* HeatmapPostProcessor.swift in Sources */,
 				554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
 				557F532820ED25B000CFCCD7 /* Measure.swift in Sources */,
@@ -503,6 +511,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WXJ4Z4H69;
 				INFOPLIST_FILE = "PoseEstimation-CoreML/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,6 +530,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5WXJ4Z4H69;
 				INFOPLIST_FILE = "PoseEstimation-CoreML/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -9,8 +9,12 @@
 import UIKit
 import Vision
 import CoreMedia
+import os.signpost
 
 class JointViewController: UIViewController {
+    
+    let refreshLog = OSLog(subsystem: "com.tucan9389.PoseEstimation-CoreML", category: "InferenceOperations")
+    
     public typealias DetectObjectsCompletion = ([PredictedPoint?]?, Error?) -> Void
     
     // MARK: - UI Properties
@@ -24,6 +28,7 @@ class JointViewController: UIViewController {
     
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
+    var isInferencing = false
     
     // MARK: - AV Property
     var videoCapture: VideoCapture!
@@ -119,7 +124,10 @@ class JointViewController: UIViewController {
 extension JointViewController: VideoCaptureDelegate {
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
         // the captured image from camera is contained on pixelBuffer
-        if let pixelBuffer = pixelBuffer {
+        if !isInferencing, let pixelBuffer = pixelBuffer {
+            
+            isInferencing = true
+            
             // start of measure
             self.👨‍🔧.🎬👏()
             
@@ -135,21 +143,28 @@ extension JointViewController {
         guard let request = request else { fatalError() }
         // vision framework configures the input size of image following our model's input configuration automatically
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
+        
+        if #available(iOS 12.0, *) {
+            os_signpost(.begin, log: refreshLog, name: "PoseEstimation")
+        }
         try? handler.perform([request])
     }
     
     // MARK: - Postprocessing
     func visionRequestDidComplete(request: VNRequest, error: Error?) {
+        if #available(iOS 12.0, *) {
+            os_signpost(.event, log: refreshLog, name: "PoseEstimation")
+        }
         self.👨‍🔧.🏷(with: "endInference")
         if let observations = request.results as? [VNCoreMLFeatureValueObservation],
             let heatmaps = observations.first?.featureValue.multiArrayValue {
-            
+
             /* =================================================================== */
             /* ========================= post-processing ========================= */
-            
+
             /* ------------------ convert heatmap to point array ----------------- */
             var predictedPoints = postProcessor.convertToPredictedPoints(from: heatmaps)
-            
+
             /* --------------------- moving average filter ----------------------- */
             if predictedPoints.count != mvfilters.count {
                 mvfilters = predictedPoints.map { _ in MovingAverageFilter(limit: 3) }
@@ -159,23 +174,33 @@ extension JointViewController {
             }
             predictedPoints = mvfilters.map { $0.averagedValue() }
             /* =================================================================== */
-            
+
             /* =================================================================== */
             /* ======================= display the results ======================= */
             DispatchQueue.main.sync {
                 // draw line
                 self.jointView.bodyPoints = predictedPoints
-                
+
                 // show key points description
                 self.showKeypointsDescription(with: predictedPoints)
-                
+
                 // end of measure
                 self.👨‍🔧.🎬🤚()
+                self.isInferencing = false
+                
+                if #available(iOS 12.0, *) {
+                    os_signpost(.end, log: refreshLog, name: "PoseEstimation")
+                }
             }
             /* =================================================================== */
         } else {
             // end of measure
             self.👨‍🔧.🎬🤚()
+            self.isInferencing = false
+            
+            if #available(iOS 12.0, *) {
+                os_signpost(.end, log: refreshLog, name: "PoseEstimation")
+            }
         }
     }
     

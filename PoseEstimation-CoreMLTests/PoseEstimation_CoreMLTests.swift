@@ -30,7 +30,7 @@ class PoseEstimation_CoreMLTests: XCTestCase {
         cpmRequest?.imageCropAndScaleOption = .scaleFill
         
         // <# Hourglass model #>
-        hourglassModel = try? VNCoreMLModel(for: model_houtglass().model)
+        hourglassModel = try? VNCoreMLModel(for: model_hourglass().model)
         if let visionModel = hourglassModel {
             hourglassRequest = VNCoreMLRequest(model: visionModel, completionHandler: visionRequestDidComplete)
         }

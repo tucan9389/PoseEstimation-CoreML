@@ -25,15 +25,16 @@ class DrawingJointView: UIView {
     private func setUpLabels(with keypointsCount: Int) {
         self.subviews.forEach({ $0.removeFromSuperview() })
         
-        let pointSize = CGSize(width: 12, height: 12)
+        let pointSize = CGSize(width: 10, height: 10)
         keypointLabelBGViews = (0..<keypointsCount).map { index in
             let color = PoseEstimationForMobileConstant.colors[index%PoseEstimationForMobileConstant.colors.count]
             let view = UIView(frame: CGRect(x: 0, y: 0, width: pointSize.width, height: pointSize.height))
             view.backgroundColor = color
             view.clipsToBounds = false
-            view.layer.cornerRadius = 3
+            view.layer.cornerRadius = 5
             view.layer.borderColor = UIColor.black.cgColor
             view.layer.borderWidth = 1.4
+            
             let label = UILabel(frame: CGRect(x: pointSize.width * 1.4, y: 0, width: 100, height: pointSize.height))
             label.text = PoseEstimationForMobileConstant.pointLabels[index%PoseEstimationForMobileConstant.colors.count]
             label.textColor = color
