@@ -8,11 +8,17 @@ This project is Pose Estimation on iOS with Core ML.<br>If you are interested in
 
 [한국어 README](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/README_kr.md)
 
-| Jointed Keypoints | Concatenated heatmap  | Still Image | Pose Capturing | Pose Matching |
-| :-----: | :-----: | :-----: | :----: | :----: |
-| ![poseestimation-demo-joint.gif](resource/190629-poseestimation-joint-demo.gif) | ![poseestimation-demo-heatmap.gif](resource/190629-poseestimation-heatmap-demo.gif) | ![poseestimation-demo-stillimage.gif](resource/190629-poseestimation-stillimage-demo.gif) | <img src="resource/demo-pose-capturing.gif"> | <img src="resource/demo-pose-matching.gif"> |
+| Jointed Keypoints | Hatmaps | Still Image |
+| :-----: | :-----: | :-----: |
+| ![poseestimation-demo-joint.gif](https://i.ibb.co/7Nx6VN9/poseestimation-demo-001-1.gif) | ![poseestimation-demo-heatmaps.gif](https://i.ibb.co/CV8HScH/poseestimation-demo-001-2.gif) | ![poseestimation-demo-stillimage.gif](resource/190629-poseestimation-stillimage-demo.gif) |
 
-Video source: [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
+Video source:
+- [https://www.youtube.com/watch?v=EM16LBKBEgI](https://www.youtube.com/watch?v=EM16LBKBEgI)
+-
+
+| Pose Capturing | Pose Matching |
+| :----: | :----: |
+| <img src="resource/demo-pose-capturing.gif"> | <img src="resource/demo-pose-matching.gif"> |
 
 ## Features
 
