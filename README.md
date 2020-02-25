@@ -69,14 +69,14 @@ Or
 | cpm | 5 | 27 | 27 | 32 | 31 | 31 | 39 | 37 | 44 | 115 |
 | hourhglass | 3 | 6 | 7 | 29 | 31 | 32 | 37 | 42 | 48 | 94 |
 
+![mobile-pose-estimation](https://user-images.githubusercontent.com/37643248/75271451-94bfc080-583f-11ea-946d-175d8e14e335.jpg)
+
 ### Total Time (ms)
 
 | Model vs. Device | 11<br>Pro | XS<br>Max | XR | X | 8 | 8+ | 7 | 7+ | 6S+ | 6+ |
 | ----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
 | cpm | 23 | 39 | 40 | 46 | 47 | 45 | 55 | 58 | 56 | 139 |
 | hourhglass | 23 | 15 | 15 | 38 | 40 | 40 | 48 | 55 | 58 | 106 |
-
-![mobile-pose-estimation](https://user-images.githubusercontent.com/37643248/75271451-94bfc080-583f-11ea-946d-175d8e14e335.jpg)
 
 ### FPS
 
