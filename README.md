@@ -172,6 +172,8 @@ Hit the `⌘ + U` or click the `Build for Testing` icon.
 
 - [motlabs/iOS-Proejcts-with-ML-Models](https://github.com/motlabs/iOS-Proejcts-with-ML-Models)<br>
   : The challenge using machine learning model created from tensorflow on iOS
+- [tucan9389/PoseEstimation-TFLiteSwift](https://github.com/tucan9389/PoseEstimation-TFLiteSwift)<br>
+  : The pose estimation with TensorFlowLiteSwift pod for iOS (Preparing...)
 - [edvardHua/PoseEstimationForMobile](https://github.com/edvardHua/PoseEstimationForMobile)<br>
   : TensorFlow project for pose estimation for mobile
 - [tucan9389/pose-estimation-for-mobile](https://github.com/tucan9389/pose-estimation-for-mobile)<br>
