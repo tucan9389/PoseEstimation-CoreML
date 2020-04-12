@@ -1,38 +1,40 @@
 //
 //  VideoCapture.swift
-//  Awesome ML
+//  PoseEstimation-CoreML
 //
 //  Created by Eugene Bokhan on 3/13/18.
 //  Copyright © 2018 Eugene Bokhan. All rights reserved.
-//
+//  Updated by tucan9389 on 3/15/20.
 
 import UIKit
 import AVFoundation
 import CoreVideo
 
 public protocol VideoCaptureDelegate: class {
-    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame: CVPixelBuffer?, timestamp: CMTime)
+    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame: CVPixelBuffer, timestamp: CMTime)
 }
 
 public class VideoCapture: NSObject {
-    public var previewLayer: AVCaptureVideoPreviewLayer?
+    public var previewLayer: CALayer?
     public weak var delegate: VideoCaptureDelegate?
     public var fps = 30
     
     let captureSession = AVCaptureSession()
     let videoOutput = AVCaptureVideoDataOutput()
-    let queue = DispatchQueue(label: "com.tucan9389.camera-queue")
+    private let sessionQueue = DispatchQueue(label: "session queue")
     
     var lastTimestamp = CMTime()
     
     public func setUp(sessionPreset: AVCaptureSession.Preset = .vga640x480,
                       cameraPosition: AVCaptureDevice.Position = .back,
                       completion: @escaping (Bool) -> Void) {
-        self.setUpCamera(sessionPreset: sessionPreset,
-                         cameraPosition: cameraPosition,
-                         completion: { success in
-            completion(success)
-        })
+        sessionQueue.async {
+            self.setUpCamera(sessionPreset: sessionPreset,
+                             cameraPosition: cameraPosition,
+                             completion: { success in
+                completion(success)
+            })
+        }
     }
     
     func setUpCamera(sessionPreset: AVCaptureSession.Preset, cameraPosition: AVCaptureDevice.Position, completion: @escaping (_ success: Bool) -> Void) {
@@ -40,24 +42,12 @@ public class VideoCapture: NSObject {
         captureSession.beginConfiguration()
         captureSession.sessionPreset = sessionPreset
         
-        guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera,
-                                                          for: .video,
-                                                          position: cameraPosition) else {
-            
-            print("Error: no video devices available")
-            return
+        guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: cameraPosition) else {
+            fatalError("Error: no video devices available")
         }
         
-        // CMTimeMake(value: 1, timescale: Int32(fps))
-//        
-//        try? captureDevice.lockForConfiguration()
-//        captureDevice.activeVideoMinFrameDuration = CMTimeMake(value: 1, timescale: 30)
-//        captureDevice.activeVideoMaxFrameDuration = CMTimeMake(value: 1, timescale: 30)
-//        captureDevice.unlockForConfiguration()
-        
         guard let videoInput = try? AVCaptureDeviceInput(device: captureDevice) else {
-            print("Error: could not create AVCaptureDeviceInput")
-            return
+            fatalError("Error: could not create AVCaptureDeviceInput")
         }
         
         if captureSession.canAddInput(videoInput) {
@@ -75,7 +65,7 @@ public class VideoCapture: NSObject {
         
         videoOutput.videoSettings = settings
         videoOutput.alwaysDiscardsLateVideoFrames = true
-        videoOutput.setSampleBufferDelegate(self, queue: queue)
+        videoOutput.setSampleBufferDelegate(self, queue: sessionQueue)
         if captureSession.canAddOutput(videoOutput) {
             captureSession.addOutput(videoOutput)
         }
@@ -91,14 +81,18 @@ public class VideoCapture: NSObject {
     }
     
     public func start() {
-        if !captureSession.isRunning {
-            captureSession.startRunning()
+        sessionQueue.async {
+            if !self.captureSession.isRunning {
+                self.captureSession.startRunning()
+            }
         }
     }
     
     public func stop() {
-        if captureSession.isRunning {
-            captureSession.stopRunning()
+        sessionQueue.async {
+            if self.captureSession.isRunning {
+                self.captureSession.stopRunning()
+            }
         }
     }
 }
@@ -112,7 +106,8 @@ extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
         let deltaTime = timestamp - lastTimestamp
         if deltaTime >= CMTimeMake(value: 1, timescale: Int32(fps)) {
             lastTimestamp = timestamp
-            let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+        }
+        if let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
             delegate?.videoCapture(self, didCaptureVideoFrame: imageBuffer, timestamp: timestamp)
         }
     }

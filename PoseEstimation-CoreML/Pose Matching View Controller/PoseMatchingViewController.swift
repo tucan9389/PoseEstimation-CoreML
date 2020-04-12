@@ -151,11 +151,9 @@ class PoseMatchingViewController: UIViewController {
 
 // MARK: - VideoCaptureDelegate
 extension PoseMatchingViewController: VideoCaptureDelegate {
-    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
+    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer, timestamp: CMTime) {
         // the captured image from camera is contained on pixelBuffer
-        if let pixelBuffer = pixelBuffer {
-            predictUsingVision(pixelBuffer: pixelBuffer)
-        }
+        predictUsingVision(pixelBuffer: pixelBuffer)
     }
 }
 

@@ -131,15 +131,14 @@ class HeatmapViewController: UIViewController {
 
 // MARK: - VideoCaptureDelegate
 extension HeatmapViewController: VideoCaptureDelegate {
-    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
+    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer, timestamp: CMTime) {
         // the captured image from camera is contained on pixelBuffer
-        if let pixelBuffer = pixelBuffer {
-            // start of measure
-            self.👨‍🔧.🎬👏()
-            
-            // predict!
-            self.predictUsingVision(pixelBuffer: pixelBuffer)
-        }
+        
+        // start of measure
+        self.👨‍🔧.🎬👏()
+        
+        // predict!
+        self.predictUsingVision(pixelBuffer: pixelBuffer)
     }
 }
 
