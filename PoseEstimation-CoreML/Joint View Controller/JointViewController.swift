@@ -122,9 +122,9 @@ class JointViewController: UIViewController {
 
 // MARK: - VideoCaptureDelegate
 extension JointViewController: VideoCaptureDelegate {
-    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer?, timestamp: CMTime) {
+    func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame pixelBuffer: CVPixelBuffer, timestamp: CMTime) {
         // the captured image from camera is contained on pixelBuffer
-        if !isInferencing, let pixelBuffer = pixelBuffer {
+        if !isInferencing {
             
             isInferencing = true
             
