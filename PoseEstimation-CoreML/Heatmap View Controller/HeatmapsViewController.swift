@@ -87,8 +87,10 @@ class HeatmapsViewController: UIViewController {
             if success {
                 // add preview view on the layer
                 if let previewLayer = self.videoCapture.previewLayer {
-                    self.videoPreview.layer.addSublayer(previewLayer)
-                    self.resizePreviewLayer()
+                    DispatchQueue.main.async {
+                        self.videoPreview.layer.addSublayer(previewLayer)
+                        self.resizePreviewLayer()
+                    }
                 }
                 
                 // start video preview when setup is done
