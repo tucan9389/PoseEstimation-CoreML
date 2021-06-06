@@ -1,6 +1,6 @@
 
 
-![logo-pose-estimatiton-for-coreml](https://user-images.githubusercontent.com/37643248/120911642-d3d7f500-c6c3-11eb-9eeb-e97c7bf3ed4e.png)
+![logo-pose-estimatiton-for-coreml-2](https://user-images.githubusercontent.com/37643248/120911711-58c30e80-c6c4-11eb-8d7b-f06ee3f59457.png)
 
 
 ![platform-ios](https://img.shields.io/badge/platform-ios-lightgrey.svg)
