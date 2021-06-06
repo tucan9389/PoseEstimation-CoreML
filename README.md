@@ -1,12 +1,10 @@
-# PoseEstimation-CoreML
+![logo-pose-estimatiton-for-coreml](https://user-images.githubusercontent.com/37643248/120911456-958e0600-c6c2-11eb-9d1c-76d968dbd798.png)
 
 ![platform-ios](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![swift-version](https://img.shields.io/badge/swift-4.2-red.svg)
 ![lisence](https://img.shields.io/badge/license-MIT-black.svg)
 
 This project is Pose Estimation on iOS with Core ML.<br>If you are interested in iOS + Machine Learning, visit [here](https://github.com/motlabs/iOS-Proejcts-with-ML-Models) you can see various DEMOs.<br>
-
-![logo-pose-estimatiton-for-coreml](https://user-images.githubusercontent.com/37643248/120911456-958e0600-c6c2-11eb-9d1c-76d968dbd798.png)
 
 
 [한국어 README](https://github.com/tucan9389/PoseEstimation-CoreML/blob/master/README_kr.md)
